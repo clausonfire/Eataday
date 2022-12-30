@@ -10,7 +10,8 @@ class Comment extends Model
     use HasFactory;
     protected $fillable = [
         'title',
-        'text'
+        'text',
+        'isFrequent'
     ];
     protected $hidden = [
         'isFrequent',
