@@ -6,6 +6,7 @@ use App\Models\ingredient;
 use Illuminate\Http\Request;
 
 class ingredientController extends Controller
+
 {
     public function index() {
         $ingredient = ingredient::all();
@@ -39,4 +40,6 @@ class ingredientController extends Controller
         return response()->json($ingredient);
 
     }
+
 }
+
