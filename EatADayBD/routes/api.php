@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+Route::get('/recipes', [RecipeController::class, 'getAll']);
+Route::get('/recipes/{id}', [RecipeController::class, 'getId']);
+Route::post('/recipes', [RecipeController::class, 'create']);
+Route::delete('/recipes/{id}', [RecipeController::class, 'delete']);
+Route::patch('/recipes/{id}', [RecipeController::class, 'modify']);

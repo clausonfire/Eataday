@@ -16,6 +16,7 @@ class RecipesSeeder extends Seeder
      */
     public function run()
     {
+        
         DB::table('recipes')->insert([
             'title' => 'Macarrones con tomate',
             'photo' => '',
