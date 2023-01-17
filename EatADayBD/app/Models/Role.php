@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ingredient extends Model
+class Role extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'name',
-        'photo',
-        'price',
-        'price_k'
+        'role',
+
+    ];
+    protected $hidden = [
+
+        'created_at',
+        'updated_at'
     ];
 }

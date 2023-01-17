@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ingredient;
 use Illuminate\Http\Request;
 
-    class ingredientController extends Controller
+class ingredientController extends Controller
+
 {
     public function index() {
         $ingredient = ingredient::all();
@@ -38,4 +40,6 @@ use Illuminate\Http\Request;
         return response()->json($ingredient);
 
     }
+
 }
+
