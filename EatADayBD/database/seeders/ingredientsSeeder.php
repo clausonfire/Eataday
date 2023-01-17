@@ -16,6 +16,7 @@ class ingredientsSeeder extends Seeder
      */
     public function run()
     {
+        //comentario
         // $table->id();
         // $table->string('name', 32)->unique();
         // $table->string('photo', 200)->unique();//photo
