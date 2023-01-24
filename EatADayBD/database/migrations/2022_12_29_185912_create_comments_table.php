@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 64);
             $table->string('text', 128);
-            $table->boolean('isFrequent')->nullable();
+            $table->boolean('isFrequent');
             $table->timestamps();
         });
     }
