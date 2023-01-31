@@ -154,4 +154,9 @@ class RoleController extends Controller
         return response()->json($response, 200);
 
     }
+
+    public function users(Request $request, $id){
+        $role = Role::findorFail($id);
+        return response()->json($role->user);
+    }
 }
