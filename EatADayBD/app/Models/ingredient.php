@@ -15,4 +15,9 @@ class ingredient extends Model
         'price',
         'price_k'
     ];
+
+    //relaciones muchos a muchos
+    public function recipe() {
+        return $this->belongsToMany(Recipe::class);
+    }
 }
