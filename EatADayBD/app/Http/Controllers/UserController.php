@@ -15,16 +15,19 @@ class UserController extends Controller
     public function getAll(Request $request)
     {
         // return response()->json('Devuelvo todos los usuarios');
+        
         try {
-            $users = User::table('users')->get();
+            $users = User::all();
         } catch (Throwable $e) {
-            return response('Any user found', 200);
+            return response('Any users found', 200);
         }
+
+        $response = [];
 
         if (isset($users[0])) {
             $response = [
                 'success' => true,
-                'message' => "Users fetched successfully",
+                'message' => "User fetched successfully",
                 'data' => $users
             ];
 
@@ -32,28 +35,29 @@ class UserController extends Controller
         } else {
             $response = [
                 'success' => false,
-                'message' => "No users found",
+                'message' => "No comments found",
                 'data' => null
             ];
             return response()->json($response, 200);
         }
+
     }
 
     public function getById(Request $request, $id)
     {
         //FROM pets
 
-        $users = User::table('users')->where('id', $id)->get();
-        if ($users != null) {
+        $user = User::find($id);
+        if ($user != null) {
             $response = [
                 'success' => true,
-                'message' => 'Users found successfully',
-                'data' => $users
+                'message' => 'User found successfully',
+                'data' => $user
             ];
         } else {
             $response = [
                 'success' => false,
-                'message' => 'Users not found',
+                'message' => 'User not found',
                 'data' => null
             ];
         }
@@ -92,20 +96,12 @@ class UserController extends Controller
             ];
             return response()->json($response, 200);
         }
+        
     }
 
     //si la ruta lleva un parametro, la funcion tambien tiene que recibirlo
     public function delete(Request $request, $id)
     {
-
-        //FROM pets
-        DB::table('users')
-            //WHERE id=$id
-            ->where('id', $id)
-            //DELETE
-            ->delete();
-        // return response()->json('Borro una mascota con id ' . $id);
-
 
         try {
             $deletedUser = User::find($id);
