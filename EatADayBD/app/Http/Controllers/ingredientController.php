@@ -41,5 +41,27 @@ class ingredientController extends Controller
 
     }
 
+    public function supermarket(Request $request, $id) {
+        
+        $ingredient = ingredient::findOrFail($id);
+
+        if ($ingredient != null && $ingredient->supermarket) {
+            $response = [
+                'success' => true,
+                'message' => 'ingredient - supermarket successfull',
+                'data' => $ingredient->supermarket
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'ingredient - supermarket unsuccessfull',
+                'data' => null
+            ];
+        }
+
+        return response()->json($response);
+    
+    }
+
 }
 
