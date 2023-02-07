@@ -160,11 +160,11 @@ use Illuminate\Support\Facades\DB;
         $recipe = Recipe::findOrFail($id);
         if ($recipe) {
 
-            if ($recipe != null && $recipe->recipes) {
+            if ($recipe != null && $recipe->ingredient) {
                 $response = [
                     'success' => true,
                     'message' => 'recipe with ingredient found successfully',
-                    'data' => $recipe->recipes
+                    'data' => $recipe->ingredient
                 ];
             } else {
                 $response = [
@@ -189,11 +189,11 @@ use Illuminate\Support\Facades\DB;
         $recipe = Recipe::findOrFail($id);
         if ($recipe) {
 
-            if ($recipe != null && $recipe->recipes) {
+            if ($recipe != null && $recipe->user) {
                 $response = [
                     'success' => true,
                     'message' => 'recipe with users found successfully',
-                    'data' => $recipe->recipes
+                    'data' => $recipe->user
                 ];
             } else {
                 $response = [

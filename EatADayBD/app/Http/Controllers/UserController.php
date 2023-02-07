@@ -150,11 +150,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user) {
-            if ($user != null && $user->user) {
+            if ($user != null && $user->recipe) {
                 $response = [
                     'success' => true,
                     'message' => 'User with recipe found successfully',
-                    'data' => $user->user
+                    'data' => $user->recipe
                 ];
             } else {
                 $response = [
