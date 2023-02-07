@@ -3,7 +3,11 @@
 use App\Http\Controllers\RecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ingredientController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SupermarketsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +19,192 @@ use App\Http\Controllers\ingredientController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-
-});*/
-
-Route::get('/recipes', [RecipeController::class, 'getAll']);
-Route::get('/recipes/{id}', [RecipeController::class, 'getId']);
-Route::post('/recipes', [RecipeController::class, 'create']);
-Route::delete('/recipes/{id}', [RecipeController::class, 'delete']);
-Route::patch('/recipes/{id}', [RecipeController::class, 'modify']);
-=======
-});
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();*/
+//RECIPES
+Route::prefix('/recipes')->group(function () {
+    Route::controller(RecipeController::class)->group(
+        function () {
+            Route::get('', 'getAll');
+            Route::get('/{id}', 'getById');
+            Route::get('', 'getId');
+            Route::get('/{id}', 'delete');
+            Route::get('/{id}', 'update');
+            Route::get('/{id}/ingredient', 'ingredient');
+            Route::get('/{id}/user', 'users');
+        }
+    );
 });
 
-Route::get('/ingredient', [ingredientController::class, 'index']);
-Route::get('/ingredient/{id}', [ingredientController::class, 'show']);
-Route::post('/ingredient', [ingredientController::class, 'store']);
-Route::patch('/ingredient/{id}', [ingredientController::class, 'update']);
-Route::delete('/ingredient/{id}', [ingredientController::class, 'delete']);
 
+//USER
+Route::prefix('/users')->group(function () {
+    Route::controller(UserController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::get('/{id}/recipes', 'recipes');
+        }
+    );
+});
+
+//COMMENTS
+Route::prefix('/comments')->group(function () {
+    Route::controller(CommentController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
+        }
+    );
+});
+//ROLES
+Route::prefix('/roles')->group(function () {
+    Route::controller(RoleController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
+        }
+    );
+});
+
+//INGREDIENTS
+Route::prefix('/ingredients')->group(function () {
+    Route::controller(IngredientController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'update'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::get(
+                '/{id}/user',
+                'user'
+            );
+            Route::get('/{id}/recipes', 'recipes');
+            Route::get('/{id}/supermarket', 'supermarket');
+        }
+    );
+});
+
+
+Route::prefix('/comments')->group(function () {
+    Route::controller(IngredientController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'update'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::get(
+                '/{id}/user',
+                'user'
+            );
+        }
+    );
+});
+Route::prefix('/supermarket')->group(function () {
+    Route::controller(SupermarketController::class)->group(
+        function () {
+            Route::get(
+                '',
+                [SupermarketController::class, 'getAll']
+            );
+
+            Route::get(
+                '/{id}',
+                [SupermarketController::class, 'getById']
+            );
+            Route::post(
+                '',
+                [SupermarketController::class, 'create']
+            );
+            Route::patch(
+                '/{id}',
+                [SupermarketController::class, 'modify']
+            );
+
+            Route::delete(
+                '/{id}',
+                [SupermarketController::class, 'delete']
+            );
+            Route::get('/{id}/ingredient', 'ingredient');
+        }
+    );
+});

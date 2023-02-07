@@ -8,7 +8,7 @@ use Throwable;
 
 class CommentController extends Controller
 {
-    public function getAllComments(Request $request)
+    public function getAll(Request $request)
     {
         try {
             $comments = Comment::all();
@@ -36,7 +36,27 @@ class CommentController extends Controller
         }
 
     }
-    public function createComment(Request $request)
+    public function getById(Request $request, $id)
+    {
+        $comment = Comment::find($id);
+        if ($comment != null) {
+            $response = [
+                'success' => true,
+                'message' => 'Comment found successfully',
+                'data' => $comment
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Comment not found',
+                'data' => null
+            ];
+        }
+
+        return response()->json($response, 200);
+
+    }
+    public function create(Request $request)
     {
         $id = null;
         try {
@@ -68,7 +88,7 @@ class CommentController extends Controller
 
 
     }
-    public function deleteComment(Request $request, $id)
+    public function delete(Request $request, $id)
     {
         try {
             $deletedComment = Comment::find($id);
@@ -95,7 +115,7 @@ class CommentController extends Controller
 
 
     }
-    public function updateComment(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
 
@@ -135,24 +155,5 @@ class CommentController extends Controller
 
 
     }
-    public function getById(Request $request, $id)
-    {
-        $comment = Comment::find($id);
-        if ($comment != null) {
-            $response = [
-                'success' => true,
-                'message' => 'Comment found successfully',
-                'data' => $comment
-            ];
-        } else {
-            $response = [
-                'success' => false,
-                'message' => 'Comment not found',
-                'data' => null
-            ];
-        }
 
-        return response()->json($response, 200);
-
-    }
 }
