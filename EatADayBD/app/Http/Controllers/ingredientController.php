@@ -67,6 +67,7 @@ class IngredientController extends Controller
 
 
 
+
     }
     public function deleteIngredient(Request $request, $id)
     {
@@ -92,6 +93,7 @@ class IngredientController extends Controller
             ];
             return response()->json($response, 200);
         }
+
 
 
     }
@@ -163,22 +165,36 @@ class IngredientController extends Controller
                     'success' => true,
                     'message' => 'User found successfully',
                     'data' => $ingredient->user
+    public function recipes(Request $request, $id)
+    {
+        $ingredient = ingredient::findOrFail($id);
+        if ($ingredient) {
+
+            if ($ingredient != null && $ingredient->recipe) {
+                $response = [
+                    'success' => true,
+                    'message' => 'ingredient with recipe found successfully',
+                    'data' => $ingredient->recipe
                 ];
             } else {
                 $response = [
                     'success' => false,
-                    'message' => 'User not found',
+
+                    'message' => 'ingredient with recipe not found',
+
                     'data' => null
                 ];
             }
         } else {
             $response = [
                 'success' => false,
-                'message' => 'ingredient not found',
+
+                'message' => 'ingredient with recipe not found',
                 'data' => null
             ];
         }
 
         return response()->json($response, 200);
     }
+
 }
