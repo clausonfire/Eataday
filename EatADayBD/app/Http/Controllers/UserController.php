@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 use App\Models\User;
 
@@ -20,37 +20,55 @@ class UserController extends Controller
     public function getAll(Request $request)
     {
         // return response()->json('Devuelvo todos los usuarios');
-        $users = DB::table('users')->get();
+        
+        try {
+            $users = User::all();
+        } catch (Throwable $e) {
+            return response('Any users found', 200);
+        }
 
-        $response = [
-            'success' => true,
-            'message' => 'usuarios obtenidos correctamente',
-            'data' => $users
-        ];
-        return response()->json($response);
+        $response = [];
+
+        if (isset($users[0])) {
+            $response = [
+                'success' => true,
+                'message' => "User fetched successfully",
+                'data' => $users
+            ];
+
+            return response()->json($response, 200);
+        } else {
+            $response = [
+                'success' => false,
+                'message' => "No comments found",
+                'data' => null
+            ];
+            return response()->json($response, 200);
+        }
+
     }
 
     public function getById(Request $request, $id)
     {
-        //FROM pets
 
-        DB::table('users')->where('id', $id)->get();
-
-
-        try {
-            $users =  DB::table('users')->where('id', $id)->get();
+        $user = User::find($id);
+        if ($user != null) {
             $response = [
                 'success' => true,
-                'message' => "Usuario con id: $id se ha obtenido correctamente",
-                'data' => $users
+                'message' => 'User found successfully',
+                'data' => $user
             ];
-        } catch (ModelNotFoundException $ex) {
-            return $a = [
+        } else {
+            $response = [
                 'success' => false,
-                'message' => "Error, el Id introducido no existe en la db"
+                'message' => 'User not found',
+                'data' => null
             ];
-            return response()->json($a);
         }
+
+        return response()->json($response, 200);
+=======
+ 
     }
 
     public function create(Request $request)
@@ -58,6 +76,36 @@ class UserController extends Controller
         // return response()->json('Creo una mascota');
 
         //name, age, chip
+
+        $id = null;
+        try {
+            $id = User::insertGetId($request->validate([
+                'name' => 'required|string',
+                'mail' => 'required|string|unique:users',
+                'password' => 'required|string',
+            ]));
+        } catch (Throwable $e) {
+            report($e);
+
+            $response = [
+                'success' => false,
+                'message' => 'User has not been created, some data may be missing',
+                'data' => null
+            ];
+            return response()->json($response, 422);
+        }
+        if (is_numeric($id)) {
+            $response = [
+                'success' => true,
+                'message' => 'User created successfully',
+                'data' => User::findOrFail($id)
+            ];
+            return response()->json($response, 200);
+        }
+        
+    }
+
+    //si la ruta lleva un parametro, la funcion tambien tiene que recibirlo
 
         $datos = $request->validate([
             'name' => 'required|string',
@@ -103,37 +151,34 @@ class UserController extends Controller
                     'success' => true,
                     'message' => 'Ingredients found successfully',
                     'data' => $user->ingredient
+
     public function delete(Request $request, $id)
     {
 
         try {
             $deletedUser = User::find($id);
+
             $user = $deletedUser;
             $user->delete();
             $response = [
                 'success' => true,
-                'message' => 'Usuario borrado',
+
+                'message' => 'User was deleted',
                 'data' => $deletedUser
             ];
-            return response()->json($response);
+            return response()->json($response, 200);
 
-            // DB::table('users')
-            //     //WHERE id=$id
-            //     ->where('id', $id)
-            //     //DELETE
-            //     ->delete();
-            // return response()->json('Borro una mascota con id ' . $id);
-
-        } catch (Throwable $a) {
-            report($a);
+        } catch (Throwable $e) {
+            report($e);
 
             $response = [
                 'success' => false,
-                'message' => 'No se encuentra el usuario para borrarlo',
+                'message' => 'User has not been deleted because it wasnt not found',
                 'data' => null
             ];
-            return response()->json($response);
+            return response()->json($response, 200);
         }
+ 
     }
 
     public function modify(Request $request, $id)
@@ -216,6 +261,7 @@ class UserController extends Controller
             ];
         }
         return response()->json($response, 200);
+
 
     }
 }
