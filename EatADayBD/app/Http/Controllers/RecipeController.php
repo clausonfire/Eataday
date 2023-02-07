@@ -1,12 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-    use App\Models\ingredient;
     use App\Models\Recipe;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+    use Illuminate\Http\Request;
     use Throwable;
 
     class RecipeController extends Controller
@@ -16,7 +12,7 @@ use Illuminate\Support\Facades\DB;
         try {
             $recipe = Recipe::all();
         } catch (Throwable $e) {
-            return response('Any Recipe found', 200);
+            return response('Any Recipe found');
         }
 
         $response = [];
@@ -28,7 +24,7 @@ use Illuminate\Support\Facades\DB;
                 'data' => $recipe
             ];
 
-            return response()->json($response, 200);
+            return response()->json($response);
         } else {
 
             $response = [
@@ -36,7 +32,7 @@ use Illuminate\Support\Facades\DB;
                 'message' => "No recipe found",
                 'data' => null
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         }
     }
 
@@ -66,7 +62,7 @@ use Illuminate\Support\Facades\DB;
                 'message' => 'Recipe created successfully',
                 'data' => Recipe::findOrFail($id)
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         }
     }
 
@@ -82,7 +78,7 @@ use Illuminate\Support\Facades\DB;
                 'message' => 'Recipe was deleted',
                 'data' => $deletedRecipe
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
 
         } catch (Throwable $e) {
             report($e);
@@ -91,7 +87,7 @@ use Illuminate\Support\Facades\DB;
                 'message' => 'Recipe has not been deleted because it wasnt not found',
                 'data' => null
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         }
     }
 
@@ -122,14 +118,14 @@ use Illuminate\Support\Facades\DB;
                 'message' => 'Recipe updated successfully',
                 'data' => $recipe
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         } else {
             $response = [
                 'success' => false,
                 'message' => 'Recipe not found',
                 'data' => null
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         }
     }
 
@@ -149,7 +145,7 @@ use Illuminate\Support\Facades\DB;
                 'data' => null
             ];
         }
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
 
@@ -180,7 +176,7 @@ use Illuminate\Support\Facades\DB;
                 'data' => null
             ];
         }
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
 
@@ -209,7 +205,7 @@ use Illuminate\Support\Facades\DB;
                 'data' => null
             ];
         }
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
 }
