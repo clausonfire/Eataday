@@ -16,6 +16,10 @@ class ingredient extends Model
         'price_k',
         'user_id'
     ];
+
+    public function supermarket() {
+        return $this->belongsToMany(Supermarket::class);
+        }
     public function User()
     {
         return $this->belongsTo(User::class);

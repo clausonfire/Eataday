@@ -154,6 +154,20 @@ class IngredientController extends Controller
 
         return response()->json($response, 200);
 
+    public function supermarket(Request $request, $id) {
+        
+        $ingredient = ingredient::findOrFail($id);
+
+        if ($ingredient != null && $ingredient->supermarket) {
+            $response = [
+                'success' => true,
+                'message' => 'ingredient - supermarket successfull',
+                'data' => $ingredient->supermarket
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'ingredient - supermarket unsuccessfull',
     }
     public function user(Request $request, $id)
     {
@@ -194,7 +208,11 @@ class IngredientController extends Controller
             ];
         }
 
-        return response()->json($response, 200);
+        return response()->json($response);
+    
     }
+
+}
+
 
 }
