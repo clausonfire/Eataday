@@ -15,6 +15,10 @@ class Supermarket extends Model
         'photo'
     ];
 
+    public function ingredient() {
+        return $this->belongsToMany(Ingredient::class);
+    }
+
     
 
 }
