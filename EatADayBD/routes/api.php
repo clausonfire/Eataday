@@ -22,16 +22,15 @@ use App\Http\Controllers\UserController;
 
 });*/
 
-Route::get('/recipes', [RecipeController::class, 'getAll']);
-Route::get('/recipes/{id}', [RecipeController::class, 'getId']);
-Route::post('/recipes', [RecipeController::class, 'create']);
-Route::delete('/recipes/{id}', [RecipeController::class, 'delete']);
-Route::patch('/recipes/{id}', [RecipeController::class, 'modify']);
 
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();*/
-// });
+Route::prefix('/recipes')->group(function() {
+    Route::get('', [RecipeController::class, 'getAllRecipes']);
+    Route::get('/{id}', [RecipeController::class, 'getIdRecipe']);
+    Route::post('', [RecipeController::class, 'createRecipe']);
+    Route::delete('/{id}', [RecipeController::class, 'deleteRecipe']);
+    Route::patch('/{id}', [RecipeController::class, 'modifyRecipe']);
+});
+
 
 Route::get('/ingredient', [ingredientController::class, 'index']);
 Route::get('/ingredient/{id}', [ingredientController::class, 'show']);
