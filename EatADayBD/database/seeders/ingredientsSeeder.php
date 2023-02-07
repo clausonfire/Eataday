@@ -28,14 +28,16 @@ class ingredientsSeeder extends Seeder
             'name'=> 'Atun',
             'photo' => "https://dam.cocinafacil.com.mx/wp-content/uploads/2018/07/beneficios-del-atun-1.jpg",
             'price' => 2.5,
-            'price_k' => 3.5
+            'price_k' => 3.5,
+            'user_id'=>2
         ]);
 
         DB::table('ingredients')->insert([
             'name'=> 'Lechuga',
             'photo' => "https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/lechuga.jpg.webp?itok=kvw7kO2D",
             'price' => 1.5,
-            'price_k' => 2.5
+            'price_k' => 2.5,
+            'user_id' => 3
         ]);
     }
 }
