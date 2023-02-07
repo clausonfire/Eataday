@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ingredient extends Model
+class Ingredient extends Model
 {
     use HasFactory;
 
@@ -20,7 +20,7 @@ class ingredient extends Model
     public function supermarket() {
         return $this->belongsToMany(Supermarket::class);
         }
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

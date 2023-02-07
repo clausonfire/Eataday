@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 
     class RecipeController extends Controller
 {
-    public function getAllRecipe(Request $request)
+    public function getAll(Request $request)
     {
         try {
             $recipe = Recipe::all();
@@ -35,8 +35,25 @@ namespace App\Http\Controllers;
             return response()->json($response);
         }
     }
-
-    public function getIdRecipe(Request $request)
+    public function getById(Request $request, $id)
+    {
+        $recipe = Recipe::find($id);
+        if ($recipe != null) {
+            $response = [
+                'success' => true,
+                'message' => 'Recipe found successfully',
+                'data' => $recipe
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Recipe not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response);
+    }
+    public function create(Request $request)
     {
         $id = null;
         try {
@@ -66,7 +83,7 @@ namespace App\Http\Controllers;
         }
     }
 
-    public function deleteRecipe(Request $request, $id)
+    public function delete(Request $request, $id)
     {
         try {
             $deletedRecipe= Recipe::find($id);
@@ -91,7 +108,7 @@ namespace App\Http\Controllers;
         }
     }
 
-    public function updateRecipe(Request $request, $id)
+    public function update(Request $request, $id)
     {
         if ($recipe = Recipe::find($id)) {
 
@@ -129,24 +146,7 @@ namespace App\Http\Controllers;
         }
     }
 
-    public function getById(Request $request, $id)
-    {
-        $recipe = Recipe::find($id);
-        if ($recipe != null) {
-            $response = [
-                'success' => true,
-                'message' => 'Recipe found successfully',
-                'data' => $recipe
-            ];
-        } else {
-            $response = [
-                'success' => false,
-                'message' => 'Recipe not found',
-                'data' => null
-            ];
-        }
-        return response()->json($response);
-    }
+
 
 
 

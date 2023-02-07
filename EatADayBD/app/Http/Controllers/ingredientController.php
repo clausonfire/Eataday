@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ingredient;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Throwable;
 
 
 class IngredientController extends Controller
 {
-    public function getAllIngredients(Request $request)
+    public function getAll(Request $request)
     {
         try {
-            $ingredient = ingredient::all();
+            $ingredient = Ingredient::all();
         } catch (Throwable $e) {
             return response('Any ingredient found', 200);
         }
@@ -38,11 +38,11 @@ class IngredientController extends Controller
         }
 
     }
-    public function createIngredient(Request $request)
+    public function create(Request $request)
     {
         $id = null;
         try {
-            $id = ingredient::insertGetId($request->validate([
+            $id = Ingredient::insertGetId($request->validate([
                 'ingredient' => 'required|string|unique:ingredients'
             ]));
         } catch (Throwable $e) {
@@ -59,7 +59,7 @@ class IngredientController extends Controller
             $response = [
                 'success' => true,
                 'message' => 'ingredient created successfully',
-                'data' => ingredient::findOrFail($id)
+                'data' => Ingredient::findOrFail($id)
             ];
             return response()->json($response, 200);
         }
@@ -69,10 +69,10 @@ class IngredientController extends Controller
 
 
     }
-    public function deleteIngredient(Request $request, $id)
+    public function delete(Request $request, $id)
     {
         try {
-            $deletedIngredient = ingredient::find($id);
+            $deletedIngredient = Ingredient::find($id);
 
             $ingredient = $deletedIngredient;
             $ingredient->delete();
@@ -97,11 +97,11 @@ class IngredientController extends Controller
 
 
     }
-    public function updateIngredient(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
 
-        if ($ingredient = ingredient::find($id)) {
+        if ($ingredient = Ingredient::find($id)) {
 
             try {
                 $ingredient->update($request->validate([
@@ -137,7 +137,7 @@ class IngredientController extends Controller
     }
     public function getById(Request $request, $id)
     {
-        $ingredient = ingredient::find($id);
+        $ingredient = Ingredient::find($id);
         if ($ingredient != null) {
             $response = [
                 'success' => true,
@@ -152,11 +152,11 @@ class IngredientController extends Controller
             ];
         }
 
-        return response()->json($response, 200);
+        return response()->json($response, 200);}
 
     public function supermarket(Request $request, $id) {
-        
-        $ingredient = ingredient::findOrFail($id);
+
+        $ingredient = Ingredient::findOrFail($id);
 
         if ($ingredient != null && $ingredient->supermarket) {
             $response = [
@@ -168,10 +168,11 @@ class IngredientController extends Controller
             $response = [
                 'success' => false,
                 'message' => 'ingredient - supermarket unsuccessfull',
+                'data'=>null]; }
     }
     public function user(Request $request, $id)
     {
-        $ingredient = ingredient::find($id);
+        $ingredient = Ingredient::find($id);
         if ($ingredient) {
 
             if ($ingredient != null && $ingredient->user) {
@@ -179,9 +180,13 @@ class IngredientController extends Controller
                     'success' => true,
                     'message' => 'User found successfully',
                     'data' => $ingredient->user
+                ];
+            }
+        }
+    }
     public function recipes(Request $request, $id)
     {
-        $ingredient = ingredient::findOrFail($id);
+        $ingredient = Ingredient::findOrFail($id);
         if ($ingredient) {
 
             if ($ingredient != null && $ingredient->recipe) {
@@ -209,10 +214,9 @@ class IngredientController extends Controller
         }
 
         return response()->json($response);
-    
+
     }
 
 }
 
 
-}

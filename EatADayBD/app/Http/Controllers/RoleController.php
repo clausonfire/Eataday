@@ -10,7 +10,7 @@ use Throwable;
 
 class RoleController extends Controller
 {
-    public function getAllRoles(Request $request)
+    public function getAll(Request $request)
     {
         try {
             $roles = Role::all();
@@ -39,7 +39,7 @@ class RoleController extends Controller
         }
 
     }
-    public function createRole(Request $request)
+    public function create(Request $request)
     {
         $id = null;
         try {
@@ -66,10 +66,8 @@ class RoleController extends Controller
         }
 
 
-
-
     }
-    public function deleteRole(Request $request, $id)
+    public function delete(Request $request, $id)
     {
         try {
             $deletedRole = Role::find($id);
@@ -96,10 +94,8 @@ class RoleController extends Controller
 
 
     }
-    public function updateRole(Request $request, $id)
+    public function update(Request $request, $id)
     {
-
-
         if ($role = Role::find($id)) {
 
             try {
