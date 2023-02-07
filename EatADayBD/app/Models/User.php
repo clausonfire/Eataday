@@ -43,13 +43,19 @@ class User extends Authenticatable
     ];
 
 
+    public function ingredients()
+    {
+        return $this->hasMany(ingredient::class);}
+
+
     public function recipe() {
-        return $this->belongsToMany(Recipe::class);
+        return $this->belongsToMany(Recipe::class);}
 
     //1:N inversa
     public function role()
     {
         return $this->belongsTo(Role::class);
+
 
     }
 }

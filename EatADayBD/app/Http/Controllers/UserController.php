@@ -6,8 +6,12 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Models\User;
+
 use PhpParser\Node\Expr\Throw_;
 use Throwable;
+
 
 class UserController extends Controller
 {
@@ -29,6 +33,10 @@ class UserController extends Controller
     public function getById(Request $request, $id)
     {
         //FROM pets
+
+        DB::table('users')->where('id', $id)->get();
+
+
         try {
             $users =  DB::table('users')->where('id', $id)->get();
             $response = [
@@ -68,6 +76,33 @@ class UserController extends Controller
     }
 
     //si la ruta lleva un parametro, la funcion tambien tiene que recibirlo
+    public function delete(Request $request, $id){
+
+        //FROM pets
+        DB::table('users')
+        //WHERE id=$id
+        ->where('id', $id)
+        //DELETE
+        ->delete();
+        // return response()->json('Borro una mascota con id ' . $id);
+
+    }
+
+
+
+
+
+
+    public function ingredients(Request $request, $id)
+    {
+        $user = User::find($id);
+        if ($user) {
+
+            if ($user != null && $user->ingredient) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Ingredients found successfully',
+                    'data' => $user->ingredient
     public function delete(Request $request, $id)
     {
 
@@ -162,13 +197,20 @@ class UserController extends Controller
             } else {
                 $response = [
                     'success' => false,
-                    'message' => 'User with recipe not found',
+                    'message' => 'Ingredients not found',
                     'data' => null
                 ];
             }
         } else {
             $response = [
                 'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            ];
+        }
+
+
+        return response()->json($response, 200);
                 'message' => 'User with recipe not found',
                 'data' => null
             ];
