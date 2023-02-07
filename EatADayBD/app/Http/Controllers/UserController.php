@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Throw_;
@@ -145,5 +145,35 @@ class UserController extends Controller
     {
         $user = User::findorFail($id);
         return response()->json($user->role);
+
+    }
+
+
+    public function recipes(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        if ($user) {
+            if ($user != null && $user->recipe) {
+                $response = [
+                    'success' => true,
+                    'message' => 'User with recipe found successfully',
+                    'data' => $user->recipe
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'User with recipe not found',
+                    'data' => null
+                ];
+            }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'User with recipe not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response, 200);
+
     }
 }

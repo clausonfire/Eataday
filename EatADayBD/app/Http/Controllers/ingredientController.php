@@ -23,10 +23,10 @@ class ingredientController extends Controller
         $ingredient = ingredient::create($request->all());
 
         return response()->json($ingredient);
-    } 
+    }
 
     public function update(Request $request) {
-        
+
         $ingredient = ingredient::find($request->id);
 
         $ingredient->update($request->all());
@@ -41,5 +41,32 @@ class ingredientController extends Controller
 
     }
 
+    public function recipes(Request $request, $id)
+    {
+        $ingredient = ingredient::findOrFail($id);
+        if ($ingredient) {
+
+            if ($ingredient != null && $ingredient->recipe) {
+                $response = [
+                    'success' => true,
+                    'message' => 'ingredient with recipe found successfully',
+                    'data' => $ingredient->recipe
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'ingredient with recipe not found',
+                    'data' => null
+                ];
+            }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'ingredient with recipe not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response, 200);
+    }
 }
 
