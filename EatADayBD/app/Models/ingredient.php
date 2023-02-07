@@ -13,6 +13,11 @@ class ingredient extends Model
         'name',
         'photo',
         'price',
-        'price_k'
+        'price_k',
+        'user_id'
     ];
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
