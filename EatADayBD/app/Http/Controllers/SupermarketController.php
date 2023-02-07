@@ -6,92 +6,42 @@ use App\Models\Supermarket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Throwable;
-
 
 class SupermarketController extends Controller
 {
-    public function getAll(Request $request)
-    {
-        try {
-            $supermarkets = Supermarket::all();
-            $response = [
-                'success' => true,
-                'message' => "Supermercados obtenidos",
-                'data' => $supermarkets
-            ];
-            return response()->json($response);
-        } catch (Throwable $e) {
-            report($e);
-
-            $response = [
-                'success' => false,
-                'message' => 'Failed to create Supermarket',
-                'data' => null
-            ];
-            return response()->json($response, 200);
-        }
+    public function getAll(Request $request){
+        $supermarkets = Supermarket::all();
+        $response = [
+            'success' => true,
+            'message' => "Supermercados obtenidos",
+            'data' => $supermarkets
+        ];
+        return response()->json($response);
     }
 
+    public function createSupermarket(Request $request) {
 
-    public function create(Request $request)
-    {
-        $id = null;
-        try {
-            $id = Supermarket::insertGetId($request->validate([
-                'name' => 'required|string',
-                'description' => 'required|string',
-                'photo' => 'required|string',
-            ]));
-        } catch (Throwable $e) {
-            report($e);
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $photo = $request->input('photo');
 
-            $response = [
-                'success' => false,
-                'message' => 'Failed to create Supermarket',
-                'data' => null
-            ];
-            return response()->json($response, 422);
-        }
-        if (is_numeric($id)) {
-            $response = [
-                'success' => true,
-                'message' => 'Supermarket created successfully',
-                'data' => Supermarket::findOrFail($id)
-            ];
-            return response()->json($response, 200);
-        }
+        $datos = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'photo' => 'required|string',
+        ]);
+
+        DB::table('supermarkets')->insert($datos);
     }
 
-
-    public function delete(Request $request, $id)
-    {
-        try {
-            $deletedSupermarket = Supermarket::find($id);
-
-            $supermarket = $deletedSupermarket;
-            $supermarket->delete();
-            $response = [
-                'success' => true,
-                'message' => 'Supermarket was deleted',
-                'data' => $deletedSupermarket
-            ];
-            return response()->json($response, 200);
-        } catch (Throwable $e) {
-            report($e);
-
-            $response = [
-                'success' => false,
-                'message' => 'Supermarket not found',
-                'data' => null
-            ];
-            return response()->json($response, 200);
-        }
+    public function delete(Request $request, $id) {
+        DB::table('supermarkets')
+        ->where('id', $id)
+        ->delete();
     }
-
-    public function getById(Request $request, $id)
-    {
-
+   
+    public function getById(Request $request, $id) {
+        
         $supermarket = Supermarket::find($id);
 
         if ($supermarket != null) {
@@ -111,47 +61,41 @@ class SupermarketController extends Controller
         return response()->json($response);
     }
 
-    public function modify(Request $request, $id)
-    {
+    public function modify(Request $request, $id) {
+        try {
+            Supermarket::findOrFail($id);
 
-        if ($supermarket = Supermarket::find($id)) {
+            $name = $request->input('name');
+            $description = $request->input('description');
+            $photo = $request->input('photo');
 
-            try {
-                $supermarket->update($request->validate([
-                    'name' => 'required|string',
-                    'description' => 'required|string',
-                    'photo' => 'required|string',
-                ]));
-            } catch (Throwable $e) {
-                report($e);
+            $datos = $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'photo' => 'required|string',
+            ]);
 
-                $response = [
-                    'success' => false,
-                    'message' => 'Supermarket failed to modify',
-                    'data' => null
-                ];
-                return response()->json($response, 422);
-            }
-            $supermarket->save();
+            DB::table('supermarkets')->where('id', $id)->update($datos);
             $response = [
                 'success' => true,
-                'message' => 'Supermarket modified successfully',
-                'data' => $supermarket
+                'message' => "Supermercado con id: $id se ha modificado correctamente",
+                'data' => $datos
             ];
-            return response()->json($response, 200);
-        } else {
+
+            return response()->json($response);
+
+        }catch (ModelNotFoundException $ex) {
             $response = [
                 'success' => false,
-                'message' => 'Supermarket not found',
+                'message' => "Error, el Id introducido no existe en la base de datos",
                 'data' => null
             ];
-            return response()->json($response, 200);
+            return response()->json($response);
         }
     }
 
-    public function ingredient(Request $request, $id)
-    {
-
+    public function ingredient(Request $request, $id) {
+        
         $supermarket = Supermarket::findOrFail($id);
 
         if ($supermarket != null && $supermarket->ingredient) {
@@ -166,9 +110,11 @@ class SupermarketController extends Controller
                 'message' => 'supermarket - ingredient unsuccessfull',
                 'data' => null
             ];
-            return response()->json($response, 404);
         }
 
         return response()->json($response);
+    
     }
-}
+
+}   
+

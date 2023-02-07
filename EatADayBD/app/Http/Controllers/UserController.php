@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
+use App\Models\User;
+
+use PhpParser\Node\Expr\Throw_;
+use Throwable;
 
 
 class UserController extends Controller
@@ -15,7 +19,8 @@ class UserController extends Controller
 
     public function getAll(Request $request)
     {
-
+        // return response()->json('Devuelvo todos los usuarios');
+        
         try {
             $users = User::all();
         } catch (Throwable $e) {
@@ -62,11 +67,16 @@ class UserController extends Controller
         }
 
         return response()->json($response, 200);
-
+=======
+ 
     }
 
     public function create(Request $request)
     {
+        // return response()->json('Creo una mascota');
+
+        //name, age, chip
+
         $id = null;
         try {
             $id = User::insertGetId($request->validate([
@@ -92,10 +102,55 @@ class UserController extends Controller
             ];
             return response()->json($response, 200);
         }
+        
+    }
+
+    //si la ruta lleva un parametro, la funcion tambien tiene que recibirlo
+
+        $datos = $request->validate([
+            'name' => 'required|string',
+            'mail' => 'required|string|unique:users',
+            'password' => 'required|string',
+
+        ]);
+
+        DB::table('users')->insert($datos);
+        $response = [
+            'success' => true,
+            'message' => "Usuario creado correctamente",
+            'data' => $datos
+        ];
+        return response()->json($response);
+    }
+
+    //si la ruta lleva un parametro, la funcion tambien tiene que recibirlo
+    public function delete(Request $request, $id){
+
+        //FROM pets
+        DB::table('users')
+        //WHERE id=$id
+        ->where('id', $id)
+        //DELETE
+        ->delete();
+        // return response()->json('Borro una mascota con id ' . $id);
 
     }
 
 
+
+
+
+
+    public function ingredients(Request $request, $id)
+    {
+        $user = User::find($id);
+        if ($user) {
+
+            if ($user != null && $user->ingredient) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Ingredients found successfully',
+                    'data' => $user->ingredient
 
     public function delete(Request $request, $id)
     {
@@ -123,6 +178,7 @@ class UserController extends Controller
             ];
             return response()->json($response, 200);
         }
+ 
     }
 
     public function modify(Request $request, $id)
@@ -163,23 +219,8 @@ class UserController extends Controller
             ];
             return response()->json($response);
         }
-
     }
 
-    public function ingredients(Request $request, $id)
-    {
-        $user = User::find($id);
-        if ($user) {
-
-            if ($user != null && $user->ingredient) {
-                $response = [
-                    'success' => true,
-                    'message' => 'Ingredients found successfully',
-                    'data' => $user->ingredients
-                ];
-            }
-        }
-    }
     public function role(Request $request, $id)
     {
         $user = User::findorFail($id);
@@ -214,10 +255,13 @@ class UserController extends Controller
         }
 
 
-
         return response()->json($response, 200);
+                'message' => 'User with recipe not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response, 200);
+
+
     }
 }
-
-
-

@@ -9,7 +9,7 @@ use Throwable;
 
 class IngredientController extends Controller
 {
-    public function getAll(Request $request)
+    public function getAllIngredients(Request $request)
     {
         try {
             $ingredient = ingredient::all();
@@ -38,7 +38,7 @@ class IngredientController extends Controller
         }
 
     }
-    public function create(Request $request)
+    public function createIngredient(Request $request)
     {
         $id = null;
         try {
@@ -69,7 +69,7 @@ class IngredientController extends Controller
 
 
     }
-    public function delete(Request $request, $id)
+    public function deleteIngredient(Request $request, $id)
     {
         try {
             $deletedIngredient = ingredient::find($id);
@@ -97,7 +97,7 @@ class IngredientController extends Controller
 
 
     }
-    public function update(Request $request, $id)
+    public function updateIngredient(Request $request, $id)
     {
 
 
@@ -152,10 +152,10 @@ class IngredientController extends Controller
             ];
         }
 
-        return response()->json($response, 200);}
+        return response()->json($response, 200);
 
     public function supermarket(Request $request, $id) {
-
+        
         $ingredient = ingredient::findOrFail($id);
 
         if ($ingredient != null && $ingredient->supermarket) {
@@ -168,7 +168,6 @@ class IngredientController extends Controller
             $response = [
                 'success' => false,
                 'message' => 'ingredient - supermarket unsuccessfull',
-                'data'=>null]; }
     }
     public function user(Request $request, $id)
     {
@@ -180,10 +179,6 @@ class IngredientController extends Controller
                     'success' => true,
                     'message' => 'User found successfully',
                     'data' => $ingredient->user
-                ];
-            }
-        }
-    }
     public function recipes(Request $request, $id)
     {
         $ingredient = ingredient::findOrFail($id);
@@ -214,9 +209,10 @@ class IngredientController extends Controller
         }
 
         return response()->json($response);
-
+    
     }
 
 }
 
 
+}
