@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use PhpParser\Node\Expr\Throw_;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -143,6 +145,7 @@ class UserController extends Controller
     {
         $user = User::findorFail($id);
         return response()->json($user->role);
+
     }
 
 
@@ -171,5 +174,6 @@ class UserController extends Controller
             ];
         }
         return response()->json($response, 200);
+
     }
 }

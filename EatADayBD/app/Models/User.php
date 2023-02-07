@@ -42,7 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function recipe() {
         return $this->belongsToMany(Recipe::class);
+
+    //1:N inversa
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+
     }
 }
