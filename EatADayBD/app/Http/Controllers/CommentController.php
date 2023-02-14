@@ -155,5 +155,32 @@ class CommentController extends Controller
 
 
     }
+    public function user(Request $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+        if ($comment) {
+
+            if ($comment != null && $comment->user) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Users found successfully',
+                    'data' => $comment->user
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Users not found',
+                    'data' => null
+                ];
+            }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Comment not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response);
+    }
 
 }

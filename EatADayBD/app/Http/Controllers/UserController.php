@@ -166,9 +166,10 @@ class UserController extends Controller
 
     }
 
+
     public function ingredients(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         if ($user) {
 
             if ($user != null && $user->ingredient) {
@@ -177,14 +178,48 @@ class UserController extends Controller
                     'message' => 'Ingredients found successfully',
                     'data' => $user->ingredients
                 ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Ingredients not found',
+                    'data' => null
+                ];
             }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            ];
         }
+        return response()->json($response);
     }
     public function role(Request $request, $id)
     {
-        $user = User::findorFail($id);
-        return response()->json($user->role);
+        $user = User::findOrFail($id);
+        if ($user) {
 
+            if ($user != null && $user->role) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Role found successfully',
+                    'data' => $user->role
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Role not found',
+                    'data' => null
+                ];
+            }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response);
     }
 
 
