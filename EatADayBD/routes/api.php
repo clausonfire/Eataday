@@ -25,7 +25,8 @@ use App\Http\Controllers\LoginController;
 Route::post('/login', [LoginController::class, 'logIn']);
 Route::post('/signup', [LoginController::class, 'signUp']);
 
-Route::group(['middleware' => 'auth:api'],
+Route::group(
+    ['middleware' => 'auth:api'],
     function () {
         Route::post('/logout', [LoginController::class, 'logOut']);
         Route::get('/soyyo', [LoginController::class, 'userInfo']);
@@ -48,8 +49,9 @@ Route::prefix('/users')->group(function () {
                 '',
                 'create'
             );
-
-            Route::middleware('isLoggedIn')->delete(
+            Route::get('/{id}/role', 'role');
+            Route::get('/{id}/ingredients', 'ingredients');
+            Route::middleware('auth:api')->delete(
                 '/{id}',
                 'delete'
             );
@@ -65,7 +67,6 @@ Route::prefix('/recipes')->group(function () {
         function () {
             Route::get('', 'getAll');
             Route::get('/{id}', 'getById');
-            Route::get('', 'getId');
             Route::get('/{id}', 'delete');
             Route::get('/{id}', 'update');
             Route::get('/{id}/ingredient', 'ingredient');
@@ -95,6 +96,7 @@ Route::prefix('/comments')->group(function () {
                 '/{id}',
                 'delete'
             );
+            Route::get('/{id}/user', 'user');
 
         }
     );
@@ -120,6 +122,7 @@ Route::prefix('/roles')->group(function () {
                 '/{id}',
                 'delete'
             );
+            Route::get('/{id}/users', 'users');
 
         }
     );
@@ -217,7 +220,7 @@ Route::prefix('/supermarkets')->group(function () {
                 '/{id}',
                 'delete'
             );
-            Route::get('/{id}/ingredient', 'ingredient');
+            Route::get('/{id}/ingredients', 'ingredients');
         }
     );
 });

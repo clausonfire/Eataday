@@ -151,8 +151,31 @@ class RoleController extends Controller
 
     }
 
-    public function users(Request $request, $id){
-        $role = Role::findorFail($id);
-        return response()->json($role->user);
+    public function users(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        if ($role) {
+
+            if ($role != null && $role->user) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Users found successfully',
+                    'data' => $role->user
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Users not found',
+                    'data' => null
+                ];
+            }
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Role not found',
+                'data' => null
+            ];
+        }
+        return response()->json($response);
     }
 }
