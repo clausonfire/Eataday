@@ -19,21 +19,21 @@ class RecipesSeeder extends Seeder
 
         DB::table('recipes')->insert([
             'title' => 'Macarrones con tomate',
-            'photo' => '',
+            'photo' => 'null',
             'ingredients' => 'Macarrones, tomate, aceite y sal',
             'preparation' => 'Hervir la pasta al gusto y echar tomate'
         ]);
 
         DB::table('recipes')->insert([
             'title' => 'Arroz y conejo',
-            'photo' => '',
+            'photo' => 'null',
             'ingredients' => 'Arroz, conejo, sal, agua, aceite, sal',
             'preparation' => 'Freir el conejo, añadir agua y arroz'
         ]);
 
         DB::table('recipes')->insert([
             'title' => 'Pantumaka',
-            'photo' => '',
+            'photo' => 'null',
             'ingredients' => '1 tomate de untar maduro, 1 rebanada de pan de tamaño generoso, sal y ajo',
             'preparation' => 'Restregar el tomate encima del pan y a al ataque'
         ]);
