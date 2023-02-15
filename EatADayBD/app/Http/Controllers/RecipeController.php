@@ -188,20 +188,20 @@ namespace App\Http\Controllers;
             if ($recipe != null && $recipe->user) {
                 $response = [
                     'success' => true,
-                    'message' => 'recipe with users found successfully',
+                    'message' => 'Users found successfully',
                     'data' => $recipe->user
                 ];
             } else {
                 $response = [
                     'success' => false,
-                    'message' => 'recipe with users not found',
+                    'message' => 'Users not found',
                     'data' => null
                 ];
             }
         } else {
             $response = [
                 'success' => false,
-                'message' => 'recipe with users not found',
+                'message' => 'Recipe not found',
                 'data' => null
             ];
         }

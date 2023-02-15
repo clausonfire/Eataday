@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 32);
             $table->string('photo', 200)->nullable();
-            $table->string('ingredients', 600);
+            $table->json('ingredients');
+            $table->json('displayIngredients');
             $table->string('preparation', 2000);
             $table->timestamps();
         });
