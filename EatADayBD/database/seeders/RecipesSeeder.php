@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Recipe;
 
 
 class RecipesSeeder extends Seeder
@@ -17,7 +18,7 @@ class RecipesSeeder extends Seeder
     public function run()
     {
 
-        DB::table('recipes')->insert([
+        Recipe::create([
             'title' => 'Macarrones con tomate',
             'photo' => 'null',
             'ingredients' => "['macarrones', 'tomate', 'aceite', 'sal']",
@@ -25,7 +26,7 @@ class RecipesSeeder extends Seeder
             'preparation' => 'Hervir la pasta al gusto y echar tomate'
         ]);
 
-        DB::table('recipes')->insert([
+        Recipe::create([
             'title' => 'Arroz y conejo',
             'photo' => 'null',
             'ingredients' => "['arroz', 'conejo', 'sal', 'agua', 'aceite', 'sal']",
@@ -33,7 +34,7 @@ class RecipesSeeder extends Seeder
             'preparation' => 'Freir el conejo, añadir agua y arroz'
         ]);
 
-        DB::table('recipes')->insert([
+        Recipe::create([
             'title' => 'Pantumaka',
             'photo' => 'null',
             'ingredients' => "['tomate', 'pan', 'sal', 'ajo']",
