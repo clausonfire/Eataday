@@ -9,6 +9,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import { HeaderComponent } from './header/header.component';
 
     LoginComponent,
     HeaderComponent,
+    RegisterComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
