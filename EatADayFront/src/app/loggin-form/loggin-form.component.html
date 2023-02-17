@@ -1,73 +1,72 @@
 <h1>EatADay Login</h1>
 <div>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="checkUser()">
 
     <label for="name">Name:* </label>
     <input formControlName="name" type="text" id="name"><br>
     <div>
-      <!--Es una validación que se va a encargar que si el campo no es válido muestre este div-->
       <small *ngIf="loginForm.get('name').invalid && loginForm.get('name').touched">
-        <!-- Con el touched, si ha tocado el input saldrá el mensaje de error -->
         This field  is required
       </small>
     </div>
 
     <br />
 
-    <label for="email">Eamil:* </label>
+    <label for="email">Email:* </label>
     <input formControlName="email" type="email" id="email"><br>
     <div>
-      <!--Es una validación que se va a encargar que si el campo no es válido muestre este div-->
       <small *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-        <!-- Con el touched, si ha tocado el input saldrá el mensaje de error -->
         This field  is required
       </small>
     </div>
 
     <br />
 
-    <label for="emailRepite">Repite email:* </label>
+    <!--<label for="emailRepite">Repite email:* </label>
     <input formControlName="emailRepite" type="email" id="emailRepite"><br>
     <div>
-      <!--Es una validación que se va a encargar que si el campo no es válido muestre este div-->
       <small *ngIf="loginForm.get('emailRepite').invalid && loginForm.get('emailRepite').touched">
-        <!-- Con el touched, si ha tocado el input saldrá el mensaje de error -->
         This field  is required
       </small>
     </div>
 
-    <br />
+    <br />-->
 
     <label for="password">Password:* </label>
     <input formControlName="password" type="password" id="password"><br>
     <div>
-      <!--Es una validación que se va a encargar que si el campo no es válido muestre este div-->
       <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
-        <!-- Con el touched, si ha tocado el input saldrá el mensaje de error -->
         This field  is required
       </small>
     </div>
 
     <br />
 
-    <label for="passwordRepite">Repite Password:* </label>
+    <!--<label for="passwordRepite">Repite Password:* </label>
     <input formControlName="passwordRepite" type="password" id="passwordRepite"><br>
     <div>
-      <!--Es una validación que se va a encargar que si el campo no es válido muestre este div-->
       <small *ngIf="loginForm.get('passwordRepite').invalid && loginForm.get('passwordRepite').touched">
-        <!-- Con el touched, si ha tocado el input saldrá el mensaje de error -->
+        This field  is required
+      </small>
+    </div>
+
+    <br />-->
+
+    <label for="terms">Terms </label>
+    <input formControlName="terms" type="checkbox" id="terms"><br>
+    <div>
+      <small *ngIf="loginForm.get('terms').invalid && loginForm.get('terms').touched">
         This field  is required
       </small>
     </div>
 
     <br />
 
-    <button (click)="reset()">Reset</button>
-    <button (click)="showData()">Save</button>
+    <button (click)="reset()">Reset</button> <br>
+    <button (click)="getUsers()">Show Users </button> <br>
+    <button [disabled]="loginForm.invalid" type="submit">Save</button> <br>
   </form>
 </div>
 
-<div *ngIf="visible">
-    {{ this.loginForm | json }}
-</div>
+
 
