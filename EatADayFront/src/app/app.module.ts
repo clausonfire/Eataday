@@ -10,10 +10,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+
+import { RegisterComponent } from './register/register.component';
+
 import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
+
 
 
 @NgModule({
@@ -23,9 +27,11 @@ import { RecetasTopComponent } from './recetas-top/recetas-top.component';
     LogginFormComponent,
     LoginComponent,
     HeaderComponent,
+    RegisterComponent,
     MatchRecetasComponent,
     BuscadorAlimentosComponent,
     RecetasTopComponent,
+
 
 
   ],
@@ -33,9 +39,12 @@ import { RecetasTopComponent } from './recetas-top/recetas-top.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+
     HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+//
