@@ -1,0 +1,11 @@
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(https://media.vozpopuli.com/2023/02/acido-urico-alimentos-comer-bajar-niveles-evitar-suban.jpg);
+}
+.backdrop {
+  backdrop-filter: blur(5px);
+}
+.text-shadow {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
