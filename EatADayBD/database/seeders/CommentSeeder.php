@@ -25,7 +25,7 @@ class CommentSeeder extends Seeder
             'title' => 'No va una mierda2',
             'text' => 'Este es el relleno del mensaje 2',
             'isFrequent' => true,
-            'user_id'=>4
+            'user_id'=>2
         ]);
         DB::table('comments')->insert([
             'title' => 'No va una mierda3',

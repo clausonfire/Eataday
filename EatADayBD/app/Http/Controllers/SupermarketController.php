@@ -149,26 +149,31 @@ class SupermarketController extends Controller
         }
     }
 
-    public function ingredient(Request $request, $id)
+    public function ingredients(Request $request, $id)
     {
-
         $supermarket = Supermarket::findOrFail($id);
+        if ($supermarket) {
 
-        if ($supermarket != null && $supermarket->ingredient) {
-            $response = [
-                'success' => true,
-                'message' => 'supermarket - ingredient successfull',
-                'data' => $supermarket->ingredient
-            ];
+            if ($supermarket != null && $supermarket->ingredient) {
+                $response = [
+                    'success' => true,
+                    'message' => 'Ingredients found successfully',
+                    'data' => $supermarket->ingredients
+                ];
+            } else {
+                $response = [
+                    'success' => false,
+                    'message' => 'Ingredients not found',
+                    'data' => null
+                ];
+            }
         } else {
             $response = [
                 'success' => false,
-                'message' => 'supermarket - ingredient unsuccessfull',
+                'message' => 'Supermarket not found',
                 'data' => null
             ];
-            return response()->json($response, 404);
         }
-
         return response()->json($response);
     }
 }
