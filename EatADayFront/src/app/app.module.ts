@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { LogginFormComponent } from './loggin-form/loggin-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -17,11 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
 
+    FooterComponent
+
     LogginFormComponent,
 
     LoginComponent,
     HeaderComponent,
     RegisterComponent,
+
 
   ],
   imports: [
