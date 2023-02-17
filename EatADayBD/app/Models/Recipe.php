@@ -16,6 +16,7 @@ class Recipe extends Model
         'title',
         'photo',
         'ingredients',
+        'displayIngredients',
         'preparation'
     ];
     protected $casts = [
