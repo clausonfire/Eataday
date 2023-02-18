@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('supermarket_ingredient', function (Blueprint $table) {
+        Schema::create('ingredient_supermarket', function (Blueprint $table) {
 
         $table->foreignId('supermarket_id')->references('id')->on('supermarkets')->onDelete('cascade')->onUpdate('cascade');
         $table->foreignId('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade')->onUpdate('cascade');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supermarket_ingredients');
+        Schema::dropIfExists('ingredient_supermarket');
     }
 };
