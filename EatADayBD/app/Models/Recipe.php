@@ -16,20 +16,26 @@ class Recipe extends Model
         'title',
         'photo',
         'ingredients',
+        'displayIngredients',
         'preparation'
     ];
-
+    protected $casts = [
+        'ingredients' => 'array',
+        'displayIngredients'=>'array',
+    ];
     protected $hidden = [
         'created_at',
         'updated_at'
     ];
 
     //relaciones muchos a muchos
-    public function ingredient() {
+    public function ingredient()
+    {
         return $this->belongsToMany(ingredient::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsToMany(User::class);
     }
 
