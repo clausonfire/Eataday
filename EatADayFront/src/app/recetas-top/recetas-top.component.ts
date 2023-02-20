@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RecetasTopComponent {
   public topRecipes: Recipes[] = [];
-  public topRecipesp: Recipes[] = [];
   public searchTerm: Subject<string> = new Subject();
   constructor(private RecipesService: RecipesService, private http: HttpClient) { }
   ngOnInit(): void {
