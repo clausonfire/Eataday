@@ -6,7 +6,7 @@
       <li *ngFor="let ingredient of ingredientsFound$ | async ">
 
 
-        <div >
+        <div  (click)="addToRecipeList(ingredient)">
           {{ ingredient.name }}
         </div>
 

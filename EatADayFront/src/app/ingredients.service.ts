@@ -17,7 +17,7 @@ export class IngredientsService {
       return of([]);
     }
 
-    return this.http.get<Ingredients[]>(this.urlBase+"?name="+text).pipe(catchError(e => {
+    return this.http.get<Ingredients[]>(this.urlBase+"/search/"+text).pipe(catchError(e => {
       console.error(e);
       return [];
     }), map(result => result['data']))

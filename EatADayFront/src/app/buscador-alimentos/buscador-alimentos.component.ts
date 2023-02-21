@@ -22,14 +22,16 @@ export class BuscadorAlimentosComponent {
 
     this.ingredientsFound$ = this.searchTerm.pipe(
 
-      debounceTime(300),
+      debounceTime(150),
       distinctUntilChanged(),
       switchMap(text => {
         return this.IngredientsService.searchIngredients(text);
       })
     )
   }
-
+  public addToRecipeList(ingredient: Ingredients) {
+    console.log(ingredient);
+  }
   public search(value: string) {
     this.searchTerm.next(value);
   }
