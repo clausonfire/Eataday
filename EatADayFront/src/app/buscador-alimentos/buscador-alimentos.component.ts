@@ -13,15 +13,24 @@ import { Result } from '../../../result';
 export class BuscadorAlimentosComponent {
 
   public ingredients: Ingredients[] = [];
+  //lleva el $ porque es asincrona
+  public ingredientsFound$: Observable<Ingredients[]> = of([]);
   public searchTerm: Subject<string> = new Subject();
   constructor(private IngredientsService: IngredientsService, private http: HttpClient) { }
   ngOnInit(): void {
+    // this.IngredientsService.getIngredients().pipe(delay(30)).subscribe((ingredients: Ingredients[]) => this.ingredients = ingredients);
 
+    this.ingredientsFound$ = this.searchTerm.pipe(
 
-    this.IngredientsService.getIngredients().pipe(delay(30)).subscribe((ingredients: Ingredients[]) => this.ingredients = ingredients);
-
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(text => {
+        return this.IngredientsService.searchIngredients(text);
+      })
+    )
   }
-  // public search(value: string) {
-  //   this.searchTerm.next(value);
-  // }
+
+  public search(value: string) {
+    this.searchTerm.next(value);
+  }
 }
