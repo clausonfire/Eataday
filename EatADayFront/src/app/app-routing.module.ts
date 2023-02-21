@@ -6,7 +6,7 @@ import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'matchAlimentos', component: MatchRecetasComponent },
-  { path: '**', component: MatchRecetasComponent },
+  { path: '**', component: LoginComponent},
 
 ];
 
