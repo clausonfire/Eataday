@@ -64,6 +64,16 @@
         </button>
       </div>
       <div *ngIf="this.showModals===true" class="absolute bg-white top-[40%] left-[50%] flex ">
-        <app-loggin-form></app-loggin-form>
-        <app-register></app-register>
+        <div>
+          <button class="bg-white border-solid border-2 border-black" (click)="getLoginModal()">PESTAÑA1</button>
+          <div *ngIf="this.showLogin"><app-loggin-form #login></app-loggin-form></div>
+
+        </div>
+        <div>
+          <button class="bg-white border-solid border-2 border-black" (click)="getRegisterModal()">PESTAÑA2</button>
+          <div *ngIf="this.showRegister">
+            <app-register #register></app-register>
+          </div>
+        </div>
+
       </div>
