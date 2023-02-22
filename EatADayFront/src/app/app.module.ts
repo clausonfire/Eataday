@@ -15,7 +15,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, HttpErrorResponse} from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
 
 
@@ -41,6 +41,7 @@ import { RecetasTopComponent } from './recetas-top/recetas-top.component';
     ReactiveFormsModule,
 
     HttpClientModule,
+
 
   ],
   providers: [],
