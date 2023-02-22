@@ -1,7 +1,5 @@
-<p>register works!</p>
-
 <form [formGroup]="registerForm">
-  
+
   <label for="name">Name:</label>
   <input type="text" formControlName="name" name="" id="name"><br>
   <div>
@@ -20,7 +18,7 @@
     <small *ngIf="registerForm.get('password').invalid && !registerForm.get('password').touched">El campo password es obligatorio</small>
   </div>
 
-  
+
   <button (click)="save()">Save</button>
 </form>
-//
+

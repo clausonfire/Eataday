@@ -1,7 +1,8 @@
 <div class="bg-image">
-  <div class="container my-24 px-6 mx-auto ">
 
-    <section class="mb-32 text-gray-800 pt-5">
+  <div class="container  px-6 mx-auto">
+    <section class="text-gray-800 pt-5">
+
       <div class="italic text-white">
         <h2 class="text-3xl font-bold mb-12 text-center italic ">WELCOME TO YOUR</h2>
         <h2 class="text-3xl font-bold mb-12 text-center italic ">FOODWEB</h2>
@@ -54,11 +55,25 @@
         </div>
       </div>
 
-      <div class="mt-20 font-bold text-black italic pb-12 text-white">
+      <div class="mt-20 font-bold  italic pb-12 text-white">
         <h2 class="">¿Aun no te has unido a nuestra</h2>
         <h2 class="">comunidad?</h2>
-        <button type="button"
+        <button type="button" (click)="getModals()"
           class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">
           LOGIN
         </button>
+      </div>
+      <div *ngIf="this.showModals===true" class="absolute bg-white top-[40%] left-[50%] flex ">
+        <div>
+          <button class="bg-white border-solid border-2 border-black" (click)="getLoginModal()">PESTAÑA1</button>
+          <div *ngIf="this.showLogin"><app-loggin-form #login></app-loggin-form></div>
+
+        </div>
+        <div>
+          <button class="bg-white border-solid border-2 border-black" (click)="getRegisterModal()">PESTAÑA2</button>
+          <div *ngIf="this.showRegister">
+            <app-register #register></app-register>
+          </div>
+        </div>
+
       </div>

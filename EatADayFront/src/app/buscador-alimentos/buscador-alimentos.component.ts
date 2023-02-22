@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { debounceTime, delay, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 import { IngredientsService } from '../ingredients.service';
 import { Ingredients } from '../ingredients';
@@ -13,15 +13,28 @@ import { Result } from '../../../result';
 export class BuscadorAlimentosComponent {
 
   public ingredients: Ingredients[] = [];
+  @Input()  ingredientPills :Ingredients[] ;
+  //lleva el $ porque es asincrona
+  public ingredientsFound$: Observable<Ingredients[]> = of([]);
   public searchTerm: Subject<string> = new Subject();
-  constructor(private IngredientsService: IngredientsService, private http: HttpClient) { }
+  constructor(private IngredientsService: IngredientsService) { }
   ngOnInit(): void {
+    // this.IngredientsService.getIngredients().pipe(delay(30)).subscribe((ingredients: Ingredients[]) => this.ingredients = ingredients);
 
+    this.ingredientsFound$ = this.searchTerm.pipe(
 
-    this.IngredientsService.getIngredients().pipe(delay(30)).subscribe((ingredients: Ingredients[]) => this.ingredients = ingredients);
-
+      debounceTime(150),
+      distinctUntilChanged(),
+      switchMap(text => {
+        return this.IngredientsService.searchIngredients(text);
+      })
+    )
   }
-  // public search(value: string) {
-  //   this.searchTerm.next(value);
-  // }
+  public addToRecipeList(ingredient: Ingredients) {
+    this.ingredientPills.push(ingredient);
+    console.log(this.ingredientPills);
+  }
+  public search(value: string) {
+    this.searchTerm.next(value);
+  }
 }

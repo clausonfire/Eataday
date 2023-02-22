@@ -1,20 +1,35 @@
-<div class="flex justify-center items-center flex-col gap-4 py-5">
-  <div class="flex justify-center items-center">
-    <h2 class="text-2xl">Añade tus ingredientes y crea tu receta</h2>
+<div class="h-full w-full">
+  <div class="flex justify-center items-center flex-col gap-4 py-5">
+    <div class="flex justify-center items-center">
+      <h2 class="text-2xl">Añade tus ingredientes y crea tu receta</h2>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <button (click)="getShowFinder()"
+        class="bg-green-400 active:bg-green-600 rounded-full p-3 flex items-center justify-center">
+        <img src="../assets/addIcon.png" class="invert h-5 active:invert-0" alt="">
+      </button>
+    </div>
+
+
+
   </div>
 
-  <div class="flex justify-center items-center">
-    <button (click)="getShowFinder()"
-      class="bg-green-400 active:bg-green-600 rounded-full p-3 flex items-center justify-center">
-      <img src="../assets/addIcon.png" class="invert h-5 active:invert-0" alt="">
-    </button>
+  <div *ngIf="this.showFinder===true" class="flex flex-col items-center justify-center">
+    <app-buscador-alimentos [ingredientPills]="ingredientPills"></app-buscador-alimentos>
   </div>
+  <div *ngIf="ingredientPills.length!=0" class=" flex  justify-center items-center w-full">
+    <ul class="flex flex-col gap-2 ">
+
+      <li *ngFor="let pill of ingredientPills" class="bg-[#bdebe0] w-fit px-3 rounded-full">
+        <button (click)="deleteFromIngredientList(pill)">{{ pill.name }}</button>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="ingredientPills.length!=0" class=" flex  w-full justify-center my-4"><button class="bg-green-400 active:bg-green-600 [text-shadow:_1px_1px_2px_black;] text-white rounded-full p-3 flex items-center justify-center" (click)="searchRecipe()">Busca tu receta</button></div>
 
 
+  <!-- ARRIBA match ingredientes ABAJO TOP RECETAS -->
+  <app-recetas-top></app-recetas-top>
 
 </div>
-
-<div *ngIf="this.showFinder===true" class="flex flex-col items-center justify-center">
-  <app-buscador-alimentos></app-buscador-alimentos>
-</div>
-<app-recetas-top></app-recetas-top>
