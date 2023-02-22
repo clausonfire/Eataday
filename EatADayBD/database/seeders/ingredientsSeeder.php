@@ -16,15 +16,9 @@ class ingredientsSeeder extends Seeder
      */
     public function run()
     {
-        //comentario
-        // $table->id();
-        // $table->string('name', 32)->unique();
-        // $table->string('photo', 200)->unique();//photo
-        // $table->float('price', 10, 2)->nullable();
-        // $table->float('price_k', 10, 2)->nullable();
-        // $table->timestamps();
 
-        DB::table('ingredients')->insert([
+
+        Ingredient::create([
             'name'=> 'Atun',
             'photo' => "https://dam.cocinafacil.com.mx/wp-content/uploads/2018/07/beneficios-del-atun-1.jpg",
             'price' => 2.5,
@@ -32,9 +26,44 @@ class ingredientsSeeder extends Seeder
             'user_id'=>2
         ]);
 
-        DB::table('ingredients')->insert([
+        Ingredient::create([
             'name'=> 'Lechuga',
             'photo' => "https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/lechuga.jpg.webp?itok=kvw7kO2D",
+            'price' => 1.5,
+            'price_k' => 2.5,
+            'user_id' => 3
+        ]);
+        Ingredient::create([
+            'name'=> 'Macarrones',
+            'photo' => "no-hay-ruta1",
+            'price' => 1.5,
+            'price_k' => 2.5,
+            'user_id' => 3
+        ]);
+        Ingredient::create([
+            'name'=> 'Tomate',
+            'photo' => "no-hay-ruta2",
+            'price' => 1.5,
+            'price_k' => 2.5,
+            'user_id' => 3
+        ]);
+        Ingredient::create([
+            'name'=> 'Aceite',
+            'photo' => "no-hay-ruta3",
+            'price' => 1.5,
+            'price_k' => 2.5,
+            'user_id' => 3
+        ]);
+        Ingredient::create([
+            'name'=> 'Conejo',
+            'photo' => "no-hay-ruta4",
+            'price' => 1.5,
+            'price_k' => 2.5,
+            'user_id' => 3
+        ]);
+        Ingredient::create([
+            'name'=> 'Arroz',
+            'photo' => "no-hay-ruta5",
             'price' => 1.5,
             'price_k' => 2.5,
             'user_id' => 3
