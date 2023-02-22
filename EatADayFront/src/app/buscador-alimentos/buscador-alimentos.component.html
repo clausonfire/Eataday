@@ -1,18 +1,19 @@
-  <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
+<div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
 
 
-    <input type="text" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
-    <ul >
-      <li *ngFor="let ingredient of ingredientsFound$ | async ">
+  <input type="text" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
+  <ul>
+    <li *ngFor="let ingredient of ingredientsFound$ | async ">
 
 
-        <div  (click)="addToRecipeList(ingredient)">
-          {{ ingredient.name }}
-        </div>
+      <div (click)="addToRecipeList(ingredient)">
+        {{ ingredient.name }}
+      </div>
 
 
-      </li>
+    </li>
 
-    </ul>
+  </ul>
 
-  </div>
+
+</div>
