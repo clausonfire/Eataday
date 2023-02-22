@@ -3,6 +3,6 @@ export interface Recipes {
   title: string,
   photo: string,
   ingredients: string[],
-  displayIngredients: string[],
+  displayIngredients: string,
   preparation: string,
 }
