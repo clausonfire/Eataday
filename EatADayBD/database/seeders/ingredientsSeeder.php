@@ -16,13 +16,6 @@ class ingredientsSeeder extends Seeder
      */
     public function run()
     {
-        //comentario
-        // $table->id();
-        // $table->string('name', 32)->unique();
-        // $table->string('photo', 200)->unique();//photo
-        // $table->float('price', 10, 2)->nullable();
-        // $table->float('price_k', 10, 2)->nullable();
-        // $table->timestamps();
 
         Ingredient::create([
             'name'=> 'Atun',
@@ -40,9 +33,11 @@ class ingredientsSeeder extends Seeder
             'user_id' => 3
         ]);
 
+
         Ingredient::create([
             'name'=> 'Pan rallado',
             'photo' => "https://www.gastronomiavasca.net/uploads/image/file/4330/w700_pan_rallado.jpg",
+
             'price' => 1.5,
             'price_k' => 2.5,
             'user_id' => 3
@@ -179,6 +174,7 @@ class ingredientsSeeder extends Seeder
         Ingredient::create([
             'name'=> 'Pimiento rojo',
             'photo' => "https://www.tutrebol.es/77948/fruteria-pimiento-rojo-unidad.jpg",
+
             'price' => 1.5,
             'price_k' => 2.5,
             'user_id' => 3
@@ -201,7 +197,7 @@ class ingredientsSeeder extends Seeder
         ]);
 
         Ingredient::create([
-            'name'=> 'comino',
+            'name'=> 'Comino',
             'photo' => "https://actualfruveg.com/wp-content/uploads/2022/07/Bea-comino-1-2.jpg",
             'price' => 1.5,
             'price_k' => 2.5,
@@ -217,7 +213,7 @@ class ingredientsSeeder extends Seeder
         ]);
 
         Ingredient::create([
-            'name'=> 'masa para empanadas',
+            'name'=> 'Masa para empanadas',
             'photo' => "https://imag.bonviveur.com/masa-de-empandas-para-horno.jpg",
             'price' => 2.5,
             'price_k' => 4.5,
@@ -225,6 +221,7 @@ class ingredientsSeeder extends Seeder
         ]);
 
         
+
     }
 }
 // 'ingredients' => "['carne picada', 'cebolla', 'ajo', 'huevo', 'tomate', 'aceite de oliva', 'oregano', 'comino', 'pimentón molido', 'masa para empanadas']",

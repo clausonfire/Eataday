@@ -1,17 +1,15 @@
 
-<div >
-  <form [formGroup]="loginForm">
-
-
-    <label for="name">Name:* </label>
+<h1>EatADay Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="checkUserLogin()">
+    <!--<label for="name">Name:* </label>
     <input formControlName="name" type="text" id="name"><br>
     <div>
       <small *ngIf="loginForm.get('name').invalid && loginForm.get('name').touched">
         This field  is required
       </small>
-    </div>
+    </div>-->
 
-    <br />
+   <!-- <br />-->
 
     <label for="email">Email:* </label>
     <input formControlName="email" type="email" id="email"><br>
@@ -43,15 +41,6 @@
 
     <br />
 
-    <!--<label for="passwordRepite">Repite Password:* </label>
-    <input formControlName="passwordRepite" type="password" id="passwordRepite"><br>
-    <div>
-      <small *ngIf="loginForm.get('passwordRepite').invalid && loginForm.get('passwordRepite').touched">
-        This field  is required
-      </small>
-    </div>
-
-    <br />-->
 
     <label for="terms">Terms </label>
     <input formControlName="terms" type="checkbox" id="terms"><br>
@@ -64,8 +53,8 @@
     <br />
 
     <button (click)="reset()">Reset</button> <br>
-    <button (click)="getUsers()">Show Users </button> <br>
-    <button [disabled]="loginForm.invalid" type="submit">Save</button> <br>
+    <button [disabled]="loginForm.invalid" type="submit">Login</button> <br>
+    <button [disabled]="loginForm.invalid" type="submit">Logout</button> <br>
   </form>
 </div>
 

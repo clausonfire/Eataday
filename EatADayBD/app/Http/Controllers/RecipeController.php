@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-    use App\Models\Recipe;
-    use Illuminate\Http\Request;
-    use Throwable;
 
-    class RecipeController extends Controller
+use App\Models\Recipe;
+use Illuminate\Http\Request;
+use Throwable;
+
+class RecipeController extends Controller
 {
     public function getAll(Request $request)
     {
@@ -86,7 +87,7 @@ namespace App\Http\Controllers;
     public function delete(Request $request, $id)
     {
         try {
-            $deletedRecipe= Recipe::find($id);
+            $deletedRecipe = Recipe::find($id);
 
             $recipe = $deletedRecipe;
             $recipe->delete();
@@ -205,6 +206,20 @@ namespace App\Http\Controllers;
                 'data' => null
             ];
         }
+        return response()->json($response);
+    }
+    public function search(Request $request)
+    {
+
+        var_dump($request);
+        // var_dump($prueba);
+        // $recipes = Recipe::where('name', 'LIKE', "%$name%")->get();
+
+        $response = [
+            'success' => true,
+            'message' => 'Recipes fetched successfully',
+            // 'data' => $recipes
+        ];
         return response()->json($response);
     }
 
