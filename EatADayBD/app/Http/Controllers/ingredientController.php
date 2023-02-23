@@ -238,5 +238,18 @@ class IngredientController extends Controller
         return response()->json($response);
 
     }
+    public function search(Request $request,$name)
+
+    {
+
+
+        $ingredients = Ingredient::where('name', 'LIKE', "%$name%")->get();
+        $response = [
+            'success' => true,
+            'message' => 'Ingredients fetched successfully',
+            'data' => $ingredients
+        ];
+        return response()->json($response);
+    }
 
 }

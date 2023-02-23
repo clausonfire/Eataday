@@ -65,10 +65,28 @@ Route::prefix('/users')->group(function () {
 Route::prefix('/recipes')->group(function () {
     Route::controller(RecipeController::class)->group(
         function () {
-            Route::get('', 'getAll');
-            Route::get('/{id}', 'getById');
-            Route::get('/{id}', 'delete');
-            Route::get('/{id}', 'update');
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            // ->where('name','[a-zA-Z]+' );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
             Route::get('/{id}/ingredient', 'ingredient');
             Route::get('/{id}/user', 'users');
         }
@@ -139,6 +157,10 @@ Route::prefix('/ingredients')->group(function () {
             Route::get(
                 '/{id}',
                 'getById'
+            );
+            Route::get(
+                '/search/{name}',
+                'search'
             );
             Route::post(
                 '',

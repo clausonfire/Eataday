@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, map, Observable, of} from "rxjs";
 import {Login} from "./login";
 import { ApiResponse } from './apiResponse';
 import {data} from "autoprefixer";
@@ -35,24 +35,16 @@ export class LoginService {
     localStorage.setItem('userData', JSON.stringify(log));
 */
     return this.http.post<ApiResponse>(this.urlCheckLogin, postData).pipe(
-      catchError(e => {
-        console.error(e);
-        return [];// le pasamos un array vacío para que no devuelva nada
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        const errorMessage = error.error.message || 'Unknown error';
+        return of({ success: false, message: errorMessage, data: null });
       })
     ).pipe(map((result: ApiResponse)=>result))
   }
 
 
 
-  /*login(user: User): Observable<User> {
-    const postData = new FormData();
-    postData.append('name', user.name);
-    postData.append('password', user.password);
-
-    return this.http.post<User>(this.usersUrl, postData).pipe(
-      tap( _ => this.log('fetched user')),
-      catchError(this.handleError<User>(`getUser`))
-    );*/
 
 
 
