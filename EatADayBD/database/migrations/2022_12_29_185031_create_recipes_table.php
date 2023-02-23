@@ -20,6 +20,7 @@ return new class extends Migration
             $table->json('ingredients');
             $table->json('displayIngredients');
             $table->string('preparation', 2000);
+            $table->string('description', 2000);
             $table->timestamps();
         });
     }

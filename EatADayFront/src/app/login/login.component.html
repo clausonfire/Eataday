@@ -63,14 +63,14 @@
           LOGIN
         </button>
       </div>
-      <div *ngIf="this.showModals===true" class="absolute bg-white top-[40%] left-[50%] flex ">
+      <div *ngIf="this.showModals===true" class="absolute bg-white top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex rounded-2xl">
         <div>
-          <button class="bg-white border-solid border-2 border-black" (click)="getLoginModal()">PESTAÑA1</button>
+          <button class="bg-gray-200 hover:bg-lime-200  focus:outline-none focus:ring focus:bg-white z-40 rounded-tl-xl pl-32 pr-32 text-xs pt-2 pb-2 font-bold" (click)="getLoginModal()">LOGIN</button>
           <div *ngIf="this.showLogin"><app-loggin-form #login></app-loggin-form></div>
 
         </div>
-        <div>
-          <button class="bg-white border-solid border-2 border-black" (click)="getRegisterModal()">PESTAÑA2</button>
+        <div class="bg-gradient-to-l from-lime-200 rounded-br-2xl">
+          <button class="bg-gray-300 hover:bg-lime-200 focus:outline-none focus:ring focus:bg-white z-50 rounded-tr-xl font-sans font-bold pl-32 pr-32 text-xs pt-2 pb-2" (click)="getRegisterModal()">REGISTER</button>
           <div *ngIf="this.showRegister">
             <app-register #register></app-register>
           </div>

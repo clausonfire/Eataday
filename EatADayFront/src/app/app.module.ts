@@ -15,7 +15,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, HttpErrorResponse} from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.component';
@@ -51,6 +51,7 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
     ReactiveFormsModule,
 
     HttpClientModule,
+
 
   ],
   providers: [],
