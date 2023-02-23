@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use TheSeer\Tokenizer\Exception;
 use Throwable;
 
 class RecipeController extends Controller
@@ -39,6 +40,8 @@ class RecipeController extends Controller
     public function getById(Request $request, $id)
     {
         $recipe = Recipe::find($id);
+        json_decode($recipe->ingredients);
+        json_decode($recipe->displayIngredients);
         if ($recipe != null) {
             $response = [
                 'success' => true,
@@ -210,16 +213,93 @@ class RecipeController extends Controller
     }
     public function search(Request $request)
     {
+        $arrayIngredientes = $request->all();
 
-        var_dump($request);
-        // var_dump($prueba);
-        // $recipes = Recipe::where('name', 'LIKE', "%$name%")->get();
+        try {
+
+            $recipes = Recipe::whereJsonContains('ingredients', $arrayIngredientes)
+                ->get();
+        } catch (Exception $e) {
+            echo $e;
+        }
+        ;
+
+
+        // $conditions[] = [];
+        // foreach ($arrayIngredientes as $key => $ingredient) {
+
+        //     $conditions[$key] = ['ingredients', 'LIKE', "%" . $ingredient . "%"];
+        // }
+        // $recipes = Recipe::whereColumn(
+        //     $conditions
+        // )->get();
+// ---------------------------------------
+
+
+        // $recipes = Recipe::where(function ($arrayIngredientes) {
+        //     foreach ($arrayIngredientes as $key => $item) {
+        //         $arrayIngredientes->where('ingredients', 'LIKE', "%$arrayIngredientes[$key]%");
+        //     }
+        // })->get();
+
+
+
+        // $recipes = Recipe::where(function ($query) use ( $arrayIngredientes) {
+        //     foreach ( $arrayIngredientes as $ingredient) {
+        //         $query->where('ingredients', 'LIKE', "%$ingredient%");
+        //     }
+        // })->get();
+
+
+
+
+        // $conditions = [
+        //     ['age', '>', 18],
+        //     ['gender', 'male'],
+        //     ['location', 'New York']
+        // ];
+
+        // $conditions[] = [];
+        // foreach ($arrayIngredientes as $key => $ingredient) {
+        //     $conditions[$key] = ['ingredients', 'LIKE', "%$ingredient%"];
+        // }
+        // $query = Recipe::query();
+
+        // $query->where(...$conditions);
+        // foreach ($conditions as $condition) {
+
+        //     $query->where($condition[0], $condition[1], $condition[2]);
+        // }
+
+        // $recipes = $query->get();
+
+
+        //Filtro SUGIEREME UNA RECETA CON ESTOS INGREDIENTES
+        // $recipes = Recipe::where(function ($query) use ( $arrayIngredientes) {
+        //     foreach ( $arrayIngredientes as $ingredient) {
+        //         $query->where('ingredients', 'LIKE', "%$ingredient%");
+        //     }
+        // })->get();
+
+
+
+
+
+
+
+
+        // $recipes .= Recipe::where('ingredients', 'LIKE', "%$arrayIngredientes[0]%")->get();
 
         $response = [
             'success' => true,
             'message' => 'Recipes fetched successfully',
-            // 'data' => $recipes
+            'data' => $recipes
         ];
+        // $response = [
+        //     'success' => true,
+        //     'message' => 'Recipes fetched successfully',
+        //     'data' => $recipes
+        // ];
         return response()->json($response);
     }
 

@@ -1,0 +1,9 @@
+<div *ngIf="supermarkets" class="w-full flex items-center justify-center p-3 bg-gray-300">
+  <ul class="flex gap-3">
+    <li *ngFor="let supermarket of supermarkets">
+      <div class="bg-red-300"><a routerLink="/supermarketDetail/{{supermarket.id}}">{{ supermarket.name }}</a></div>
+    </li>
+  </ul>
+</div>
+
+<app-buscador-mixto></app-buscador-mixto>

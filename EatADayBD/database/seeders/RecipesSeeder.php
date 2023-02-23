@@ -21,23 +21,28 @@ class RecipesSeeder extends Seeder
         Recipe::create([
             'title' => 'Macarrones con tomate',
             'photo' => 'null',
+
             'ingredients' => "['macarrones', 'tomate', 'aceite', 'sal']",
             'displayIngredients' => "['1 rebanadad de pan1', 'Un tomate maduro3', 'Un pellizco de sal5', 'Una cabeza de ajo4']",
             'preparation' => '- Hervir la pasta al gusto.
             - Echar tomate.',
             'description'=> '-Una forma estupenda de conseguir que los niños coman verdura es mezclarla entre sus comidas favoritas.
             Si preparáis una buena salsa de tomate casera junto a la pasta estarán tomando un saludable plato que les llenará de energía.'
+
         ]);
 
         Recipe::create([
             'title' => 'Arroz y conejo',
             'photo' => 'null',
+
+
             'ingredients' => "['arroz', 'conejo', 'sal', 'agua', 'aceite', 'sal']",
             'displayIngredients' => "['1 rebanadad de pan3', 'Un tomate maduro3', 'Un pellizco de sal2', 'Una cabeza de ajo1']",
             'preparation' => '- Freir el conejo
             -añadir agua y arroz',
             'description'=> 'El arroz con conejo es un plato sabroso, nutritivo y lleno de sabor. A los niños les va a encantar
              porque su sabor es también muy suave'
+
         ]);
 
         Recipe::create([
@@ -134,6 +139,7 @@ class RecipesSeeder extends Seeder
 
             - Echar tomate.',
             'description'=> '- Hoy toca pollo al horno para comer, una de esas comidas que gusta a toda la familia. ¿Quién no recuerda siendo pequeño esos pollos asados que preparaba tu madre o abuela y que llenaban la casa de olores increíbles…?'
+
         ]);
     }
 }

@@ -10,7 +10,7 @@ import { Recipes } from '../recipes';
 })
 export class RecipeDetailComponent implements OnInit {
   public recipe?: Recipes;
-  constructor(private route: ActivatedRoute,private recipeService: RecipesService
+  constructor(private route: ActivatedRoute, private recipeService: RecipesService
   ) {
 
   }
@@ -21,7 +21,12 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.getRecipesByID(id).subscribe((recipe: Recipes) => {
       this.recipe = recipe;
       //Hay que cambiar las comillas de las migraciones
-      // this.recipe.displayIngredients=JSON.parse(this.recipe.displayIngredients);
+      console.log(recipe)
+      // console.log(JSON.parse(this.recipe.displayIngredients));
+      this.recipe.ingredients = JSON.parse(this.recipe.ingredients)
+      this.recipe.displayIngredients=JSON.parse(this.recipe.displayIngredients);
+
+      // this.recipe.ingredients=JSON.parse(this.recipe.ingredients);
     });
 
 
