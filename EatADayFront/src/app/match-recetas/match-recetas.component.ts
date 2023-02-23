@@ -30,7 +30,7 @@ export class MatchRecetasComponent {
     this.ingredientPills = this.ingredientPills.filter(ingredienteLista => ingredienteLista.name !== ingredient.name)
   }
   public searchRecipe() {
-    this.ingredientNames = this.ingredientPills.map(ingredient => ingredient.name);
+    this.ingredientNames = this.ingredientPills.map(ingredient => ingredient.name.toLowerCase( ) );
     console.log(this.ingredientNames)
     this.RecipesService.searchRecipes(this.ingredientNames).subscribe(response => this.recipesFound$ = response);
 

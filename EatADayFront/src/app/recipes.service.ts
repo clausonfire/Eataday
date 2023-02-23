@@ -9,9 +9,12 @@ import { Recipes } from './recipes';
 })
 export class RecipesService {
   private urlBase: string = 'http://localhost:8000/api/recipes';
-  private headers= new HttpHeaders()
-  .set('content-type', 'application/x-www-form-urlencoded')
-  .set('Access-Control-Allow-Origin', '*');
+  private headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Access-Control-Allow-Methods', 'GET,PUT,POST,OPTIONS')
+    .set('Accept', 'application/json')
+    .set('X-Requested-With', 'XMLHttpRequest');
   constructor(private http: HttpClient) { }
 
   public getRecipes(): Observable<Recipes[]> {
@@ -38,10 +41,10 @@ export class RecipesService {
     }
 
     console.log(ingredients);
-    return this.http.post<Recipes[]>(url,ingredients,{"headers": this.headers}).pipe(catchError(e => {
+    return this.http.post<Recipes[]>(url, ingredients, { "headers": this.headers }).pipe(catchError(e => {
       console.error(e);
       return [];
-    }), map(result => result['data']))
+    }), map(result => result['data'][0]))
 
   }
 

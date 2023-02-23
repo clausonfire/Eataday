@@ -18,6 +18,10 @@ import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimen
 import { HttpClientModule } from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.component';
+import { CloseSupermarketsComponent } from './close-supermarkets/close-supermarkets.component';
+import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
+import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
 
 
 
@@ -33,6 +37,10 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
     BuscadorAlimentosComponent,
     RecetasTopComponent,
     RecipeDetailComponent,
+    ShoppingDiaryComponent,
+    CloseSupermarketsComponent,
+    SupermarketDetailComponent,
+    BuscadorMixtoComponent,
 
 
 

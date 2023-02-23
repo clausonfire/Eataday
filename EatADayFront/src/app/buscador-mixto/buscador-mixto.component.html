@@ -1,0 +1,24 @@
+<div class="bg-gray-400 flex flex-col gap-3 justify-center items-center">
+  <div class="w-full flex items-center justify-center py-10">
+
+
+    <input type="text" class="w-80" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
+
+
+
+  </div>
+  <div *ngIf="ingredientsFound$">
+    <ul>
+      <li *ngFor="let ingredient of ingredientsFound$ | async ">
+
+
+        <div>
+          {{ ingredient.name }}
+        </div>
+
+
+      </li>
+
+    </ul>
+  </div>
+</div>
