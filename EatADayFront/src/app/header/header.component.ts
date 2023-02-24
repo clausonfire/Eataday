@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  public showModals: boolean = false;
+
+
+  public getModals(): void {
+    this.showModals = !this.showModals;
+  }
 }
