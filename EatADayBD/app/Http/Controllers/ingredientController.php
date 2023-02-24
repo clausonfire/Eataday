@@ -242,8 +242,12 @@ class IngredientController extends Controller
 
     {
 
+        if(strlen($name)<2){
+            $ingredients = Ingredient::where('name', 'LIKE', "$name%")->get();
+        }else{
+            $ingredients = Ingredient::where('name', 'LIKE', "%$name%")->get();
+        }
 
-        $ingredients = Ingredient::where('name', 'LIKE', "%$name%")->get();
         $response = [
             'success' => true,
             'message' => 'Ingredients fetched successfully',

@@ -16,7 +16,7 @@ export class RecetasTopComponent {
   ngOnInit(): void {
 
 
-    this.RecipesService.getRecipes().pipe(delay(30)).subscribe((recipes: Recipes[]) => this.topRecipes = recipes.sort(() => (Math.random() > .5) ? 1 : -1));
+    this.RecipesService.getRecipes().pipe(delay(30)).subscribe((recipes: Recipes[]) => this.topRecipes = recipes.sort(() => (Math.random() > .5) ? 1 : -1).slice(0, 3));
 
   }
 }
