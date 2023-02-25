@@ -77,7 +77,6 @@ Route::prefix('/recipes')->group(function () {
                 '/search',
                 'search'
             );
-            // ->where('name','[a-zA-Z]+' );
             Route::post(
                 '',
                 'create'
@@ -160,7 +159,11 @@ Route::prefix('/ingredients')->group(function () {
             );
             Route::get(
                 '/search/{name}',
-                'search'
+                'selfIngredientSearch'
+            );
+            Route::get(
+                '/matchSearch/{name}',
+                'mixIngredientSearch'
             );
             Route::post(
                 '',
