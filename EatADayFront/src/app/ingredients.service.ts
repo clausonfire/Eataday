@@ -23,6 +23,19 @@ export class IngredientsService {
     }), map(result => result['data']))
 
   }
+  public searchMixIngredients(text: string): Observable<Ingredients[]> {
+
+
+    if (!text.trim()) {
+      return of([]);
+    }
+
+    return this.http.get<Ingredients[]>(this.urlBase+"/matchSearch/"+text).pipe(catchError(e => {
+      console.error(e);
+      return [];
+    }), map(result => result['data']))
+
+  }
 
   public getIngredients(): Observable<Ingredients[]> {
 
