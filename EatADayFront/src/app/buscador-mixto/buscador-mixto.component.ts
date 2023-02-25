@@ -21,7 +21,7 @@ export class BuscadorMixtoComponent {
       debounceTime(150),
       distinctUntilChanged(),
       switchMap(text => {
-        return this.IngredientsService.searchIngredients(text);
+        return this.IngredientsService.searchMixIngredients(text);
       })
     )
   }
