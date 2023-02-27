@@ -249,3 +249,32 @@ Route::prefix('/supermarkets')->group(function () {
         }
     );
 });
+
+//RECOMMENDATIONS
+Route::prefix('/recommendations')->group(function () {
+    Route::controller(RecommendationController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'modify'
+            );
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
+        }
+    );
+});
