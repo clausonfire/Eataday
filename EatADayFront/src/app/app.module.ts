@@ -17,11 +17,15 @@ import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
 import {HttpClientModule, HttpErrorResponse} from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
+
+import { VidasanaComponent } from './vidasana/vidasana.component';
+
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.component';
 import { CloseSupermarketsComponent } from './close-supermarkets/close-supermarkets.component';
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
+
 
 
 
@@ -36,11 +40,15 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
     MatchRecetasComponent,
     BuscadorAlimentosComponent,
     RecetasTopComponent,
+
+    VidasanaComponent,
+
     RecipeDetailComponent,
     ShoppingDiaryComponent,
     CloseSupermarketsComponent,
     SupermarketDetailComponent,
     BuscadorMixtoComponent,
+
 
 
 
