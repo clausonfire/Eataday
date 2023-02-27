@@ -17,6 +17,7 @@ import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
+import { VidasanaComponent } from './vidasana/vidasana.component';
 
 
 
@@ -31,6 +32,7 @@ import { RecetasTopComponent } from './recetas-top/recetas-top.component';
     MatchRecetasComponent,
     BuscadorAlimentosComponent,
     RecetasTopComponent,
+    VidasanaComponent,
 
 
 
