@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent },
   { path: '**', component: LoginComponent },
 
+
 ];
 
 @NgModule({

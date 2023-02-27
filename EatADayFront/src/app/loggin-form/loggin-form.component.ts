@@ -14,6 +14,7 @@ import { Router } from "@angular/router";
 })
 export class LogginFormComponent implements OnInit{
 
+
   public loginForm = new FormGroup({
     id: new FormControl(),
     email: new FormControl("claudia1@gmail.com",[ //usuario@eataday.com
