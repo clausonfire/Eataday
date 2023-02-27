@@ -10,6 +10,7 @@ export class LoginComponent {
   public showRegister: boolean = false;
   public showLogin: boolean = true;
 
+
   public getModals(): void {
     this.showModals = !this.showModals;
   }
