@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('ingredients', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -20,7 +20,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('ingedients', function (Blueprint $table) {
+        Schema::table('ingredients', function (Blueprint $table) {
             $table->dropForeign('user_id');
         });
 

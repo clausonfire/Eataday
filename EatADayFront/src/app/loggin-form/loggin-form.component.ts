@@ -4,85 +4,94 @@ import {LoginService} from "../login.service";
 import {Login} from "../login";
 import {HttpErrorResponse} from "@angular/common/http";
 import {data} from "autoprefixer";
+import {ApiResponse} from "../apiResponse";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-loggin-form',
   templateUrl: './loggin-form.component.html',
   styleUrls: ['./loggin-form.component.scss']
 })
-export class LogginFormComponent {
+export class LogginFormComponent implements OnInit{
+
 
   public loginForm = new FormGroup({
     id: new FormControl(),
-    name: new FormControl('Usuario', [
-      Validators.maxLength(16),
-      Validators.required
-    ]),
     email: new FormControl("claudia1@gmail.com",[ //usuario@eataday.com
       Validators.required,
       Validators.email
     ]),
-    /*emailRepite: new FormControl("usuario@eataday.com",[
-      Validators.required,
-      Validators.email
-    ]),*/
     password: new FormControl("password", [
       Validators.required,
       Validators.minLength(6)
     ]),
-    /*passwordRepite: new FormControl("password", [
-      Validators.required,
-      Validators.minLength(6)
-    ]),*/
     terms: new FormControl("", [
       Validators.required,
       Validators.requiredTrue
     ])
 
   });
+
+
   public users: Login[];
 
   public constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private route: Router
+
   ) { }
 
 
- /* ngOnInit(): void {
+  ngOnInit(): void {
 
-  }*/
+  }
 
 
-  public checkUser() {
+  public checkUserLogin() {
     this.loginService.checkUser(this.loginForm.value as Login).subscribe((userData) => {
 
+    // SI SUCCESS OKEY, QUE ME GUARDE EL TOKEN, SI NO, ERROR DE CREDENCIALES ERRONEAS
+    // token local storage
+      let dataToken :ApiResponse = userData;
+      if(userData.success) {
+        console.log(userData.success)
+        console.log("MANDAR AL LA SIGUIENTE PÁGINA")
+        console.log(userData.data);
 
-      console.log(userData.success);
+        localStorage.setItem("token", userData.data);
+        this.route.navigate(['dashboard']) // Aquí irá la ruta a la que se enviará.
 
 
-      if (!userData.success === true) {
-        alert("okey");
+
+      } else if(HttpErrorResponse){
+        console.log("asdsa");
+        this.route.navigate(['dashboard']) // Aquí irá la ruta a la que se enviará.
       }
-      /*if() {
-        alert("No has podido loggearte, REDIRIENDO A LA RUTA LOGGIN");
-      }*/
-      return userData;
+
+
     })
 
   }
 
-  public getUsers(): void  {
+  /*public getUsers(): void  {
     this.loginService.getUsers().subscribe((user) => {
       //Esto me saca todos los usuarios registrados en la base de datos
       console.log(user);
       return this.users = user
     })
-    if (this.loginForm.valid) {
-      //alert("Usuario con nombre: " + this.loginForm.value.name + "logeado correctamente");
-      console.log(this.loginForm.value);
+    /!*if (this.loginForm.valid) {
+      alert("Usuario con nombre: " + this.loginForm.value + "logeado correctamente");
+      /!*console.log(this.loginForm.value);*!/
+
+
+
+
+
+
       this.loginForm.reset();
       return;
-    }
-  }
+    }*!/
+  }*/
 
 
 

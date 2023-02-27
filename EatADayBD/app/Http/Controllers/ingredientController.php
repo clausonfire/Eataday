@@ -238,5 +238,32 @@ class IngredientController extends Controller
         return response()->json($response);
 
     }
+    public function selfIngredientSearch(Request $request, $name)
+    {
+
+
+        $ingredients = Ingredient::where('name', 'LIKE', "%$name%", )->where('user_id', null)->get();
+
+
+        $response = [
+            'success' => true,
+            'message' => 'Ingredients fetched successfully',
+            'data' => $ingredients
+        ];
+        return response()->json($response);
+    }
+    public function mixIngredientSearch(Request $request, $name)
+    {
+
+
+        $ingredients = Ingredient::where('name', 'LIKE', "%$name%")->get();
+
+        $response = [
+            'success' => true,
+            'message' => 'Ingredients fetched successfully',
+            'data' => $ingredients
+        ];
+        return response()->json($response);
+    }
 
 }

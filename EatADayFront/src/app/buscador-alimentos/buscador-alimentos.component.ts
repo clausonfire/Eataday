@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { debounceTime, delay, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 import { IngredientsService } from '../ingredients.service';
 import { Ingredients } from '../ingredients';
@@ -13,10 +13,12 @@ import { Result } from '../../../result';
 export class BuscadorAlimentosComponent {
 
   public ingredients: Ingredients[] = [];
+  @Input()  ingredientPills :Ingredients[] ;
+  @Output() eventClose: EventEmitter<void> = new EventEmitter();
   //lleva el $ porque es asincrona
   public ingredientsFound$: Observable<Ingredients[]> = of([]);
   public searchTerm: Subject<string> = new Subject();
-  constructor(private IngredientsService: IngredientsService, private http: HttpClient) { }
+  constructor(private IngredientsService: IngredientsService) { }
   ngOnInit(): void {
     // this.IngredientsService.getIngredients().pipe(delay(30)).subscribe((ingredients: Ingredients[]) => this.ingredients = ingredients);
 
@@ -29,8 +31,12 @@ export class BuscadorAlimentosComponent {
       })
     )
   }
+  public close():void{
+    this.eventClose.emit();
+  }
   public addToRecipeList(ingredient: Ingredients) {
-    console.log(ingredient);
+    this.ingredientPills.push(ingredient);
+    console.log(this.ingredientPills);
   }
   public search(value: string) {
     this.searchTerm.next(value);

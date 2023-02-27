@@ -65,10 +65,27 @@ Route::prefix('/users')->group(function () {
 Route::prefix('/recipes')->group(function () {
     Route::controller(RecipeController::class)->group(
         function () {
-            Route::get('', 'getAll');
-            Route::get('/{id}', 'getById');
-            Route::get('/{id}', 'delete');
-            Route::get('/{id}', 'update');
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
             Route::get('/{id}/ingredient', 'ingredient');
             Route::get('/{id}/user', 'users');
         }
@@ -139,6 +156,14 @@ Route::prefix('/ingredients')->group(function () {
             Route::get(
                 '/{id}',
                 'getById'
+            );
+            Route::get(
+                '/search/{name}',
+                'selfIngredientSearch'
+            );
+            Route::get(
+                '/matchSearch/{name}',
+                'mixIngredientSearch'
             );
             Route::post(
                 '',
@@ -221,6 +246,35 @@ Route::prefix('/supermarkets')->group(function () {
                 'delete'
             );
             Route::get('/{id}/ingredients', 'ingredients');
+        }
+    );
+});
+
+//RECOMMENDATIONS
+Route::prefix('/recommendations')->group(function () {
+    Route::controller(RecommendationController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'modify'
+            );
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
         }
     );
 });

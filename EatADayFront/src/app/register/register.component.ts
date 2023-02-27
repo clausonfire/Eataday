@@ -32,6 +32,11 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       alert('Formulario invalido'); return;
     }
+
+    if(this.registerForm.value.password != this.registerForm.value.passwordRepite) {
+      return alert('Las contraseñas no coinciden');
+    }
+
     this.registerService.register(this.registerForm.value).subscribe();
 
   }
