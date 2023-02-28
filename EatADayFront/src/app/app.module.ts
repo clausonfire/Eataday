@@ -49,9 +49,6 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
     SupermarketDetailComponent,
     BuscadorMixtoComponent,
 
-
-
-
   ],
   imports: [
     BrowserModule,
