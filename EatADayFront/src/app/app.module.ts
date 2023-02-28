@@ -25,6 +25,7 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +42,6 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
     CloseSupermarketsComponent,
     SupermarketDetailComponent,
     BuscadorMixtoComponent,
-
-
 
   ],
   imports: [
