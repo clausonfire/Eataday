@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent {
 
+
   constructor(
     private router: Router
   ) { }
@@ -20,4 +21,5 @@ export class HeaderComponent {
     return console.log("error, NO se ha podido borrar el token");
 
   }
+
 }
