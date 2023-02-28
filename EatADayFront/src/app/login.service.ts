@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
 import {Login} from "./login";
 import { ApiResponse } from './apiResponse';
@@ -12,28 +12,23 @@ export class LoginService {
 
   private urlGetUsers = "http://localhost:8000/api/users";
   private urlCheckLogin = "http://localhost:8000/api/login";
-
-  constructor(private http: HttpClient) { }
-
-
-  public getUsers(): Observable<Login[]> {
-    return this.http.get<Login>(this.urlGetUsers).pipe(
-      catchError(e => {
-        console.error(e);
-        return [];// le pasamos un array vacío para que no devuelva nada
-      })
-    ).pipe(map((result: Login[])=>result))
+  private getUserLogged = "http://localhost:8000/api/soyyo";
+  private logOut = "http://localhost:8000/api/logout";
+  private headers: HttpHeaders;
+  private authToken: string;
+  private token: string = localStorage.getItem('token');
+  constructor(
+    private http: HttpClient
+  ) {
+    this.headers = new HttpHeaders({"Accept": "application/json", "Authorization": `Bearer ${this.token}`});
   }
 
-  public checkUser(log: Login): Observable<ApiResponse> {
+
+  public login(log: Login): Observable<ApiResponse> {
     const postData = new FormData();
-    postData.append('name', log.name);
     postData.append('email', log.email);
     postData.append('password', log.password);
 
-/*
-    localStorage.setItem('userData', JSON.stringify(log));
-*/
     return this.http.post<ApiResponse>(this.urlCheckLogin, postData).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
@@ -45,39 +40,52 @@ export class LoginService {
 
 
 
+  public checkLoginService(): Observable<boolean> {
+    return this.http.get<ApiResponse>(this.urlCheckLogin).pipe(
+      catchError(e => {
+        console.error(e);
+        return [];// le pasamos un array vacío para que no devuelva nada
+      })
+    ).pipe(map((result: ApiResponse)=>result.success))
+  }
 
 
 
 
 
 
+  public getUsers(): Observable<Login[]> {
+    return this.http.get<Login>(this.urlGetUsers).pipe(
+      catchError(e => {
+        console.error(e);
+        return [];// le pasamos un array vacío para que no devuelva nada
+      })
+    ).pipe(map((result: Login[])=>result))
+  }
+
+
+  public getTokenUserLoged(): Observable<boolean> {
+    return this.http.get<ApiResponse>(this.getUserLogged, {"headers": this.headers}).pipe(
+      catchError(e => {
+        console.error(e);
+        return [];// le pasamos un array vacío para que no devuelva nada
+      })
+    ).pipe(map((result: ApiResponse)=>result.success))
+  }
 
 
 
 
 
-
-
-
-  /*public getAllUsers(): Observable<Login[]> {
-      return this.http.get<Login[]>(this.URL).pipe(
-        catchError(e => {
-          console.error(e);
-          return [];// le pasamos un array vacío para que no devuelva nada
-        })
-      ).pipe(map((result: Login)=>result.result))
-    }*/
-
-
-  /*addUser(nombre: string, email: string, password: string): Observable<Login[]> {
-    const newUser = new FormData();
-    newUser.append("nombre", nombre);
-    newUser.append("email", email);
-    newUser.append("password", password);
-    return this.http.post(this.URL, newUser);
-  }*/
-
-
+  /* Comprobacion de ruta de LogOut */
+  public logOutUser(headers: HttpHeaders): Observable<ApiResponse> {
+    return this.http.post<Login>(this.logOut, headers).pipe(
+      catchError(e => {
+        console.error(e);
+        return [];// le pasamos un array vacío para que no devuelva nada
+      })
+    )/*.pipe(map((result: Login[])=>result))*/
+  }
 
 
 

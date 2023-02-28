@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../login.service";
 import {Login} from "../login";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {data} from "autoprefixer";
 import {ApiResponse} from "../apiResponse";
 import { Router } from "@angular/router";
@@ -12,7 +12,9 @@ import { Router } from "@angular/router";
   templateUrl: './loggin-form.component.html',
   styleUrls: ['./loggin-form.component.scss']
 })
-export class LogginFormComponent implements OnInit{
+
+export class LogginFormComponent /*implements OnInit */{
+
 
   public loginForm = new FormGroup({
     id: new FormControl(),
@@ -33,63 +35,80 @@ export class LogginFormComponent implements OnInit{
 
 
   public users: Login[];
+  private token: string = localStorage.getItem('token');
+  private headers: HttpHeaders;
 
   public constructor(
     private loginService: LoginService,
-    private route: Router
-
-  ) { }
+    private router: Router,
 
 
-  ngOnInit(): void {
-
+  ) {
+/*
+    this.headers = new HttpHeaders({"Accept": "application/json", "Authorization": `Bearer ${this.token}`});
+*/
   }
 
 
-  public checkUserLogin() {
-    this.loginService.checkUser(this.loginForm.value as Login).subscribe((userData) => {
-
-    // SI SUCCESS OKEY, QUE ME GUARDE EL TOKEN, SI NO, ERROR DE CREDENCIALES ERRONEAS
-    // token local storage
-      let dataToken :ApiResponse = userData;
+  //  ESTO ME VALIDA SI ME DA ACCESO O NO.
+  //  SI ME LO DA, ME GUARDA EL TOKEN
+  public loginCheck() {
+    this.loginService.login(this.loginForm.value as Login).subscribe((userData) => {
       if(userData.success) {
-        console.log(userData.success)
-        console.log("MANDAR AL LA SIGUIENTE PÁGINA")
-        console.log(userData.data);
-
-        localStorage.setItem("token", userData.data);
-        this.route.navigate(['dashboard']) // Aquí irá la ruta a la que se enviará.
-
-
-
-      } else if(HttpErrorResponse){
-        console.log("asdsa");
-        this.route.navigate(['dashboard']) // Aquí irá la ruta a la que se enviará.
+        console.log("Has accedido, tu token es: " + this.token);
+        localStorage.setItem("token", userData.data)
+        if (localStorage.getItem('token')) {
+          this.router.navigate(['matchAlimentos']);
+        }else{
+          alert("algo esta pasnado");
+        }
+      } else if( HttpErrorResponse ){
+        console.log("FALSE: MANTENER EN LOGIN " + userData.success);
+        alert("Email or password incorrect");
       }
-
-
     })
-
   }
 
-  /*public getUsers(): void  {
-    this.loginService.getUsers().subscribe((user) => {
-      //Esto me saca todos los usuarios registrados en la base de datos
-      console.log(user);
-      return this.users = user
+
+
+
+
+
+
+
+
+
+
+  //  UNA VEZ QUE SE HA GUARDADO EL TOKEN EN CHACHÉ,
+  //  TENGO QUE VALIDAR CON EL /soyyo AL CAMBIAR DE PÁGINA DE QUE ESTOY LOGEADO,
+  //  SI NO, MANDAR AL LA PAGINA DE LOGIN
+
+  //  AL MÉTODO /soyyo, LE TENGO QUE PASAR EL TOKEN A TRAVÉS DEL HEADER.
+  //  SI ES CORRECTO, QUE ME DE EL ACCESO A LA PÁGINA, SI NO, QUE MANDE AL LOGIN
+
+
+  //  Al hacer logout me dice que no estoy loggeado,
+  //    pasar bien el token
+
+
+  // ESTO HAY QUE HACERLO EN LOGIN.GUARD
+  /*public whoAMe(): void {
+    this.loginService.getTokenUserLoged().subscribe((userData) => {
+      console.log(userData);
     })
-    /!*if (this.loginForm.valid) {
-      alert("Usuario con nombre: " + this.loginForm.value + "logeado correctamente");
-      /!*console.log(this.loginForm.value);*!/
+  }*/
 
 
 
 
 
-
-      this.loginForm.reset();
-      return;
-    }*!/
+  /*public logOut(): void {
+      if (localStorage.getItem('token')) {
+        localStorage.removeItem("token");
+        return console.log("token borrado");
+      }
+      this.router.navigate(['login']);
+      return console.log("error, NO se ha podido borrar el token");
   }*/
 
 
@@ -99,57 +118,6 @@ export class LogginFormComponent implements OnInit{
     this.loginForm.reset();
   }
 
-
-
-
-
 }
 
 
-
-
-/*
-CHECKUSERS
-this.loginService.checkUser().subscribe((user) => {
-  //
-  //Esto me saca todos los usuarios registrados en la base de datos
-  console.log(user);
-  return this.users = user
-}*/
-
-
-/*this.loginService.checkUser(this.users).subscribe((user) => {
-  //Esto me saca todos los usuarios registrados en la base de datos
-
-  return this.users;
-})*/
-
-
-/* public checkUsers() {
-    this.loginService.checkUsers().subscribe((user) => {
-      //Esto me saca todos los usuarios registrados en la base de datos
-      console.log(user);
-      return this.users = user
-    })
-  }*/
-
-
-
-
-/* public sendData() {
-   if (this.loginForm.invalid) {
-     return alert('FORMULARIO INVALIDO');
-   }
-   /!*if(this.loginForm.value.email != this.loginForm.value.emailRepite) {
-     return alert('THE EMAILS DONT MATCH');
-   }
-   if(this.loginForm.value.password != this.loginForm.value.passwordRepite) {
-     return alert('THE PASSWORD DONT MATCH');
-   }*!/
-   if (this.loginForm.valid) {
-     /!*this.loginService.saveData();*!/
-     alert("Usuario con nombre: " + this.loginForm.value.name + "logeado correctamente");
-     console.log(this.loginForm.value);
-     return;
-   }
- }*/

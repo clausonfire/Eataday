@@ -77,7 +77,6 @@ Route::prefix('/recipes')->group(function () {
                 '/search',
                 'search'
             );
-            // ->where('name','[a-zA-Z]+' );
             Route::post(
                 '',
                 'create'
@@ -160,7 +159,11 @@ Route::prefix('/ingredients')->group(function () {
             );
             Route::get(
                 '/search/{name}',
-                'search'
+                'selfIngredientSearch'
+            );
+            Route::get(
+                '/matchSearch/{name}',
+                'mixIngredientSearch'
             );
             Route::post(
                 '',
@@ -243,6 +246,35 @@ Route::prefix('/supermarkets')->group(function () {
                 'delete'
             );
             Route::get('/{id}/ingredients', 'ingredients');
+        }
+    );
+});
+
+//RECOMMENDATIONS
+Route::prefix('/recommendations')->group(function () {
+    Route::controller(RecommendationController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'modify'
+            );
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
         }
     );
 });
