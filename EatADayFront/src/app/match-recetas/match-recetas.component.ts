@@ -23,7 +23,10 @@ export class MatchRecetasComponent {
 
   }
   public getShowFinder(): void {
-    this.showFinder = !this.showFinder;
+    if(this.showFinder===false){
+      this.showFinder = !this.showFinder;
+
+    }
   }
   public deleteFromIngredientList(ingredient: Ingredients): void {
     console.log(ingredient)
@@ -33,8 +36,12 @@ export class MatchRecetasComponent {
     this.ingredientNames = this.ingredientPills.map(ingredient => ingredient.name.toLowerCase( ) );
     console.log(this.ingredientNames)
     this.RecipesService.searchRecipes(this.ingredientNames).subscribe(response => this.recipesFound$ = response);
-
+console.log(this.recipesFound$);
     this.ingredientPills = [];
+    this.showFinder=false;
+  }
+  public close(){
+    this.showFinder=false;
   }
 
 }

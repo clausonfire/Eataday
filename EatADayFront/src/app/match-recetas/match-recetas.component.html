@@ -11,12 +11,10 @@
       </button>
     </div>
 
-
-
   </div>
 
   <div *ngIf="this.showFinder===true" class="flex flex-col items-center justify-center">
-    <app-buscador-alimentos [ingredientPills]="ingredientPills"></app-buscador-alimentos>
+    <app-buscador-alimentos [ingredientPills]="ingredientPills" (eventClose)="close()"></app-buscador-alimentos>
   </div>
   <div *ngIf="ingredientPills.length!=0" class=" flex  justify-center items-center w-full">
     <ul class="flex flex-col gap-2 ">
@@ -26,10 +24,34 @@
       </li>
     </ul>
   </div>
-  <div *ngIf="ingredientPills.length!=0" class=" flex  w-full justify-center my-4"><button class="bg-green-400 active:bg-green-600 [text-shadow:_1px_1px_2px_black;] text-white rounded-full p-3 flex items-center justify-center" (click)="searchRecipe()">Busca tu receta</button></div>
+  <div *ngIf="ingredientPills.length!=0" class=" flex  w-full justify-center my-4"><button
+      class="bg-green-400 active:bg-green-600 [text-shadow:_1px_1px_2px_black;] text-white rounded-full p-3 flex items-center justify-center"
+      (click)="searchRecipe()">Busca tu receta</button></div>
 
 
   <!-- ARRIBA match ingredientes ABAJO TOP RECETAS -->
-  <app-recetas-top></app-recetas-top>
+  <div *ngIf="recipesFound$.length===0 ; else resultRecetas"><app-recetas-top></app-recetas-top></div>
+  <ng-template #resultRecetas>
+    <div class="bg-gray-400 flex flex-col gap-2 justify-center items-center">
+
+      <div class=" flex flex-col w-fit p-3" >
+        <h1 class="pt-3 text-2xl">Aquí tienes algunas recetas para ti</h1>
+        <ul class="flex flex-col gap-1">
+          <li *ngFor="let recipe of recipesFound$" class="bg-gray-100 p-1">
+
+
+            <div>
+              <a routerLink="/RecipeDetail/{{recipe.id}}">{{ recipe.title}}</a>
+
+            </div>
+
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+
 
 </div>
