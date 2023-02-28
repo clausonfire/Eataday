@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent, canActivate:[LoginGGuard] },
   { path: '**', component: LoginComponent },
 
+
 ];
 
 @NgModule({

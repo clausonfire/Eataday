@@ -33,8 +33,7 @@ export class RecipesService {
   public searchRecipes(ingredients: string[]): Observable<Recipes[]> {
 
     let url = this.urlBase + "/search";
-    console.log(ingredients);
-    console.log('hola');
+
 
     if (ingredients.length === 0) {
       return of([]);
@@ -44,7 +43,7 @@ export class RecipesService {
     return this.http.post<Recipes[]>(url, ingredients, { "headers": this.headers }).pipe(catchError(e => {
       console.error(e);
       return [];
-    }), map(result => result['data'][0]))
+    }), map(result => result['data']))
 
   }
 

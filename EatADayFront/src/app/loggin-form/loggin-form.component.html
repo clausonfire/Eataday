@@ -1,6 +1,8 @@
 <div class="rounded-full">
   <form [formGroup]="loginForm" (ngSubmit)="loginCheck()" class="pl-10 pt-10">
 
+
+
     <label for="email" class="block">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
         Email:
@@ -11,13 +13,13 @@
       placeholder="you@example.com"><br>
     <div>
       <small *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-        This field is required
+        Éste campo es obligatorio
       </small>
     </div>
 
     <label for="password" class="black">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Password:
+        Contraseña:
       </span>
     </label>
     <input formControlName="password" type="password" id="password"
@@ -25,19 +27,20 @@
       placeholder="************"><br>
     <div>
       <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
-        This field is required
+        Éste campo es obligatorio
       </small>
     </div>
 
     <label for="terms" class="block">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
         Accept Terms:
+
       </span>
     </label>
     <input formControlName="terms" type="checkbox" id="terms"><br>
     <div>
       <small *ngIf="loginForm.get('terms').invalid && loginForm.get('terms').touched">
-        This field is required
+        Éste campo es obligatorio
       </small>
     </div>
 
@@ -45,16 +48,13 @@
 
     <div class="flex flex-items justify-center">
       <button (click)="reset()"
-        class="mt-5 border border-[#9EAFA2] bg-[#9EAFA2] text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Reset</button>
+        class="mt-5 border border-[#9EAFA2] bg-[#9EAFA2] text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Borrar</button>
       <br>
       <button [disabled]="loginForm.invalid" type="submit"
-        class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Save</button>
+        class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Enviar</button>
       <br>
     </div>
 
   </form>
-  <!--<button (click)="logOut()"
-        class="mt-5 border border-[#9EAFA2] bg-[#9EAFA2] text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">LogOut</button>
-  <br>-->
 
 </div>

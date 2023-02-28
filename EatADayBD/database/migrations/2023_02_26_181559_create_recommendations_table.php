@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('recommendations', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 32)->unique();
-            $table->string('photo', 200)->unique();//photo
-            $table->float('price', 10, 2)->nullable();
-            $table->float('price_k', 10, 2)->nullable();
+            $table->string('title', 32);
+            $table->longText('text');
+            $table->string('photo', 200)->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('recommendations');
     }
 };

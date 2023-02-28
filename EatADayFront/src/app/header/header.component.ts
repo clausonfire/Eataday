@@ -18,5 +18,6 @@ export class HeaderComponent {
       return console.log("token borrado");
     }
     return console.log("error, NO se ha podido borrar el token");
+
   }
 }
