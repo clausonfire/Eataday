@@ -8,14 +8,22 @@ import { CloseSupermarketsComponent } from './close-supermarkets/close-supermark
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 import { VidasanaComponent } from './vidasana/vidasana.component';
 
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { QuestionsComponent } from './questions/questions.component';
+
+
+import {LoginGGuard} from "./login-g.guard";
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'matchAlimentos', component: MatchRecetasComponent },
-  { path: 'RecipeDetail/:id', component: RecipeDetailComponent },
+  { path: 'matchAlimentos', component: MatchRecetasComponent, canActivate:[LoginGGuard]},
+  { path: 'RecipeDetail/:id', component: RecipeDetailComponent, canActivate:[LoginGGuard] },{ path: 'Questions', component: QuestionsComponent },
+  { path: 'QuestionDetail/:id', component: QuestionDetailComponent },
   { path: 'shoppingDiary', component: ShoppingDiaryComponent },
-  { path: 'supermarketDetail/:id', component: SupermarketDetailComponent },
-  { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent },
+  { path: 'supermarketDetail/:id', component: SupermarketDetailComponent, canActivate:[LoginGGuard] },
+  { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent, canActivate:[LoginGGuard] },
   { path: 'vidaSana', component: VidasanaComponent },
+
   { path: '**', component: LoginComponent },
 
 

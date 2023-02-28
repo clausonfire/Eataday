@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('title', 64);
-            $table->string('text', 128);
+            $table->string('text', 1000);
             $table->boolean('isFrequent');
             $table->timestamps();
         });

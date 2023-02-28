@@ -25,6 +25,9 @@ import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.componen
 import { CloseSupermarketsComponent } from './close-supermarkets/close-supermarkets.component';
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
+// import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 
 
@@ -48,9 +51,8 @@ import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.componen
     CloseSupermarketsComponent,
     SupermarketDetailComponent,
     BuscadorMixtoComponent,
-
-
-
+    QuestionsComponent,
+    QuestionDetailComponent,
 
   ],
   imports: [
