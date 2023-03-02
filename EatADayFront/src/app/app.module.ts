@@ -18,7 +18,6 @@ import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimen
 import {HttpClientModule, HttpErrorResponse} from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
 
-import { VidasanaComponent } from './vidasana/vidasana.component';
 
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.component';
@@ -27,6 +26,10 @@ import { SupermarketDetailComponent } from './supermarket-detail/supermarket-det
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
+import { RecommendationDetailComponent } from './recommendation-detail/recommendation-detail.component';
+import { VidasanaComponent } from './vidasana/vidasana.component';
+import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
 // import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 
@@ -44,7 +47,6 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     BuscadorAlimentosComponent,
     RecetasTopComponent,
 
-    VidasanaComponent,
 
     RecipeDetailComponent,
     ShoppingDiaryComponent,
@@ -53,6 +55,10 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     BuscadorMixtoComponent,
     QuestionsComponent,
     QuestionDetailComponent,
+    RecommendationsComponent,
+    RecommendationDetailComponent,
+    VidasanaComponent,
+    VidasanaDetailComponent,
 
   ],
   imports: [

@@ -91,7 +91,7 @@ class RecommendationSeeder extends Seeder
             Ansiedad
             Dolor de espalda
             Depresión',
-            'photo' => "https://phantom-elmundo.unidadeditorial.es/95aebb12721c45a14b949cca2d81c06d/crop/0x0/2475x1666/resize/1200/f/jpg/assets/multimedia/imagenes/2021/08/27/16300683348682.jpg"
+            'photo' => "https://www.youtube.com/watch?v=a01D1PzTVFc&t=12s"
         ]);
 
         DB::table('recommendations')->insert([
@@ -117,7 +117,7 @@ class RecommendationSeeder extends Seeder
             Ayuda a descansar mejor: El esfuerzo de la carrera y de la actividad del día favorece que por la noche sea más fácil conciliar el sueño.
             
             Aumenta la autoestima: Si se realiza con frecuencia, marcarse objetivos y conseguirlos y las mejoras físicas que sufre el organismo consigue aumentar la autoestima del corredor.',
-            'photo' => "https://www.sabervivirtv.com/medio/2022/05/04/manual-practico-para-iniciarse-y-mejorar-en-el-running_4e3fc23e_1280x720.jpg"
+            'photo' => "https://www.youtube.com/watch?v=M9dHBu_Ir0k"
         ]);
 
         DB::table('recommendations')->insert([
@@ -126,7 +126,7 @@ class RecommendationSeeder extends Seeder
             Gracias a su tremenda efectividad como sistema de preparación física, en sus orígenes el CrossFit fue elegido por numerosas academias militares, cuerpos de policía, artistas marciales y cientos de deportistas de élite en todo el mundo como programa de acondicionamiento y entrenamiento de fuerza estándar.
 
             No obstante, a día de hoy, el CrossFit se ha popularizado en todos los sectores de la población. El hecho de ser un programa diseñado para ser fácilmente adaptable lo convierte en el sistema de entrenamiento perfecto para cualquier persona con motivación, independientemente de su edad, sexo, capacidades o experiencia previa. Una de las grandes maravillas del CrossFit es que durante su práctica, un mismo entrenamiento puede ser realizado simultáneamente por un anciano con problemas cardiovasculares o de movilidad reducida y un bombero en un estado de forma óptima.',
-            'photo' => "https://i.blogs.es/25a7eb/inspired-horizons-digital-marketing-xqxnqyqdu0k-unsplash-1-/1366_2000.jpeg"
+            'photo' => "https://www.youtube.com/watch?v=rmzWeBTC6aM"
         ]);
 
         DB::table('recommendations')->insert([
@@ -140,7 +140,7 @@ class RecommendationSeeder extends Seeder
             Entrenamiento de fuerza: Para estimular la degradación muscular y la reparación (aumentar la masa muscular aumentará el metabolismo, al tener el músculo un mayor consumo calorífico que la grasa).
             Ejercicio cardiovascular (en particular en el entrenamiento de intervalos): Para quemar calorías.
             Nutrición óptima: Para manipular la ingesta de calorías y proporcionar una nutrición suficiente para el crecimiento muscular. El requisito principal para buscar la tonificación es la obtención de baja grasa corporal, ya que la grasa proporciona un aspecto "blando".',
-            'photo' => "https://www.semana.com/resizer/7FXL3sVsFLG9HPsb9ADgGgM_OHY=/1920x0/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/CC4R5VDIURH6XG5NBTEISHBTJI.jpg"
+            'photo' => "https://www.youtube.com/watch?v=q9b9afJ-GnA&t=317s"
         ]);
     }
 }

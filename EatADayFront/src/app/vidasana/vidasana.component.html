@@ -1,11 +1,10 @@
 <p>vidasana works!</p>
-<li *ngFor="let recommendation of topRecomm " class="bg-gray-100 p-1">
-  
-  
-    <div>
-      {{recommendation.title}}
+<button (click)="getInfo()"></button>
+<h1 class="text-center mb-[7%] mt-[7%]  font-bold text-center italic text-gray-800 text-[15px]  md:text-2xl xl:text-3xl" >PREGUNTAS FRECUENTES</h1>
 
-    </div>
-
-
-</li>
+<div class="mb-[10%]">
+  <ul class="list-reset flex flex-col items-center " *ngFor="let recommendations of allRecomm">
+    <li class="bg-gray-400 border-t-4 w-[40%]"></li>
+    <li class="relative -mb-px block  mt-[1%] mb-[1%] w-[40%] ml-[4%] text-[8px] sm:text-[10px] md:text-[15px] xl:text-[20px]"  routerLink="/RecommendationDetail/{{recommendations.id}} "><a class="text-gray-600 italic">{{recommendations.title}}</a></li>
+  </ul>
+</div>

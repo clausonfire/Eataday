@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { delay, Subject } from 'rxjs';
 import { Recommendations } from '../recommendations';
 import { RecommendationsService } from '../recommendations.service';
@@ -10,16 +10,26 @@ import { RecommendationsService } from '../recommendations.service';
   templateUrl: './vidasana.component.html',
   styleUrls: ['./vidasana.component.scss']
 })
-export class VidasanaComponent {
+export class VidasanaComponent implements OnInit {
+recommendation: any;
 
-  public topRecomm: Recommendations[] = [];
-  public searchTerm: Subject<string> = new Subject();
-  constructor(private RecommendationsService: RecommendationsService, private http: HttpClient) { }
-  ngOnInit(): void {
-
-
-    this.RecommendationsService.getRecommendations().pipe(delay(30)).subscribe((Recommendations: Recommendations[]) => this.topRecomm = Recommendations);
+  constructor(private RecommendationsService: RecommendationsService) {
 
   }
+  allRecomm: Recommendations[];
 
+  ngOnInit(): void {
+
+    this.RecommendationsService
+      .getRecomm()
+      .subscribe((recommendations: Recommendations[]) => (this.allRecomm = recommendations));
+    console.log(this.allRecomm);
+  }
+
+  getInfo(): void {
+    this.RecommendationsService
+      .getRecomm()
+      .subscribe((recommendations: Recommendations[]) => (this.allRecomm = recommendations));
+    console.log(this.allRecomm);
+  }
 }
