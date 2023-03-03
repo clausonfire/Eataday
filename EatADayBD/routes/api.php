@@ -49,6 +49,10 @@ Route::prefix('/users')->group(function () {
                 '',
                 'create'
             );
+            Route::get(
+                '/{id}/getuserid',
+                'getUserID',
+            );
             Route::get('/{id}/role', 'role');
             Route::get('/{id}/ingredients', 'ingredients');
             Route::middleware('auth:api')->delete(
