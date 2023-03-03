@@ -53,6 +53,7 @@ class ShoppingListController extends Controller
         $ingredient = $request->input('ingredient');
         $user = User::find($id);
         if ($user) {
+            // hola
         // if ($shoppingList != null) {
         //     json_decode($shoppingList->ingredients);
         //     $response = [
@@ -60,7 +61,7 @@ class ShoppingListController extends Controller
         //         'message' => 'ShoppingList found successfully',
         //         'data' => $shoppingList
         //     ];
-        // }
+        }// }
             $response = [
                 'success' => false,
                 'message' => 'User not found',
