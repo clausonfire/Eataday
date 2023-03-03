@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShoppingList extends Model
+class GeneralShoppingList extends Model
 {
     use HasFactory;
     protected $fillable = [
         'ingredients',
-        'user_id',
-        'supermarket_id'
+        'user_id'
 
     ];
     protected $casts = [
@@ -25,10 +24,5 @@ class ShoppingList extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function supermarket()
-    {
-        return $this->belongsTo(Supermarket::class);
     }
 }

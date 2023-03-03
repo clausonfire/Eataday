@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShoppingList;
+use App\Models\Supermarket;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Throwable;
 
 class ShoppingListController extends Controller
 {
@@ -61,10 +63,10 @@ class ShoppingListController extends Controller
         $id = null;
         try {
             $id = ShoppingList::insertGetId($request->validate([
-                'title' => 'required|string',
-                'photo' => 'nullable|string',
                 'ingredients' => 'required|string',
-                'preparation' => 'required|string'
+                'user_id' => 'required|number',
+                'supermarket_id' => 'required|number'
+
             ]));
         } catch (Throwable $e) {
             report($e);
@@ -117,10 +119,9 @@ class ShoppingListController extends Controller
 
             try {
                 $shoppingList->update($request->validate([
-                    'title' => 'required|string',
-                    'photo' => 'nullable|string',
                     'ingredients' => 'required|string',
-                    'preparation' => 'required|string',
+                    'user_id' => 'required|number',
+                    'supermarket_id' => 'required|number'
                 ]));
             } catch (Throwable $e) {
                 report($e);
@@ -148,10 +149,11 @@ class ShoppingListController extends Controller
             return response()->json($response);
         }
     }
+
     public function getAllUserLists($id)
     {
         $user = User::find($id);
-        if($user){
+        if ($user) {
             $shoppingLists = $user->shoppingLists;
         }
 
@@ -163,4 +165,84 @@ class ShoppingListController extends Controller
         return response()->json($response);
 
     }
+    public function insertIngredient(Request $request)
+    {
+        if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
+            $response = [
+                'success' => false,
+                'message' => 'missing data',
+                'data' => 'oops'
+            ];
+            return response()->json($response);
+        }
+        $id = $request->input('user_id');
+        $supermarket = $request->input('supermarket');
+        $ingredient = $request->input('ingredient');
+        $user = User::find($id);
+        if ($user) {
+            $selectedSupermarket = Supermarket::find($supermarket['id']);
+            if ($selectedSupermarket != null) {
+                $userSupermarketList = ShoppingList::where('user_id', $id)
+                    ->where('supermarket_id', $selectedSupermarket['id'])
+                    ->get();
+                if ($userSupermarketList->isEmpty()) {
+                    $newSupermarketList = ShoppingList::create([
+                        'user_id' => $id,
+                        'supermarket_id' => $selectedSupermarket['id'],
+                        'ingredients' => [$ingredient]
+                    ]);
+
+                    if ($newSupermarketList) {
+                        $response = [
+                            'success' => true,
+                            'message' => 'ShoppingList has been created and ingredients were inserted',
+                            'data' => $newSupermarketList
+                        ];
+                        return response()->json($response);
+                    }
+                    $response = [
+                        'success' => false,
+                        'message' => 'Something failed while creating the list',
+                        'data' => null
+                    ];
+                    return response()->json($response);
+
+                } else {
+                    $ingredients = $userSupermarketList[0]->ingredients;
+                    print_r($ingredients);
+                    if (!in_array($ingredient, $ingredients)) {
+                        $ingredients[] = $ingredient;
+                        echo "patata";
+                        $userSupermarketList[0]->ingredients = $ingredients;
+
+                        $userSupermarketList[0]->save();
+                    }
+
+                    $response = [
+                        'success' => true,
+                        'message' => 'Ingredients were inserted',
+                        'data' => $userSupermarketList
+                    ];
+                    return response()->json($response);
+                }
+
+
+
+            }
+            $response = [
+                'success' => true,
+                'message' => 'Supermarket not found',
+                'data' => $selectedSupermarket
+            ];
+            return response()->json($response, 404);
+        }
+
+        $response = [
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ];
+        return response()->json($response, 404);
+    }
+
 }
