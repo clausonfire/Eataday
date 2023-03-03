@@ -6,6 +6,7 @@ use App\Models\Recommendation;
 use Illuminate\Http\Request;
 use Throwable;
 
+
 class RecommendationController extends Controller
 {
     public function getAll(Request $request)
