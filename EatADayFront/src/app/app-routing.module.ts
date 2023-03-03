@@ -8,6 +8,7 @@ import { CloseSupermarketsComponent } from './close-supermarkets/close-supermark
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { SendRecipeComponent } from './send-recipe/send-recipe.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'shoppingDiary', component: ShoppingDiaryComponent },
   { path: 'supermarketDetail/:id', component: SupermarketDetailComponent },
   { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent },
+  { path: 'send-recipe', component: SendRecipeComponent },
   { path: '**', component: LoginComponent },
 
 ];

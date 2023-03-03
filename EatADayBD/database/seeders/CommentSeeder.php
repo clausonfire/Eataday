@@ -26,8 +26,9 @@ class CommentSeeder extends Seeder
             Como principiante, te recuperas rápidamente de una sesión de entrenamiento. Requieres 24-72 horas para adaptarte
             a un estímulo, es decir, puedes hacer una rutina de cuerpo completo el lunes y repetir la misma rutina el miércoles,
             y aún así progresar. Al entrenar todo el cuerpo de manera intermitente avanzarás más rápido y ahorrarás tiempo.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>2,
+            'isChecked' => true,
         ]);
         Comment::create([
             'title' => '¿Cuantas kcal necesito al dia?',
@@ -38,8 +39,9 @@ class CommentSeeder extends Seeder
             Salud establece un cálculo genérico: entre 1.600 y 2.000 calorías al día para las mujeres, y para los hombres entre 2.000 y 2.500.
             Pero para conocer la necesidad energética de cada persona de manera más exacta hay que tener en cuenta 2 factores: el metabolismo
             basal y la actividad física.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>3,
+            'isChecked' => true,
         ]);
         Comment::create([
             'title' => 'kcal por gramo de chocolate',
@@ -49,8 +51,9 @@ class CommentSeeder extends Seeder
             a su agradable sabor. Los principales componentes de la semilla del cacao son las grasas (24 por ciento) y los hidratos de carbono (45
             por ciento). El valor nutritivo y energético de este alimento es muy alto. De hecho,el cacao proporciona 293 calorías por cada 100 gramos
             y el chocolate, según su composición, aporta entre 450 y 600 calorías.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>1,
+            'isChecked' => true,
         ]);
         Comment::create([
             'title' => 'Diferencia entre grasas saturadas e insaturadas',
@@ -61,16 +64,18 @@ class CommentSeeder extends Seeder
             aumenta los niveles de colesterol en la sangre y, por tanto, consumirla es un riesgo para la salud cardiovascular. Las grasas insaturadas Saber cuál
             es la diferencia entre grasas saturadas y grasas insaturadas es fundamental para tener una buena salud, porque las grasas saturadas tienen el papel opuesto
             de las insaturadas.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>3,
+            'isChecked' => true,
         ]);
         Comment::create([
             'title' => 'kcal por gramo de pan',
             'text' => 'Según la FEN (Fundación Española de Nutrición) el pan blanco aporta 277 kilocalorías por cada 100 gramos, una cantidad similar al del pan de molde (260 Kcal) y el pan integral
             (258 Kcal). No hay una gran variación calórica entre el pan normal y el integral. La única diferencia que existe entre ambos es que el segundo, al estar elaborado con harina integral, aporta
             más fibra a la dieta y por tanto es un gran aliado para combatir el estreñimiento.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>2,
+            'isChecked' => true,
         ]);
         Comment::create([
             'title' => '¿es malo cenar pasta?',
@@ -78,8 +83,9 @@ class CommentSeeder extends Seeder
             de todo es que estos alimentos se pueden consumir a cualquier hora del día, pero hay que hacerlo de manera eficiente. Lo primero que se debe de tener en cuenta es que estos productos son
             fundamentalmente energéticos. Por lo tanto, su función es aportar energía o ayudar a recuperar al organismo tras un esfuerzo. Entonces, en lo posible deben de ser utilizados con este fin,
             dejando a un lado su sabor.',
-            'isFrequent' => false,
-            'user_id'=>3
+
+            'user_id'=>1,
+            'isChecked' => true,
         ]);
         // Comment::create([
         //     'title' => 'No va una mierda1',

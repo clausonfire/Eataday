@@ -21,6 +21,7 @@ return new class extends Migration
             $table->json('displayIngredients');
             $table->string('preparation', 2000);
             $table->string('description', 2000);
+            $table->boolean('isChecked');
             $table->timestamps();
         });
     }

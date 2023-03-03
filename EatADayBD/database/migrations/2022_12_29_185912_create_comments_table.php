@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title', 64);
             $table->string('text', 1000);
-            $table->boolean('isFrequent');
+            $table->boolean('isChecked');
             $table->timestamps();
         });
     }

@@ -17,7 +17,16 @@ class Recipe extends Model
         'photo',
         'ingredients',
         'displayIngredients',
-        'preparation'
+        'preparation',
+        'description',
+        'isChecked'
+        // title' => 'required|string',
+        //         'photo' => 'nullable|string',
+        //         'ingredients' => 'required|string',
+        //         'displayIngredients' => 'required|string',
+        //         'preparation' => 'required|string',
+        //         'description' => 'required|string',
+        //         'isChecked' =>'boolean
     ];
     protected $casts = [
         'ingredients' => 'array',
@@ -29,10 +38,7 @@ class Recipe extends Model
     ];
 
     //relaciones muchos a muchos
-    public function ingredient()
-    {
-        return $this->belongsToMany(ingredient::class);
-    }
+    
 
     public function user()
     {

@@ -65,15 +65,18 @@ class RecipeController extends Controller
                 'title' => 'required|string',
                 'photo' => 'nullable|string',
                 'ingredients' => 'required|string',
-                'preparation' => 'required|string'
+                'displayIngredients' => 'required|string',
+                'preparation' => 'required|string',
+                'description' => 'required|string',
+                'isChecked' =>'boolean'
             ]));
         } catch (Throwable $e) {
             report($e);
 
             $response = [
                 'success' => false,
-                'message' => 'Recipe has not been created, some data may be missing',
-                'data' => null
+                'message' => 'Recipe has not been created1, some data may be missing',
+                'data' =>$e
             ];
             return response()->json($response, 422);
         }
@@ -122,6 +125,7 @@ class RecipeController extends Controller
                     'photo' => 'nullable|string',
                     'ingredients' => 'required|string',
                     'preparation' => 'required|string',
+                    'isChecked' =>'boolean'
                 ]));
             } catch (Throwable $e) {
                 report($e);

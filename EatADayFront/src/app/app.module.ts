@@ -24,6 +24,7 @@ import { SupermarketDetailComponent } from './supermarket-detail/supermarket-det
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { SendRecipeComponent } from './send-recipe/send-recipe.component';
 // import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 
@@ -46,6 +47,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     BuscadorMixtoComponent,
     QuestionsComponent,
     QuestionDetailComponent,
+    SendRecipeComponent,
 
 
 
