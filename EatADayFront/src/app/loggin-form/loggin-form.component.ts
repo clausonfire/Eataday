@@ -6,7 +6,7 @@ import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {data} from "autoprefixer";
 import {ApiResponse} from "../apiResponse";
 import { Router } from "@angular/router";
-import {User} from "../user";
+
 
 @Component({
   selector: 'app-loggin-form',
