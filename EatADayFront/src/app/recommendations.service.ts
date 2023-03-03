@@ -23,5 +23,13 @@ export class RecommendationsService {
 
   }
 
+  public getRecommnByID(id: number): Observable<Recommendations> {
+    const url = this.urlGetRecomms + "/" + id;
+
+    return this.http.get<Recommendations>(url).pipe(catchError(e => {
+      console.error(e);
+      return [];
+    }), map(result => result['data']));
+  }
 
 }
