@@ -163,7 +163,8 @@ class ShoppingListController extends Controller
     }
 
 
-    public function insertIngredient(Request $request)
+
+   public function insertIngredient(Request $request)
     {
         if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
             $response = [
