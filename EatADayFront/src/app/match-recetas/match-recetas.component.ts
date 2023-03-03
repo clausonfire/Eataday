@@ -67,30 +67,4 @@ console.log(this.recipesFound$);
     this.showFinder=false;
   }
 
-
-
-
-
-
-  /*public showIdUser() {
-    /!*this.loginService.getTokenUserLoged().subscribe( (user ) => {
-      console.log(user.data);
-    })*!/
-    this.loginService.getTokenUserLoged().subscribe((response) => {
-      if (response.success) {
-        const user = response.data;
-        localStorage.setItem('user', JSON.stringify(user));
-        console.log(user);
-      } else {
-        console.error('Error fetching user data:');
-      }
-    }, (error) => {
-      console.error('Error fetching user data:');
-    });
-  }*/
-
-// esta funcion hace una llamada que me trae los datos usuario de un asuario en forma de objeto. modificame la funcion para que me guardame el objeto en local storage
-
-
-
 }

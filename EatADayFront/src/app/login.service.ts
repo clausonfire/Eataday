@@ -54,16 +54,6 @@ export class LoginService {
       })
     ).pipe(map((result: ApiResponse)=>result))
   }
-
- /* public getTokenUserLoged(): Observable<ApiResponse> {
-    let token: string = localStorage.getItem('token');
-    return this.http.get<ApiResponse>(this.getUserLogged, {headers: {"Accept": "application/json", "Authorization": `Bearer ${token}`}}).pipe(
-      catchError(e => {
-        console.error(e);
-        return [];
-      })
-    ).pipe(map((result: ApiResponse)=>result))
-  }*/
-
+  
 
 }
