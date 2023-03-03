@@ -38,24 +38,35 @@ class ShoppingListController extends Controller
             return response()->json($response);
         }
     }
-    public function getById(Request $request, $id)
+    public function getById(Request $request, $idUser, $idSupermercado)
     {
-        $shoppingList = ShoppingList::find($id);
-
-        if ($shoppingList != null) {
-            json_decode($shoppingList->ingredients);
-            $response = [
-                'success' => true,
-                'message' => 'ShoppingList found successfully',
-                'data' => $shoppingList
-            ];
-        } else {
+        if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
             $response = [
                 'success' => false,
-                'message' => 'ShoppingList not found',
+                'message' => 'missing data',
+                'data' => 'oops'
+            ];
+            return response()->json($response);
+        }
+        $id = $request->input('user_id');
+        $supermarket = $request->input('supermarket');
+        $ingredient = $request->input('ingredient');
+        $user = User::find($id);
+        if ($user) {
+        // if ($shoppingList != null) {
+        //     json_decode($shoppingList->ingredients);
+        //     $response = [
+        //         'success' => true,
+        //         'message' => 'ShoppingList found successfully',
+        //         'data' => $shoppingList
+        //     ];
+        // }
+            $response = [
+                'success' => false,
+                'message' => 'User not found',
                 'data' => null
             ];
-        }
+
         return response()->json($response);
     }
     public function create(Request $request)
@@ -150,21 +161,7 @@ class ShoppingListController extends Controller
         }
     }
 
-    public function getAllUserLists($id)
-    {
-        $user = User::find($id);
-        if ($user) {
-            $shoppingLists = $user->shoppingLists;
-        }
 
-        $response = [
-            'success' => false,
-            'message' => 'ShoppingList not found',
-            'data' => $shoppingLists
-        ];
-        return response()->json($response);
-
-    }
     public function insertIngredient(Request $request)
     {
         if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
