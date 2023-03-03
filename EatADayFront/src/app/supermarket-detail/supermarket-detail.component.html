@@ -1,1 +1,4 @@
-<p>supermarket-detail works!</p>
+<div *ngIf="userShoppingList">
+  <ul><li *ngFor="let ingredient of userShoppingList.ingredients">{{ ingredient }}</li></ul>
+</div>
+

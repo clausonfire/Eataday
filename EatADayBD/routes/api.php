@@ -6,7 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SupermarketController;
+
+use App\Http\Controllers\ShoppingListController;
+use App\Http\Controllers\GeneralShoppingListController;
+
 use App\Http\Controllers\RecommendationController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LoginController;
@@ -93,6 +98,71 @@ Route::prefix('/recipes')->group(function () {
             );
             Route::get('/{id}/ingredient', 'ingredient');
             Route::get('/{id}/user', 'users');
+        }
+    );
+});
+
+//SHOPPINGLIST
+
+Route::prefix('/shoppingList')->group(function () {
+    Route::controller(ShoppingListController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::post('/insert', 'insertIngredient');
+            Route::post('/{supermarket}', 'getSupermarket');
+        }
+    );
+});
+Route::prefix('/generalShoppingList')->group(function () {
+    Route::controller(GeneralShoppingListController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::delete(
+                '/{user_id}/{ingredient}',
+                'deleteIngredient'
+            );
+            Route::post('/insert', 'insertIngredient');
+
         }
     );
 });
