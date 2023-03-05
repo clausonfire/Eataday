@@ -60,10 +60,12 @@ class CommentController extends Controller
     {
         $id = null;
         try {
-            $id = Comment::insertGetId($request->validate([
+            // $id = Comment::insertGetId($request->validate([
+                $id = Comment::create($request->validate([
                 'title' => 'required|string',
                 'text' => 'required|string|unique:comments',
-                'isFrequent' => 'required|boolean',
+                'user_id'=>'required|numeric',
+                'isChecked' => 'required|boolean'
             ]));
         } catch (Throwable $e) {
             report($e);
@@ -71,14 +73,14 @@ class CommentController extends Controller
             $response = [
                 'success' => false,
                 'message' => 'Comment has not been created, some data may be missing',
-                'data' => null
+                'data' => $id
             ];
             return response()->json($response, 422);
         }
         if (is_numeric($id)) {
             $response = [
                 'success' => true,
-                'message' => 'Role created successfully',
+                'message' => 'Comment created successfully',
                 'data' => Comment::findOrFail($id)
             ];
             return response()->json($response, 200);

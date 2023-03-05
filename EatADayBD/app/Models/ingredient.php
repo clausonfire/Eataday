@@ -25,7 +25,5 @@ class Ingredient extends Model
         return $this->belongsTo(User::class);
     }
     //relaciones muchos a muchos
-    public function recipe() {
-        return $this->belongsToMany(Recipe::class);
-    }
+    
 }

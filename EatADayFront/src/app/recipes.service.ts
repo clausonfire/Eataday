@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
+import { ApiResponse } from './apiResponse';
 import { Ingredients } from './ingredients';
 import { Recipes } from './recipes';
 
@@ -47,5 +48,20 @@ export class RecipesService {
 
   }
 
-}
 
+
+
+
+
+  
+  public checkRecipes(log: Recipes): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.urlBase, log).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        const errorMessage = error.error.message || 'Unknown error';
+        return of({ success: false, message: errorMessage, data: null });
+      })
+    ).pipe(map((result: ApiResponse)=>result))
+
+  }
+}

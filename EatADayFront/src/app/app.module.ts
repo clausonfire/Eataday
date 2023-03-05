@@ -26,10 +26,14 @@ import { SupermarketDetailComponent } from './supermarket-detail/supermarket-det
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+
+import { SendRecipeComponent } from './send-recipe/send-recipe.component';
+
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { RecommendationDetailComponent } from './recommendation-detail/recommendation-detail.component';
 import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
+
 // import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 
@@ -55,10 +59,16 @@ import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.compo
     BuscadorMixtoComponent,
     QuestionsComponent,
     QuestionDetailComponent,
+
+    SendRecipeComponent,
+
+
+
     RecommendationsComponent,
     RecommendationDetailComponent,
     VidasanaComponent,
     VidasanaDetailComponent,
+
 
   ],
   imports: [
