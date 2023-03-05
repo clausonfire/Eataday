@@ -6,6 +6,7 @@ import { Supermarket } from './supermarket';
 import { ShopListPetition } from './shopListPetition';
 import { InsertIngredientPetition } from './insertIngredientPetition';
 import { ApiResponse } from './apiResponse';
+import { shopListResponse } from './shopListResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +18,15 @@ export class ShoppingListService {
   constructor(private http: HttpClient) {
 
   }
-  // public getShoppingList(userId: number, supermarketId: number): Observable<ShoppingList> {
-  //   //POST
+  public getSuperMarketUserShoppingList(userId: number, supermarketId: number): Observable<shopListResponse> {
+    //POST
+    console.log('hola');
 
-  //   const data = {
-  //     user_id: userId,
-  //     supermarket_id: supermarketId,
-  //   };
-  //   return this.http.post<ShopListPetition>(this.urlBase, data).pipe(catchError(e => {
-  //     console.error(e);
-  //     return [];
-  //   }), map(result => result['data']));
-  // }
+    return this.http.get<shopListResponse>(this.urlBase+"/"+userId+"/"+supermarketId).pipe(catchError(e => {
+      console.error(e);
+      return [];
+    }));
+  }
   public getUserShoppingList(id: number): Observable<ShoppingList> {
     return this.http.get<ShoppingList>(this.urlBaseUser + '/' + id).pipe(catchError(e => {
       console.error(e);
@@ -36,30 +34,30 @@ export class ShoppingListService {
     }), map(result => result['data']));
 
   }
-  public deleteIngredientFromUserList(userId: number, ingredient: string ){
+  public deleteIngredientFromUserList(userId: number, ingredient: string) {
     return this.http.delete(this.urlBaseUser + "/" + userId + "/" + ingredient).pipe(catchError(e => {
       console.error(e);
       return [];
     }), map(result => result['data']));
   }
-  public ingredientToSpecificList(supermarket:Supermarket, ingredient: string,id:number): Observable<ApiResponse>{
+  public ingredientToSpecificList(supermarket: Supermarket, ingredient: string, id: number): Observable<ApiResponse> {
     const data = {
-          supermarket: supermarket,
-          ingredient: ingredient,
-          user_id:id
-        };
-    return this.http.post<InsertIngredientPetition>(this.urlBase+"/insert", data).pipe(catchError(e => {
+      supermarket: supermarket,
+      ingredient: ingredient,
+      user_id: id
+    };
+    return this.http.post<InsertIngredientPetition>(this.urlBase + "/insert", data).pipe(catchError(e => {
       console.error(e);
       return [];
     }));
   }
-  public ingredientToUserList(ingredient: string,id:number): Observable<ApiResponse>{
+  public ingredientToUserList(ingredient: string, id: number): Observable<ApiResponse> {
     const data = {
 
-          ingredient: ingredient,
-          user_id:id
-        };
-    return this.http.post<InsertIngredientPetition>(this.urlBaseUser+"/insert", data).pipe(catchError(e => {
+      ingredient: ingredient,
+      user_id: id
+    };
+    return this.http.post<InsertIngredientPetition>(this.urlBaseUser + "/insert", data).pipe(catchError(e => {
       console.error(e);
       return [];
     }));

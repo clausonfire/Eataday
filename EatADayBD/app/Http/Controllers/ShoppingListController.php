@@ -40,35 +40,40 @@ class ShoppingListController extends Controller
     }
     public function getById(Request $request, $idUser, $idSupermercado)
     {
-        if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
+        $user = User::find($idUser);
+        $supermarket = Supermarket::find($idSupermercado);
+        if ($user && $supermarket) {
+            $userSupermarketList = ShoppingList::where('user_id', $user->id)
+                ->where('supermarket_id', $supermarket->id)
+                ->get();
+            if ($userSupermarketList) {
+                $response = [
+                    'success' => True,
+                    'message' => 'List found successfully',
+                    'data' => $userSupermarketList
+                ];
+                return response()->json($response);
+            }
             $response = [
                 'success' => false,
-                'message' => 'missing data',
-                'data' => 'oops'
-            ];
-            return response()->json($response);
-        }
-        $id = $request->input('user_id');
-        $supermarket = $request->input('supermarket');
-        $ingredient = $request->input('ingredient');
-        $user = User::find($id);
-        if ($user) {
-            // hola
-        // if ($shoppingList != null) {
-        //     json_decode($shoppingList->ingredients);
-        //     $response = [
-        //         'success' => true,
-        //         'message' => 'ShoppingList found successfully',
-        //         'data' => $shoppingList
-        //     ];
-        }// }
-            $response = [
-                'success' => false,
-                'message' => 'User not found',
+                'message' => 'List not found',
                 'data' => null
             ];
+            return response()->json($response, 404);
+        }
 
-        return response()->json($response);
+
+        // if ($user) {
+        //     echo $user;
+        //     echo $supermarket;
+        // }
+        $response = [
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ];
+
+        return response()->json($response, 404);
     }
     public function create(Request $request)
     {

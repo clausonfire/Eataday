@@ -112,7 +112,7 @@ Route::prefix('/shoppingList')->group(function () {
                 'getAll',
             );
             Route::get(
-                '/{id}',
+                '/{user_id}/{supermarket_id}',
                 'getById'
             );
             Route::post(
