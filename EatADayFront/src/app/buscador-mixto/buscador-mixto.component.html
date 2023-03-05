@@ -1,4 +1,4 @@
-<div class="bg-gray-400 flex flex-col gap-3 justify-center items-center">
+<div class=" flex flex-col gap-3 justify-center items-center">
   <div class="w-full flex items-center justify-center py-10">
 
 
@@ -7,14 +7,24 @@
 
 
   </div>
-  <div *ngIf="ingredientsFound$">
-    <ul>
-      <li *ngFor="let ingredient of ingredientsFound$ | async ">
+  <div *ngIf="  ingredientsFound$ | async" class="bg-gray-400 w-full flex items-center justify-center flex-col gap-3 ">
+    <div>
+      <h1>Productos</h1>
+    </div>
+    <ul class="flex flex-col gap-2 h-[10rem] w-[30rem] overflow-y-scroll ">
+      <li *ngFor="let ingredient of ingredientsFound$ | async " class="bg-gray-100 p-1 flex items-center justify-between" >
 
-
-        <div>
-          {{ ingredient.name }}
+        <div class="flex">
+          <div>
+            {{ ingredient.name }}
+          </div>
+          <div>{{ ingredient.price_k }} €/k</div>
         </div>
+        <div class=" text-sm">
+          <button class="bg-red-400" (click)="toUserList(ingredient.name)">Add Basic List</button>
+          <button class="bg-blue-400" (click)="choseSupermarket(ingredient.name)">Add Specific List</button>
+        </div>
+
 
 
       </li>

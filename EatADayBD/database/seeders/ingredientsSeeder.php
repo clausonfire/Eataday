@@ -228,28 +228,30 @@ class ingredientsSeeder extends Seeder
         ]);
         Ingredient::create([
             'name' => 'user2',
-            'photo' => "ruta2",
+            'photo' => "ruta222",
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 2
         ]);
         Ingredient::create([
             'name' => 'user3',
-            'photo' => "ruta3",
+            'photo' => "ruta322",
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 2
         ]);
         Ingredient::create([
             'name' => 'user4',
-            'photo' => "ruta4",
+            'photo' => "ruta412",
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 3
         ]);
         Ingredient::create([
             'name' => 'user5',
+
             'photo' => "ruta5",
+
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 1

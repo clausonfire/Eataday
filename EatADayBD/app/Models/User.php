@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,11 +53,14 @@ class User extends Authenticatable
 
     public function ingredients()
     {
-        return $this->hasMany(ingredient::class);}
+        return $this->hasMany(ingredient::class);
+    }
 
 
-    public function recipe() {
-        return $this->belongsToMany(Recipe::class);}
+    public function recipe()
+    {
+        return $this->belongsToMany(Recipe::class);
+    }
 
     //1:N inversa
     public function role()
@@ -66,5 +68,13 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
 
 
+    }
+    public function shoppingLists()
+    {
+        return $this->hasMany(ShoppingList::class);
+    }
+    public function userGeneralShoppingList()
+    {
+        return $this->hasOne(GeneralShoppingList::class);
     }
 }

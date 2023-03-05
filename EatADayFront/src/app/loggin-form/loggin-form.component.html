@@ -1,23 +1,5 @@
 <div class="rounded-full">
-  <form [formGroup]="loginForm" class="pt-10">
-    
-
-
-
-    <!-- <label for="name" class="block">
-      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Name:
-      </span>
-    </label>
-    <input formControlName="name" type="text" id="name" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="you@example.com"><br>
-
-
-    <div>
-      <small *ngIf="loginForm.get('name').invalid && loginForm.get('name').touched">
-        This field  is required
-      </small>
-
-    </div> -->
+  <form [formGroup]="loginForm" (ngSubmit)="loginCheck()" class="pl-10 pt-10">
 
 
 
@@ -35,18 +17,6 @@
       </small>
     </div>
 
-
-
-    <!--<label for="emailRepite">Repite email:* </label>
-    <input formControlName="emailRepite" type="email" id="emailRepite"><br>
-    <div>
-      <small *ngIf="loginForm.get('emailRepite').invalid && loginForm.get('emailRepite').touched">
-        This field  is required
-      </small>
-    </div>
-
-    <br />-->
-
     <label for="password" class="black">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
         Contraseña:
@@ -54,20 +24,18 @@
     </label>
     <input formControlName="password" type="password" id="password"
       class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-      placeholder="you@example.com"><br>
+      placeholder="************"><br>
     <div>
       <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
         Éste campo es obligatorio
       </small>
     </div>
 
-
-
-
     <label for="terms" class="block">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Aceptar Terminos:
-      </span>  
+        Accept Terms:
+
+      </span>
     </label>
     <input formControlName="terms" type="checkbox" id="terms"><br>
     <div>
@@ -78,17 +46,15 @@
 
     <br />
 
-
     <div class="flex flex-items justify-center">
       <button (click)="reset()"
         class="mt-5 border border-[#9EAFA2] bg-[#9EAFA2] text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Borrar</button>
       <br>
-      <!-- <button (click)="getUsers()">Show Users </button> <br> -->
       <button [disabled]="loginForm.invalid" type="submit"
         class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Enviar</button>
       <br>
     </div>
 
-
   </form>
+
 </div>

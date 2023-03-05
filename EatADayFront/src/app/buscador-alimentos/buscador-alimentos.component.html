@@ -3,6 +3,7 @@
 
 
   <input type="text" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
+
   <ul>
     <li *ngFor="let ingredient of ingredientsFound$ | async ">
 
@@ -15,6 +16,8 @@
     </li>
 
   </ul>
+
+
 
 
 </div>

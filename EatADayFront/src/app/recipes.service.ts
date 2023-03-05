@@ -34,8 +34,7 @@ export class RecipesService {
   public searchRecipes(ingredients: string[]): Observable<Recipes[]> {
 
     let url = this.urlBase + "/search";
-    console.log(ingredients);
-    console.log('hola');
+
 
     if (ingredients.length === 0) {
       return of([]);

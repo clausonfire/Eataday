@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 import { IngredientsService } from '../ingredients.service';
 import { Ingredients } from '../ingredients';
+import { Supermarket } from '../supermarket';
 
 @Component({
   selector: 'app-buscador-mixto',
@@ -13,6 +14,9 @@ export class BuscadorMixtoComponent {
   //lleva el $ porque es asincrona
   public ingredientsFound$: Observable<Ingredients[]> = of([]);
   public searchTerm: Subject<string> = new Subject();
+  @Output() ingredientToSpecificList = new EventEmitter<string>();
+  @Output() ingredientToUserList = new EventEmitter<string>();
+  @ViewChild('inputSearch') inputSearch: ElementRef<HTMLInputElement>;
   constructor(private IngredientsService: IngredientsService) { }
   ngOnInit(): void {
 
@@ -21,12 +25,24 @@ export class BuscadorMixtoComponent {
       debounceTime(150),
       distinctUntilChanged(),
       switchMap(text => {
-        return this.IngredientsService.searchIngredients(text);
+        return this.IngredientsService.searchMixIngredients(text);
       })
     )
   }
 
   public search(value: string) {
     this.searchTerm.next(value);
+  }
+
+  public choseSupermarket(ingredient: string) {
+    this.ingredientToSpecificList.emit(ingredient);
+    this.inputSearch.nativeElement.value = '';
+    this.ingredientsFound$ = of([]);
+
+  }
+  public toUserList(ingredient: string) {
+    this.ingredientToUserList.emit(ingredient);
+    this.inputSearch.nativeElement.value = '';
+    this.ingredientsFound$ = of([]);
   }
 }
