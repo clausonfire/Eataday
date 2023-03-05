@@ -1,4 +1,13 @@
-<div *ngIf="userShoppingList">
-  <ul><li *ngFor="let ingredient of userShoppingList.ingredients">{{ ingredient }}</li></ul>
+<div *ngIf="supermarket" class="flex items-center justify-center p-5">
+  <div>
+    <p>{{ supermarket.name }}</p>
+  </div>
 </div>
+<div *ngIf="userShoppingList" class="flex items-center justify-center my-4">
 
+  <div class="bg-yellow-300 p-4  h-[13rem] w-fit overflow-y-scroll">
+    <ul>
+      <li *ngFor="let ingredient of userShoppingList.ingredients">{{ ingredient }}</li>
+    </ul>
+  </div>
+</div>
