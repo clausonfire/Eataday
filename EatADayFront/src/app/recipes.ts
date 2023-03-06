@@ -6,7 +6,8 @@ export interface Recipes {
   displayIngredients: string,
   preparation: string,
   description: string,
-  isChecked: boolean,
+  isChecked: boolean
+
 
 }
 // <!-- 'title' => 'required|string',
@@ -16,3 +17,10 @@ export interface Recipes {
 //     'preparation' => 'required|string',
 //     'description' => 'required|string',
 //     'isChecked' =>'boolean' -->
+// 'title' => 'required|string',
+//                 'photo' => 'nullable|string',
+//                 'ingredients' => 'required|string',
+//                 'displayIngredients' => 'required|string',
+//                 'preparation' => 'required|string',
+//                 'description' => 'required|string',
+//                 'isChecked' =>'boolean'

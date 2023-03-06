@@ -18,7 +18,7 @@ export class QuestionsComponent implements OnInit {
     this.questionService
       .getComents()
       .subscribe((questions: Questions[]) => (this.allQuestions = questions));
-    console.log(this.allQuestions);
+    // console.log(this.allQuestions);
     // this.getQuestions();
     }
 

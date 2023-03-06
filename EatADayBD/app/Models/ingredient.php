@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ingredientController;
+use http\Client\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,5 +27,5 @@ class Ingredient extends Model
         return $this->belongsTo(User::class);
     }
     //relaciones muchos a muchos
-    
+
 }
