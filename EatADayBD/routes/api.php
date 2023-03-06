@@ -15,6 +15,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SugerenceRecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -350,6 +351,37 @@ Route::prefix('/recommendations')->group(function () {
                 'delete'
             );
 
+        }
+    );
+});
+
+//SugerenceRecipes
+Route::prefix('/sugerenceRecipes')->group(function () {
+    Route::controller(SugerenceRecipeController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            // ->where('name','[a-zA-Z]+' );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::get('/{id}/user', 'users');
         }
     );
 });
