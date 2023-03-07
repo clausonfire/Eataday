@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('user_favourite_recipes', function (Blueprint $table) {
             $table->id();
             $table->boolean('isFavourite')->default(false);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('recipe_id');
             $table->timestamps();
         });
     }

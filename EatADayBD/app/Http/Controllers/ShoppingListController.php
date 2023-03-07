@@ -64,10 +64,7 @@ class ShoppingListController extends Controller
         }
 
 
-        // if ($user) {
-        //     echo $user;
-        //     echo $supermarket;
-        // }
+
         $response = [
             'success' => false,
             'message' => 'User not found',
