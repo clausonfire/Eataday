@@ -6,5 +6,6 @@ export interface Ingredients {
   price_k: number,
   user_id:number,
   isBought:boolean,
-  userLike:number
+  userLike:number,
+  priceUp:boolean
 }

@@ -170,7 +170,7 @@ class ShoppingListController extends Controller
 
 
 
-   public function insertIngredient(Request $request)
+    public function insertIngredient(Request $request)
     {
         if (!$request->has('user_id') || !$request->has('supermarket') || !$request->has('ingredient')) {
             $response = [
@@ -310,10 +310,11 @@ class ShoppingListController extends Controller
                 ->get();
             $ingredients = $userSupermarketList[0]->ingredients;
             foreach ($ingredients as &$item) {
+
                 if ($item['name'] === $ingredient['name']) {
-                    if($item['isBought'] == 1){
+                    if ($item['isBought'] == 1) {
                         $item['isBought'] = 0;
-                    }else{
+                    } else {
                         $item['isBought'] = 1;
                     }
 
@@ -365,10 +366,23 @@ class ShoppingListController extends Controller
                 ->get();
             $ingredients = $userSupermarketList[0]->ingredients;
             foreach ($ingredients as &$item) {
+
                 if ($item['name'] === $ingredient['name']) {
+                    $oldPrice = $item['price'];
+                    $oldPriceK = $item['price_k'];
                     foreach ($ingredientData as $key => $value) {
                         if ($value !== null) {
                             $item[$key] = $value;
+                            if ($item['price'] > $oldPrice || $item['price_k'] > $oldPriceK) {
+
+                                $item['priceUp'] = true;
+                            } else if ($item['price'] < $oldPrice || $item['price_k'] < $oldPriceK) {
+
+                                $item['priceUp'] = false;
+                            } else {
+
+                                $item['priceUp'] = null;
+                            }
                         }
                     }
                 }

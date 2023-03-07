@@ -20,13 +20,7 @@ class Recipe extends Model
         'preparation',
         'description',
         'isChecked'
-        // title' => 'required|string',
-        //         'photo' => 'nullable|string',
-        //         'ingredients' => 'required|string',
-        //         'displayIngredients' => 'required|string',
-        //         'preparation' => 'required|string',
-        //         'description' => 'required|string',
-        //         'isChecked' =>'boolean
+
     ];
     protected $casts = [
         'ingredients' => 'array',
@@ -37,13 +31,17 @@ class Recipe extends Model
         'updated_at'
     ];
 
-    //relaciones muchos a muchos
-    
+
+
 
     public function user()
     {
         return $this->belongsToMany(User::class);
     }
+    public function users()
+{
+    return $this->hasMany(UserFavouriteRecipes::class);
+}
 
 
 }
