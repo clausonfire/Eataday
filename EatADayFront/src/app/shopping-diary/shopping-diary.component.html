@@ -1,46 +1,56 @@
-<div *ngIf="supermarkets" class="w-full flex items-center justify-center p-3 bg-gray-300">
+<div *ngIf="supermarkets " class="w-full flex items-center justify-center p-3 bg-gray-300">
   <ul class="flex gap-3">
     <li *ngFor="let supermarket of supermarkets">
       <div class="bg-red-300"><a routerLink="/supermarketDetail/{{supermarket.id}}">{{ supermarket.name }}</a></div>
     </li>
   </ul>
 </div>
-<div *ngIf="userShoppingList" class="flex items-center justify-center">
+<div *ngIf="userShoppingList && userShoppingList.length >0  ;else sinIngredientes"
+  class="flex items-center justify-center">
   <ul class="bg-red-200 p-3">
-    <li *ngFor="let ingredient of userShoppingList.ingredients" class="flex items-center justify-between gap-4">
+    <li *ngFor="let ingredient of userShoppingList " class="flex items-center justify-between gap-4">
       <div>
-        <p>{{ ingredient }}</p>
+        <p>{{ ingredient.name}}</p>
+
       </div>
-      <div><button class="text-xs" (click)="openModal(ingredient)">Specific List</button><button
-          (click)="delete(ingredient)">X</button></div>
+      <div><button class="text-xs" (click)="openModal(ingredient)">Specific List</button>
+        <button (click)="delete(ingredient)">X</button>
+      </div>
     </li>
   </ul>
-  <div *ngIf="this.supermarketModal===true" class="flex flex-col items-center justify-center">
-    <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
+
+</div>
+<div *ngIf="this.supermarketModal===true" class="flex flex-col items-center justify-center">
+  <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
 
 
-      <div>
-        <h2>Pick a supermarket</h2>
-      </div>
-
-      <ul class="flex flex-col items-center justify-center">
-        <li *ngFor="let supermarket of supermarkets  ">
-
-
-          <div><button (click)="choseSupermarket(supermarket)">{{ supermarket.name }}</button></div>
-
-
-        </li>
-
-      </ul>
-
-
-
-
+    <div>
+      <h2>Pick a supermarket</h2>
     </div>
 
+    <ul class="flex flex-col items-center justify-center">
+      <li *ngFor="let supermarket of supermarkets  ">
+
+
+        <div><button (click)="choseSupermarket(supermarket)">{{ supermarket.name }}</button></div>
+
+
+      </li>
+
+    </ul>
+
+
+
+
   </div>
+
 </div>
+<ng-template #sinIngredientes class="w-full flex items-center justify-center">
+  <div class="flex items-center justify-center">
+    <p>Tu lista está vacía inserta alimentos nuevos</p>
+  </div>
+
+</ng-template>
 
 
 

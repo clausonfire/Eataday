@@ -14,8 +14,8 @@ export class BuscadorMixtoComponent {
   //lleva el $ porque es asincrona
   public ingredientsFound$: Observable<Ingredients[]> = of([]);
   public searchTerm: Subject<string> = new Subject();
-  @Output() ingredientToSpecificList = new EventEmitter<string>();
-  @Output() ingredientToUserList = new EventEmitter<string>();
+  @Output() ingredientToSpecificList = new EventEmitter<Ingredients>();
+  @Output() ingredientToUserList = new EventEmitter<Ingredients>();
   @ViewChild('inputSearch') inputSearch: ElementRef<HTMLInputElement>;
   constructor(private IngredientsService: IngredientsService) { }
   ngOnInit(): void {
@@ -34,13 +34,14 @@ export class BuscadorMixtoComponent {
     this.searchTerm.next(value);
   }
 
-  public choseSupermarket(ingredient: string) {
+  public choseSupermarket(ingredient: Ingredients) {
     this.ingredientToSpecificList.emit(ingredient);
     this.inputSearch.nativeElement.value = '';
     this.ingredientsFound$ = of([]);
 
   }
-  public toUserList(ingredient: string) {
+  public toUserList(ingredient:Ingredients) {
+    console.log(ingredient);
     this.ingredientToUserList.emit(ingredient);
     this.inputSearch.nativeElement.value = '';
     this.ingredientsFound$ = of([]);

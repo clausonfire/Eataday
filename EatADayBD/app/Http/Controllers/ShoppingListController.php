@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use App\Models\ShoppingList;
 use App\Models\Supermarket;
 use App\Models\User;
@@ -190,6 +191,7 @@ class ShoppingListController extends Controller
                     ->where('supermarket_id', $selectedSupermarket['id'])
                     ->get();
                 if ($userSupermarketList->isEmpty()) {
+                    // echo $ingredient
                     $newSupermarketList = ShoppingList::create([
                         'user_id' => $id,
                         'supermarket_id' => $selectedSupermarket['id'],
@@ -213,10 +215,8 @@ class ShoppingListController extends Controller
 
                 } else {
                     $ingredients = $userSupermarketList[0]->ingredients;
-                    print_r($ingredients);
                     if (!in_array($ingredient, $ingredients)) {
                         $ingredients[] = $ingredient;
-                        echo "patata";
                         $userSupermarketList[0]->ingredients = $ingredients;
 
                         $userSupermarketList[0]->save();
@@ -248,5 +248,141 @@ class ShoppingListController extends Controller
         ];
         return response()->json($response, 404);
     }
+    public function deleteIngredient(Request $request, $userId, $supermarketID, $ingredientABorrar)
+    {
+        $user = User::find($userId);
+        $supermarket = Supermarket::find($supermarketID);
 
+        if ($user && $supermarket) {
+            $userSupermarketList = ShoppingList::where('user_id', $user->id)
+                ->where('supermarket_id', $supermarket->id)
+                ->get();
+            if ($userSupermarketList) {
+                $ingredients = $userSupermarketList[0]->ingredients;
+
+                // echo $ingredients;
+                $posicioningredientABorrar = array_filter($ingredients, function ($ingredient) use ($ingredientABorrar) {
+                    return $ingredient['id'] != $ingredientABorrar;
+                });
+                // echo $posicioningredientABorrar;
+                // $lista->ingredients = json_encode(array_values($posicioningredientABorrar));
+                $userSupermarketList[0]->ingredients = array_values($posicioningredientABorrar);
+                $userSupermarketList[0]->save();
+
+                $response = [
+                    'success' => true,
+                    'message' => 'Ingredient deleted successfully',
+                    'data' => $userSupermarketList[0]
+                ];
+                return response()->json($response);
+            }
+            $response = [
+                'success' => false,
+                'message' => 'List not found',
+                'data' => null
+            ];
+            return response()->json($response, 404);
+        }
+
+    }
+
+    public function setBoughtTrue(Request $request)
+    {
+        if (!$request->has('userId') || !$request->has('supermarketId') || !$request->has('ingredient')) {
+            $response = [
+                'success' => false,
+                'message' => 'missing data',
+                'data' => null
+            ];
+            return response()->json($response, 404);
+        }
+        $id = $request->input('userId');
+        $supermarket = $request->input('supermarketId');
+        $ingredient = $request->input('ingredient');
+        $user = User::find($id);
+        $supermarket = Supermarket::find($supermarket);
+
+        if ($user && $supermarket) {
+            // echo $supermarket;
+            // echo $user->id;
+            $userSupermarketList = ShoppingList::where('user_id', $user->id)
+                ->where('supermarket_id', $supermarket[0]->id)
+                ->get();
+            $ingredients = $userSupermarketList[0]->ingredients;
+            foreach ($ingredients as &$item) {
+                if ($item['name'] === $ingredient['name']) {
+                    $item['isBought'] = 1;
+                    break;
+                }
+            }
+
+            $userSupermarketList[0]->ingredients = $ingredients;
+            $userSupermarketList[0]->save();
+
+
+            $response = [
+                'success' => true,
+                'message' => 'Ingredient bought successfully',
+                'data' => $userSupermarketList[0]
+            ];
+            return response()->json($response);
+        }
+        $response = [
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ];
+        return response()->json($response, 404);
+    }
+    public function editIngredient(Request $request)
+    {
+        "hola";
+        if (!$request->has('userId') || !$request->has('supermarketId') || !$request->has('ingredient') || !$request->has('data')) {
+            $response = [
+                'success' => false,
+                'message' => 'missing data',
+                'data' => null
+            ];
+            return response()->json($response, 404);
+        }
+        $id = $request->input('userId');
+        $supermarket = $request->input('supermarketId');
+        $ingredient = $request->input('ingredient');
+        $ingredientData = $request->input('data');
+        $user = User::find($id);
+        $supermarket = Supermarket::find($supermarket);
+
+        if ($user && $supermarket) {
+            // echo $supermarket;
+            // echo $user->id;
+            $userSupermarketList = ShoppingList::where('user_id', $user->id)
+                ->where('supermarket_id', $supermarket[0]->id)
+                ->get();
+            $ingredients = $userSupermarketList[0]->ingredients;
+            foreach ($ingredients as &$item) {
+                if ($item['name'] === $ingredient['name']) {
+                    foreach ($ingredientData as $key => $value) {
+                        if ($value !== null) {
+                            $item[$key] = $value;
+                        }
+                    }
+                }
+            }
+            $userSupermarketList[0]->ingredients = $ingredients;
+            $userSupermarketList[0]->save();
+
+            $response = [
+                'success' => true,
+                'message' => 'Ingredient edited successfully',
+                'data' => $userSupermarketList[0]
+            ];
+            return response()->json($response);
+        }
+        $response = [
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ];
+        return response()->json($response, 404);
+    }
 }

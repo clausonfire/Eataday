@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('photo', 200)->unique();//photo
             $table->float('price', 10, 2)->nullable();
             $table->float('price_k', 10, 2)->nullable();
+            $table->boolean('isBought');
+            $table->boolean('userLike')->nullable();
             $table->timestamps();
         });
     }

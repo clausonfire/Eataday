@@ -3,11 +3,67 @@
     <p>{{ supermarket.name }}</p>
   </div>
 </div>
-<div *ngIf="userShoppingList" class="flex items-center justify-center my-4">
-
+<div *ngIf="userShoppingList ;else sinIngredientes" class="flex flex-col items-center justify-center my-4">
+  <h1>Cosas por comprar de {{ supermarket.name }} </h1>
   <div class="bg-yellow-300 p-4  h-[13rem] w-fit overflow-y-scroll">
     <ul>
-      <li *ngFor="let ingredient of userShoppingList.ingredients">{{ ingredient }}</li>
+      <li *ngFor="let ingredient of userShoppingList" class="flex items-center justify-between">
+        <div>{{ ingredient.name}}</div>
+        <div>
+          <button class="text-xs" (click)="setBoughtTrue(ingredient)">Comprado</button>
+          <button (click)="delete(ingredient)">X</button>
+        </div>
+      </li>
     </ul>
   </div>
+</div>
+<ng-template #sinIngredientes class="w-full flex items-center justify-center">
+  <div class="flex items-center justify-center">
+    <p>Tu lista está vacía inserta alimentos nuevos</p>
+  </div>
+
+</ng-template>
+<div class="bg-gray-400 w-full flex items-center justify-center flex-col gap-3 ">
+  <div>
+    <h1>Productos</h1>
+  </div>
+  <ul class="flex flex-col gap-2 h-[10rem] w-[30rem] overflow-y-scroll ">
+
+    <li *ngFor="let ingredient of userBoughtShoppingList" class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <p>{{ ingredient.name}}</p>
+        <p>{{ ingredient.price }}€</p>
+        <p>{{ ingredient.price_k }}€/kg</p>
+        <div *ngIf="ingredient.userLike == 1; else userLikeFalse">Bueno</div>
+        <ng-template #userLikeFalse>
+          <div *ngIf="ingredient.userLike !== null">Malo</div>
+        </ng-template>
+      </div>
+      <div>
+        <button (click)="delete(ingredient)">X</button>
+        <button (click)="openEditModal(ingredient)">Edit</button>
+      </div>
+    </li>
+
+  </ul>
+</div>
+<div *ngIf="this.editModal===true" class="flex flex-col items-center justify-center">
+  <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
+
+
+    <div>
+      <h2>Edita el registro</h2>
+    </div>
+    <div>
+      <app-edit-modal [ingredientToEdit]="ingredientToEdit" [userId]="id" [supermarket]="supermarket"
+        (eventEdit)="recharge()"></app-edit-modal>
+    </div>
+
+
+
+
+
+
+  </div>
+
 </div>

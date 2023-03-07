@@ -13,7 +13,7 @@ import { Result } from '../../../result';
 export class BuscadorAlimentosComponent {
 
   public ingredients: Ingredients[] = [];
-  @Input()  ingredientPills :Ingredients[] ;
+  @Input() ingredientPills: Ingredients[];
   @Output() eventClose: EventEmitter<void> = new EventEmitter();
   //lleva el $ porque es asincrona
   public ingredientsFound$: Observable<Ingredients[]> = of([]);
@@ -31,12 +31,15 @@ export class BuscadorAlimentosComponent {
       })
     )
   }
-  public close():void{
+  public close(): void {
     this.eventClose.emit();
   }
   public addToRecipeList(ingredient: Ingredients) {
-    this.ingredientPills.push(ingredient);
-    console.log(this.ingredientPills);
+    let ingredientExists = this.ingredientPills.find((pill) => pill.id === ingredient.id);
+    if (!ingredientExists) {
+      this.ingredientPills.push(ingredient);
+      console.log(this.ingredientPills);
+    }
   }
   public search(value: string) {
     this.searchTerm.next(value);

@@ -116,9 +116,21 @@ Route::prefix('/shoppingList')->group(function () {
                 '/{user_id}/{supermarket_id}',
                 'getById'
             );
+            Route::delete(
+                '/{user_id}/{supermarket_id}/{ingredient_id}',
+                'deleteIngredient'
+            );
             Route::post(
                 '/search',
                 'search'
+            );
+            Route::post(
+                '/bought',
+                'setBoughtTrue'
+            );
+            Route::post(
+                '/edit',
+                'editIngredient'
             );
             Route::post(
                 '',

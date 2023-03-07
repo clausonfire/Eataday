@@ -14,7 +14,9 @@ class Ingredient extends Model
         'photo',
         'price',
         'price_k',
-        'user_id'
+        'user_id',
+        'isBought',
+        'userLike'
     ];
 
     public function supermarket() {

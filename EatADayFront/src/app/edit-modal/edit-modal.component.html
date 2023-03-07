@@ -1,0 +1,25 @@
+<form [formGroup]="formulario" class="flex flex-col items-center justify-center gap-3">
+  <label>
+    Nombre:
+    <input type="text" formControlName="name">
+  </label>
+  <label>
+    Precio/Kg:
+    <input type="number" formControlName="price_k">
+  </label>
+  <label>
+    Precio:
+    <input type="number" formControlName="price">
+  </label>
+  <div><label>
+      LIKE:
+      <input type="radio" value="1" formControlName="userLike">
+    </label>
+    <label>
+      DISLIKE:
+      <input type="radio" value="0" formControlName="userLike">
+    </label>
+  </div>
+
+  <button (click)="saveInfo()">Save</button>
+</form>

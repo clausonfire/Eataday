@@ -24,6 +24,8 @@ import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.componen
 import { CloseSupermarketsComponent } from './close-supermarkets/close-supermarkets.component';
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 import { BuscadorMixtoComponent } from './buscador-mixto/buscador-mixto.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
+
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
@@ -57,6 +59,7 @@ import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.compo
     CloseSupermarketsComponent,
     SupermarketDetailComponent,
     BuscadorMixtoComponent,
+    EditModalComponent,
     QuestionsComponent,
     QuestionDetailComponent,
 
