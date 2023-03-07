@@ -3,6 +3,7 @@ import { RecommendationsService } from '../recommendations.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Recommendations } from '../recommendations';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-vidasana-detail',
@@ -11,10 +12,13 @@ import { Recommendations } from '../recommendations';
 })
 export class VidasanaDetailComponent implements OnInit {
 
+  public iframeURL?: SafeResourceUrl;
+
   constructor(
     private RecommendationsService: RecommendationsService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private sanitizer: DomSanitizer
   ) {
 
   }
@@ -33,7 +37,10 @@ export class VidasanaDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.RecommendationsService
       .getRecommnByID(id)
-      .subscribe((recommendations: Recommendations) => (this.idRecomm = recommendations));
+      .subscribe((recommendations: Recommendations) => {
+        this.idRecomm = recommendations;
+        this.iframeURL = this.sanitizer.bypassSecurityTrustResourceUrl(recommendations.photo)
+      });
 
   }
 
