@@ -25,7 +25,9 @@ class GeneralShoppingListSeeder extends Seeder
                     "price_k" => 2.5,
                     "created_at" => "2023-03-03T10:43:40.000000Z",
                     "updated_at" => "2023-03-03T10:43:40.000000Z",
-                    "user_id" => null
+                    "user_id" => null,
+                    'isBought' => false,
+                    'userLike' => null
                 ],
                 [
                     "id" => 21,
@@ -35,7 +37,9 @@ class GeneralShoppingListSeeder extends Seeder
                     "price_k" => 2.5,
                     "created_at" => "2023-03-03T10:43:40.000000Z",
                     "updated_at" => "2023-03-03T10:43:40.000000Z",
-                    "user_id" => null
+                    "user_id" => null,
+                    'isBought' => false,
+                    'userLike' => null
                 ]
             ]),
             'user_id' => 1
@@ -50,7 +54,9 @@ class GeneralShoppingListSeeder extends Seeder
                     "price_k" => 3.5,
                     "created_at" => "2023-03-03T10:43:40.000000Z",
                     "updated_at" => "2023-03-03T10:43:40.000000Z",
-                    "user_id" => null
+                    "user_id" => null,
+                    'isBought' => false,
+                    'userLike' => null
                 ],
                 [
                     "id" => 18,
@@ -60,7 +66,9 @@ class GeneralShoppingListSeeder extends Seeder
                     "price_k" => 3.5,
                     "created_at" => "2023-03-03T10:43:40.000000Z",
                     "updated_at" => "2023-03-03T10:43:40.000000Z",
-                    "user_id" => null
+                    "user_id" => null,
+                    'isBought' => false,
+                    'userLike' => null
                 ],
                 [
                     "id" => 19,
@@ -70,7 +78,9 @@ class GeneralShoppingListSeeder extends Seeder
                     "price_k" => 2.5,
                     "created_at" => "2023-03-03T10:43:40.000000Z",
                     "updated_at" => "2023-03-03T10:43:40.000000Z",
-                    "user_id" => null
+                    "user_id" => null,
+                    'isBought' => false,
+                    'userLike' => null
                 ]
             ]),
             'user_id' => 2

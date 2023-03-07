@@ -54,37 +54,44 @@ class GeneralShoppingListController extends Controller
             $newUserList = GeneralShoppingList::create([
                 'user_id' => $id,
                 'ingredients' => [
-                        [
-                            "id" => 15,
-                            "name" => "Patata",
-                            "photo" => "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/59.jpg",
-                            "price" => 1.5,
-                            "price_k" => 3.5,
-                            "created_at" => "2023-03-03T10:43:40.000000Z",
-                            "updated_at" => "2023-03-03T10:43:40.000000Z",
-                            "user_id" => null
-                        ],
-                        [
-                            "id" => 18,
-                            "name" => "Pechugas de pollo",
-                            "photo" => "https://mejorconsalud.as.com/wp-content/uploads/2018/07/pechugas-pollo.jpg",
-                            "price" => 2.5,
-                            "price_k" => 3.5,
-                            "created_at" => "2023-03-03T10:43:40.000000Z",
-                            "updated_at" => "2023-03-03T10:43:40.000000Z",
-                            "user_id" => null
-                        ],
-                        [
-                            "id" => 19,
-                            "name" => "Pimiento verde",
-                            "photo" => "https://www.gastronomiavasca.net/uploads/image/file/3413/pimiento_verde.jpg",
-                            "price" => 1.5,
-                            "price_k" => 2.5,
-                            "created_at" => "2023-03-03T10:43:40.000000Z",
-                            "updated_at" => "2023-03-03T10:43:40.000000Z",
-                            "user_id" => null
-                        ]
+                    [
+                        "id" => 15,
+                        "name" => "Patata",
+                        "photo" => "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/59.jpg",
+                        "price" => 1.5,
+                        "price_k" => 3.5,
+                        "created_at" => "2023-03-03T10:43:40.000000Z",
+                        "updated_at" => "2023-03-03T10:43:40.000000Z",
+                        "user_id" => null,
+                        'isBought' => false,
+                        'userLike' => null
+                    ],
+                    [
+                        "id" => 18,
+                        "name" => "Pechugas de pollo",
+                        "photo" => "https://mejorconsalud.as.com/wp-content/uploads/2018/07/pechugas-pollo.jpg",
+                        "price" => 2.5,
+                        "price_k" => 3.5,
+                        "created_at" => "2023-03-03T10:43:40.000000Z",
+                        "updated_at" => "2023-03-03T10:43:40.000000Z",
+                        "user_id" => null,
+                        'isBought' => false,
+                        'userLike' => null
+                    ],
+                    [
+                        "id" => 19,
+                        "name" => "Pimiento verde",
+                        "photo" => "https://www.gastronomiavasca.net/uploads/image/file/3413/pimiento_verde.jpg",
+                        "price" => 1.5,
+                        "price_k" => 2.5,
+                        "created_at" => "2023-03-03T10:43:40.000000Z",
+                        "updated_at" => "2023-03-03T10:43:40.000000Z",
+                        "user_id" => null,
+                        'isBought' => false,
+                        'userLike' => null
+
                     ]
+                ]
             ]);
 
             if ($newUserList) {
@@ -220,11 +227,11 @@ class GeneralShoppingListController extends Controller
 
 
             // $ingredients = json_decode($lista->ingredients, true);
-            $ingredients=$lista->ingredients;
+            $ingredients = $lista->ingredients;
 
             // echo $ingredients;
             $posicioningredientABorrar = array_filter($ingredients, function ($ingredient) use ($ingredientABorrar) {
-                return $ingredient['id'] != $ingredientABorrar ;
+                return $ingredient['id'] != $ingredientABorrar;
             });
             // echo $posicioningredientABorrar;
             // $lista->ingredients = json_encode(array_values($posicioningredientABorrar));

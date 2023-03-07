@@ -22,27 +22,15 @@ export class SupermarketDetailComponent {
   public id: number = 2;
   public response: ApiResponse;
   public editModal: boolean = false;
+  public deleteModal: boolean = false;
+  public deleteOption: boolean = null;
   public ingredientToEdit: Ingredients;
+  public ingredientToDelete: Ingredients;
   constructor(private route: ActivatedRoute, private supermarketService: SupermarketService, private shoppingListService: ShoppingListService
   ) {
 
   }
-  public loginForm = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl("Introduce un nuevo nombre...", [ //usuario@eataday.com
-      Validators.minLength(3),
-      Validators.nullValidator
-    ]),
-    // password: new FormControl("password", [
-    //   Validators.required,
-    //   Validators.minLength(6)
-    // ]),
-    // terms: new FormControl("", [
-    //   Validators.required,
-    //   Validators.requiredTrue
-    // ])
 
-  });
   ngOnInit(): void {
     let id: number = +this.route.snapshot.paramMap.get('id');
     this.supermarketService.getSupermarketByID(id).subscribe((supermarket: Supermarket) => {
@@ -58,9 +46,13 @@ export class SupermarketDetailComponent {
 
     })
   }
-  public delete(ingredient: Ingredients) {
-    console.log(ingredient)
-    this.shoppingListService.deleteIngredientFromSupermarketList(this.id, this.supermarket, ingredient).pipe(
+  public chose(ingredient: Ingredients) {
+    this.deleteModal = true;
+    this.ingredientToDelete = ingredient;
+  }
+  public delete() {
+
+    this.shoppingListService.deleteIngredientFromSupermarketList(this.id, this.supermarket, this.ingredientToDelete).pipe(
       switchMap(() => this.shoppingListService.getSuperMarketUserShoppingList(this.id, this.supermarket.id))).subscribe((shopList: shopListResponse) => {
         // console.log(shopList);
         this.userShoppingList = shopList.data[0].ingredients.filter((ingredient) => !ingredient.isBought);
@@ -68,10 +60,12 @@ export class SupermarketDetailComponent {
         console.log(shopList.data[0]);
 
       });
+
+
   }
 
-  public setBoughtTrue(ingredient: Ingredients) {
-    this.shoppingListService.setBoughtBoolean(this.id, this.supermarket, ingredient)
+  public setBoughtTrue() {
+    this.shoppingListService.setBoughtBoolean(this.id, this.supermarket, this.ingredientToDelete)
       .pipe(switchMap(() =>
         this.shoppingListService.getSuperMarketUserShoppingList(this.id, this.supermarket.id)))
       .subscribe((shopList: shopListResponse) => {
@@ -80,11 +74,13 @@ export class SupermarketDetailComponent {
         console.log(shopList.data[0]);
 
       })
+      this.deleteModal=false;
   }
+
   public show() {
     console.log(this.userShoppingList);
   }
-  public recharge(){
+  public recharge() {
     this.shoppingListService.getSuperMarketUserShoppingList(this.id, this.supermarket.id).pipe(map(result => result)).subscribe((shopList: shopListResponse) => {
       // console.log(shopList);
       this.userShoppingList = shopList.data[0].ingredients.filter((ingredient) => !ingredient.isBought);
@@ -96,6 +92,7 @@ export class SupermarketDetailComponent {
   }
 
   public openEditModal(ingredient: Ingredients) {
+    // this.settingsModal = true;
     this.editModal = true;
     this.ingredientToEdit = ingredient;
   }
