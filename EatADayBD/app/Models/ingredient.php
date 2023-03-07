@@ -16,7 +16,8 @@ class Ingredient extends Model
         'price_k',
         'user_id',
         'isBought',
-        'userLike'
+        'userLike',
+        'priceUp'
     ];
 
     public function supermarket() {
@@ -27,5 +28,5 @@ class Ingredient extends Model
         return $this->belongsTo(User::class);
     }
     //relaciones muchos a muchos
-    
+
 }

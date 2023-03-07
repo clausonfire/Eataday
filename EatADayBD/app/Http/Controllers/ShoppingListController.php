@@ -311,7 +311,12 @@ class ShoppingListController extends Controller
             $ingredients = $userSupermarketList[0]->ingredients;
             foreach ($ingredients as &$item) {
                 if ($item['name'] === $ingredient['name']) {
-                    $item['isBought'] = 1;
+                    if($item['isBought'] == 1){
+                        $item['isBought'] = 0;
+                    }else{
+                        $item['isBought'] = 1;
+                    }
+
                     break;
                 }
             }

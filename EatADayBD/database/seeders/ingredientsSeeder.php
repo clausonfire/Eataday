@@ -25,7 +25,8 @@ class ingredientsSeeder extends Seeder
 
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -36,7 +37,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -49,7 +51,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -60,7 +63,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -71,7 +75,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -82,7 +87,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -93,7 +99,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 1.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -104,7 +111,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 5.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -115,7 +123,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -126,7 +135,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -137,7 +147,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -148,7 +159,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 1.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -159,7 +171,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -170,7 +183,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -181,7 +195,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 3.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -192,7 +207,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 5.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -203,7 +219,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 3.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -214,7 +231,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 3.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -225,7 +243,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -237,7 +256,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -248,7 +268,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -260,7 +281,8 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
 
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -271,7 +293,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -282,7 +305,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 2.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
 
@@ -293,7 +317,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => null,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
 
         ]);
         Ingredient::create([
@@ -303,7 +328,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => 1,
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user2',
@@ -312,7 +338,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => 2,
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user3',
@@ -321,7 +348,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => 2,
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user4',
@@ -330,18 +358,18 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => 3,
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user5',
-
             'photo' => "ruta5",
-
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 1,
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user6',
@@ -350,7 +378,8 @@ class ingredientsSeeder extends Seeder
             'price_k' => 4.5,
             'user_id' => 2,
             'isBought' => false,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
         Ingredient::create([
             'name' => 'user7',
@@ -360,7 +389,8 @@ class ingredientsSeeder extends Seeder
             'user_id' => 3,
 
             'isBought' => true,
-            'userLike' => null
+            'userLike' => null,
+            'priceUp' => null
         ]);
     }
 }
