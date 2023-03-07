@@ -53,7 +53,38 @@ class GeneralShoppingListController extends Controller
             }
             $newUserList = GeneralShoppingList::create([
                 'user_id' => $id,
-                'ingredients' => ['pan', 'leche', 'agua']
+                'ingredients' => [
+                        [
+                            "id" => 15,
+                            "name" => "Patata",
+                            "photo" => "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/59.jpg",
+                            "price" => 1.5,
+                            "price_k" => 3.5,
+                            "created_at" => "2023-03-03T10:43:40.000000Z",
+                            "updated_at" => "2023-03-03T10:43:40.000000Z",
+                            "user_id" => null
+                        ],
+                        [
+                            "id" => 18,
+                            "name" => "Pechugas de pollo",
+                            "photo" => "https://mejorconsalud.as.com/wp-content/uploads/2018/07/pechugas-pollo.jpg",
+                            "price" => 2.5,
+                            "price_k" => 3.5,
+                            "created_at" => "2023-03-03T10:43:40.000000Z",
+                            "updated_at" => "2023-03-03T10:43:40.000000Z",
+                            "user_id" => null
+                        ],
+                        [
+                            "id" => 19,
+                            "name" => "Pimiento verde",
+                            "photo" => "https://www.gastronomiavasca.net/uploads/image/file/3413/pimiento_verde.jpg",
+                            "price" => 1.5,
+                            "price_k" => 2.5,
+                            "created_at" => "2023-03-03T10:43:40.000000Z",
+                            "updated_at" => "2023-03-03T10:43:40.000000Z",
+                            "user_id" => null
+                        ]
+                    ]
             ]);
 
             if ($newUserList) {
@@ -176,22 +207,34 @@ class GeneralShoppingListController extends Controller
     public function deleteIngredient(Request $request, $userId, $ingredientABorrar)
     {
         $user = User::find($userId);
-        $lista = GeneralShoppingList::find($user->userGeneralShoppingList->id);
+        // echo $user->userGeneralShoppingList;
+        // echo $user->userGeneralShoppingList->ingredients;
+        $lista = $user->userGeneralShoppingList;
+        // echo $lista->ingredients;
+        // echo $user;
         if ($user) {
 
-            $ingredients = json_decode($lista->ingredients, true);
-            $posicioningredientABorrar = array_search($ingredientABorrar, $ingredients);
-            if ($posicioningredientABorrar !== false) {
-                array_splice($ingredients, $posicioningredientABorrar, 1);
-            }
 
-            $lista->ingredients = json_encode($ingredients);
+
+
+
+
+            // $ingredients = json_decode($lista->ingredients, true);
+            $ingredients=$lista->ingredients;
+
+            // echo $ingredients;
+            $posicioningredientABorrar = array_filter($ingredients, function ($ingredient) use ($ingredientABorrar) {
+                return $ingredient['id'] != $ingredientABorrar ;
+            });
+            // echo $posicioningredientABorrar;
+            // $lista->ingredients = json_encode(array_values($posicioningredientABorrar));
+            $lista->ingredients = array_values($posicioningredientABorrar);
             $lista->save();
 
             $response = [
                 'success' => true,
                 'message' => 'Ingredient deleted successfully',
-                'data' => $lista->ingredients
+                'data' => $lista
             ];
             return response()->json($response);
         }
@@ -222,50 +265,64 @@ class GeneralShoppingListController extends Controller
             if ($relacionListaUser) {
                 $lista = GeneralShoppingList::find($user->userGeneralShoppingList->id);
                 if ($lista != null) {
-                    $ingredientesLista = json_decode($lista->ingredients, true);
+                    // echo $lista->ingredients;
+                    $ingredientesLista = $lista->ingredients;
                     if (!in_array($ingredient, $ingredientesLista)) {
                         $ingredientesLista[] = $ingredient;
-                        $lista->ingredients = json_encode($ingredientesLista);
+                        $lista->ingredients = $ingredientesLista;
                         $lista->save();
+
+
+
+
+
+                        // echo $lista->ingredients;
+                        // $ingredientesLista = json_decode($lista->ingredients, true);
+                        // if (!in_array($ingredient, $ingredientesLista)) {
+                        //     $ingredientesLista[] = $ingredient;
+                        // $lista->ingredients = json_encode($ingredientesLista);
+                        // $lista->save();
+                        // }
+
+                        $response = [
+                            'success' => true,
+                            'message' => 'List Found',
+                            'data' => $lista
+                        ];
+                        return response()->json($response);
+
                     }
-                    $response = [
-                        'success' => true,
-                        'message' => 'List Found',
-                        'data' => $lista
-                    ];
-                    return response()->json($response);
-
                 }
+
+
+
+
+                // if ($user) {
+                //     $lista = GeneralShoppingList::find($user->userGeneralShoppingList->id);
+                //     echo $lista;
+                //     $ingredientesLista = $lista->ingredients;
+                //     if (!in_array($ingredient, $ingredientesLista)) {
+                //         $ingredientesLista[] = $ingredient;
+                //         $lista->ingredients = $ingredientesLista;
+
+                //         $lista->save();
+                //     }
+                //     $response = [
+                //         'success' => false,
+                //         'message' => 'missing data',
+                //         'data' => null
+                //     ];
+                //     return response()->json($response);
+                // }
+                // echo $ingredient;
+                // echo $user;
             }
-
-
-
-
-            // if ($user) {
-            //     $lista = GeneralShoppingList::find($user->userGeneralShoppingList->id);
-            //     echo $lista;
-            //     $ingredientesLista = $lista->ingredients;
-            //     if (!in_array($ingredient, $ingredientesLista)) {
-            //         $ingredientesLista[] = $ingredient;
-            //         $lista->ingredients = $ingredientesLista;
-
-            //         $lista->save();
-            //     }
-            //     $response = [
-            //         'success' => false,
-            //         'message' => 'missing data',
-            //         'data' => null
-            //     ];
-            //     return response()->json($response);
-            // }
-            // echo $ingredient;
-            // echo $user;
+            $response = [
+                'success' => false,
+                'message' => 'User not found',
+                'data' => $user
+            ];
+            return response()->json($response);
         }
-        $response = [
-            'success' => false,
-            'message' => 'User not found',
-            'data' => $user
-        ];
-        return response()->json($response);
     }
 }
