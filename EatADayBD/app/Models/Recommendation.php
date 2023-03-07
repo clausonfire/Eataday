@@ -13,7 +13,8 @@ class Recommendation extends Model
         'id',
         'title',
         'text',
-        'photo'
+        'photo',
+        'video'
     ];
     
     protected $hidden = [

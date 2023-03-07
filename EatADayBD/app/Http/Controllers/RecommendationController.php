@@ -69,6 +69,7 @@ class RecommendationController extends Controller
                 'title' => 'required|string',
                 'text' => 'required|string',
                 'photo' => 'required|string',
+                'video' => 'required|string'
             ]));
         } catch (Throwable $e) {
             report($e);
@@ -131,7 +132,8 @@ class RecommendationController extends Controller
                 $recommendations->update($request->validate([
                     'title' => 'string',
                     'text' => 'string',
-                    'photo' => 'string'
+                    'photo' => 'string',
+                    'video' => 'string'
                 ]));
             } catch (Throwable $a) {
                 report($a);

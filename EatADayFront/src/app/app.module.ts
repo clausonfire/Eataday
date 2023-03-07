@@ -35,6 +35,10 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { RecommendationDetailComponent } from './recommendation-detail/recommendation-detail.component';
 import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 // import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
@@ -80,6 +84,10 @@ import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.compo
     ReactiveFormsModule,
 
     HttpClientModule,
+
+    PDFExportModule,
+
+    BrowserAnimationsModule,
 
 
   ],

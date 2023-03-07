@@ -39,7 +39,7 @@ export class VidasanaDetailComponent implements OnInit {
       .getRecommnByID(id)
       .subscribe((recommendations: Recommendations) => {
         this.idRecomm = recommendations;
-        this.iframeURL = this.sanitizer.bypassSecurityTrustResourceUrl(recommendations.photo)
+        this.iframeURL = this.sanitizer.bypassSecurityTrustResourceUrl(recommendations.video)
       });
 
   }
