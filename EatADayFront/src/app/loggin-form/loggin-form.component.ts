@@ -48,9 +48,7 @@ export class LogginFormComponent /*implements OnInit */{
 
 
   public loginCheck() {
-    this.loginService.login(this.loginForm.value as Login).subscribe(success =>
-    console.log(success)
-    )
+    return this.loginService.login(this.loginForm.value as Login).subscribe()
   }
 
 

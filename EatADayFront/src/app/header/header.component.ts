@@ -13,13 +13,13 @@ export class HeaderComponent {
     private router: Router
   ) { }
   public logOut(): void {
-    if (localStorage.getItem('token' || localStorage.getItem('user'))) {
+    if (localStorage.getItem('token' || localStorage.getItem('roleUserId'))) {
       localStorage.removeItem("token");
-      localStorage.removeItem('user');
+      localStorage.removeItem('roleUserId');
       this.router.navigate(['login']);
-      return console.log("token borrado");
+      return console.log("localStorage borrado");
     }
-    return console.log("error, NO se ha podido borrar el token");
+    return console.log("error, NO se ha podido borrar");
   }
 
 }
