@@ -23,7 +23,8 @@ class RecommendationSeeder extends Seeder
             Los polifenoles estilbenos, que se encuentran en la piel de la uva y se concentran en el vino tinto, y los lignanos, presentes en las aceitunas, el aceite de oliva virgen, las semillas de lino, las semillas de sésamo y los cereales integrales están asociados con efectos protectores frente a la mortalidad.
             Parece ser que la dieta mediterránea está asociada con un menor riesgo de deterioro cognitivo leve tanto durante el envejecimiento como durante la etapa de transición entre la demencia o deterioro cognitivo leve a la enfermedad de Alzheimer.
             Llevar un régimen de dieta mediterránea se asocia a menor índice de obesidad abdominal, que predice el riesgo de diabetes, hipertensión, infarto o de accidente cerebrovascular. La adherencia a la dieta mediterránea reduce en un 30% el riesgo de padecer diabetes tipo 2, sin necesidad de reducir la ingesta calórica, el peso o realizar ejercicio físico. También mejora el desarrollo embrionario y fetal, y disminuye los problemas disovulatorios y de infertilidad.',
-            'photo' => "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/04/12/16497610143946.jpg"
+            'photo' => "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/04/12/16497610143946.jpg",
+            'video' => null
         ]);
 
         DB::table('recommendations')->insert([
@@ -35,7 +36,9 @@ class RecommendationSeeder extends Seeder
             
             Las personas que siguen dietas vegetarianas pueden obtener todos los nutrientes que necesitan. Sin embargo, deben tener cuidado de comer una amplia variedad de alimentos para cubrir sus necesidades nutricionales. Los nutrientes vegetarianos deben enfocarse en incluir proteínas, hierro, calcio, zinc y vitamina B12.
             Una manera de hacer la transición a una dieta vegetariana es reducir progresivamente la carne en la dieta mientras aumentas el consumo de frutas y verduras.',
-            'photo' => "https://www.elcorreogallego.es/binrepository/716x506/0c0/0d0/none/102922340/JLPU/piram-vegetariana_422-3459274_20210610114523.jpg"
+            'photo' => "https://www.elcorreogallego.es/binrepository/716x506/0c0/0d0/none/102922340/JLPU/piram-vegetariana_422-3459274_20210610114523.jpg",
+            'video' => null
+
         ]);
 
         DB::table('recommendations')->insert([
@@ -54,7 +57,9 @@ class RecommendationSeeder extends Seeder
             Algas, etc...
             
             Si se planifica adecuadamente, una dieta vegana puede proporcionar todos los nutrientes que una persona necesita.',
-            'photo' => "https://www.dietistasnutricionistas.es/wp-content/uploads/2014/02/UVE_pir%C3%A1mide_alim_vegana.jpg"
+            'photo' => "https://www.dietistasnutricionistas.es/wp-content/uploads/2014/02/UVE_pir%C3%A1mide_alim_vegana.jpg",
+            'video' => null
+
         ]);
         
         DB::table('recommendations')->insert([
@@ -70,7 +75,9 @@ class RecommendationSeeder extends Seeder
             La dieta cetogénica cíclica (DCC): Este plan implica periodos de recargas más altas en carbohidratos , por ejemplo, 5 días cetogénicos seguidos de 2 días con carbohidratos.
             La dieta cetogénica adaptada (DCA): Te permite añadir carbohidratos los días de entrenamientos.
             La dieta cetogénica alta en proteínas: Es similar a una dieta cetogénica estándar, pero incluye más proteínas. Lo normal suele ser un 60% de grasas, un 35% de proteínas y un 5% de carbohidratos.',
-            'photo' => "https://t1.uc.ltmcdn.com/es/posts/1/1/3/que_es_la_dieta_keto_alimentos_permitidos_menu_semanal_y_contraindicaciones_51311_orig.jpg"
+            'photo' => "https://t1.uc.ltmcdn.com/es/posts/1/1/3/que_es_la_dieta_keto_alimentos_permitidos_menu_semanal_y_contraindicaciones_51311_orig.jpg",
+            'video' => null
+
         ]);
 
         DB::table('recommendations')->insert([
@@ -91,7 +98,8 @@ class RecommendationSeeder extends Seeder
             Ansiedad
             Dolor de espalda
             Depresión',
-            'photo' => "https://www.youtube.com/watch?v=a01D1PzTVFc&t=12s"
+            'photo' => null,
+            'video' => "https://www.youtube.com/embed/a01D1PzTVFc"
         ]);
 
         DB::table('recommendations')->insert([
@@ -117,7 +125,8 @@ class RecommendationSeeder extends Seeder
             Ayuda a descansar mejor: El esfuerzo de la carrera y de la actividad del día favorece que por la noche sea más fácil conciliar el sueño.
             
             Aumenta la autoestima: Si se realiza con frecuencia, marcarse objetivos y conseguirlos y las mejoras físicas que sufre el organismo consigue aumentar la autoestima del corredor.',
-            'photo' => "https://www.youtube.com/watch?v=M9dHBu_Ir0k"
+            'photo' => null,
+            'video' => "https://www.youtube.com/embed/M9dHBu_Ir0k"
         ]);
 
         DB::table('recommendations')->insert([
@@ -126,7 +135,8 @@ class RecommendationSeeder extends Seeder
             Gracias a su tremenda efectividad como sistema de preparación física, en sus orígenes el CrossFit fue elegido por numerosas academias militares, cuerpos de policía, artistas marciales y cientos de deportistas de élite en todo el mundo como programa de acondicionamiento y entrenamiento de fuerza estándar.
 
             No obstante, a día de hoy, el CrossFit se ha popularizado en todos los sectores de la población. El hecho de ser un programa diseñado para ser fácilmente adaptable lo convierte en el sistema de entrenamiento perfecto para cualquier persona con motivación, independientemente de su edad, sexo, capacidades o experiencia previa. Una de las grandes maravillas del CrossFit es que durante su práctica, un mismo entrenamiento puede ser realizado simultáneamente por un anciano con problemas cardiovasculares o de movilidad reducida y un bombero en un estado de forma óptima.',
-            'photo' => "https://www.youtube.com/watch?v=rmzWeBTC6aM"
+            'photo' => null,
+            'video' => "https://www.youtube.com/embed/qdUf5SFo_OQ"
         ]);
 
         DB::table('recommendations')->insert([
@@ -140,7 +150,8 @@ class RecommendationSeeder extends Seeder
             Entrenamiento de fuerza: Para estimular la degradación muscular y la reparación (aumentar la masa muscular aumentará el metabolismo, al tener el músculo un mayor consumo calorífico que la grasa).
             Ejercicio cardiovascular (en particular en el entrenamiento de intervalos): Para quemar calorías.
             Nutrición óptima: Para manipular la ingesta de calorías y proporcionar una nutrición suficiente para el crecimiento muscular. El requisito principal para buscar la tonificación es la obtención de baja grasa corporal, ya que la grasa proporciona un aspecto "blando".',
-            'photo' => "https://www.youtube.com/watch?v=q9b9afJ-GnA&t=317s"
+            'photo' => null,
+            'video' => "https://www.youtube.com/embed/q9b9afJ-GnA"
         ]);
     }
 }

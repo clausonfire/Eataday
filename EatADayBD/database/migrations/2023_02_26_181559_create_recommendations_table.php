@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 32);
             $table->longText('text');
-            $table->string('photo', 200)->unique();
+            $table->string('photo', 200)->unique()->nullable();
+            $table->string('video', 200)->unique()->nullable();
             $table->timestamps();
         });
     }
