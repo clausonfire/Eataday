@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { LogginFormComponent } from './loggin-form/loggin-form.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,7 +15,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { MatchRecetasComponent } from './match-recetas/match-recetas.component';
 import { BuscadorAlimentosComponent } from './buscador-alimentos/buscador-alimentos.component';
-import {HttpClientModule, HttpErrorResponse} from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { RecetasTopComponent } from './recetas-top/recetas-top.component';
 
 
@@ -35,7 +35,7 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { RecommendationDetailComponent } from './recommendation-detail/recommendation-detail.component';
 import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -85,7 +85,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     HttpClientModule,
 
-    PDFExportModule,
 
     BrowserAnimationsModule,
 
