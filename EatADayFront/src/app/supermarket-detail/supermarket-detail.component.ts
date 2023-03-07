@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingListService } from '../shopping-list.service';
 import { ShoppingList } from '../shoppingList';
 import { Supermarket } from '../supermarket';
@@ -26,7 +26,7 @@ export class SupermarketDetailComponent {
   public deleteOption: boolean = null;
   public ingredientToEdit: Ingredients;
   public ingredientToDelete: Ingredients;
-  constructor(private route: ActivatedRoute, private supermarketService: SupermarketService, private shoppingListService: ShoppingListService
+  constructor(private route: ActivatedRoute, private router: Router, private supermarketService: SupermarketService, private shoppingListService: ShoppingListService
   ) {
 
   }
@@ -63,7 +63,9 @@ export class SupermarketDetailComponent {
 
 
   }
-
+  public closeSupermarkets() {
+    this.router.navigate(['closeSupermarkets/' + this.supermarket.id])
+  }
   public setBoughtTrue() {
     this.shoppingListService.setBoughtBoolean(this.id, this.supermarket, this.ingredientToDelete)
       .pipe(switchMap(() =>
@@ -74,7 +76,7 @@ export class SupermarketDetailComponent {
         console.log(shopList.data[0]);
 
       })
-      this.deleteModal=false;
+    this.deleteModal = false;
   }
 
   public show() {
