@@ -4,6 +4,10 @@ import { Ingredients } from '../ingredients';
 import { debounceTime, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 import { Recipes } from '../recipes';
 import { RecipesService } from '../recipes.service';
+import {UserService} from "../user.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {LoginService} from "../login.service";
+import {User} from "../user";
 @Component({
   selector: 'app-match-recetas',
   templateUrl: './match-recetas.component.html',
@@ -17,11 +21,30 @@ export class MatchRecetasComponent {
   // public recipesFound$: Observable<Recipes[]> = of([]);
   public recipesFound$: Recipes[] = [];
 
-  constructor(private RecipesService: RecipesService) { }
+
+  private id: number;
+
+  constructor(
+    private RecipesService: RecipesService,
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private loginService: LoginService
+
+  ) { }
   ngOnInit(): void {
-
-
+    this.loginService.getTokenUserLoged().subscribe((response) => {
+      if (response.success) {
+        const user = response.data;
+        localStorage.setItem('user', JSON.stringify(user));
+        console.log(user);
+      } else {
+        console.error('Error fetching user data:');
+      }
+    }, (error) => {
+      console.error('Error fetching user data:');
+    });
   }
+
   public getShowFinder(): void {
     if(this.showFinder===false){
       this.showFinder = !this.showFinder;

@@ -252,6 +252,27 @@ class UserController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function getUserID($id) {
+        $user = User::find($id);
+        if ($user != null) {
+            $response = [
+                'success' => true,
+                'message' => 'User ID found successfully',
+                'data' => $id
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'User not found',
+                'data' => null
+            ];
+        }
+
+        return response()->json($response, 200);
+    }
+
+
 }
 
 

@@ -6,11 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SupermarketController;
+
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\GeneralShoppingListController;
+
+use App\Http\Controllers\RecommendationController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SugerenceRecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +55,10 @@ Route::prefix('/users')->group(function () {
             Route::post(
                 '',
                 'create'
+            );
+            Route::get(
+                '/{id}/getuserid',
+                'getUserID',
             );
             Route::get('/{id}/role', 'role');
             Route::get('/{id}/ingredients', 'ingredients');
@@ -325,6 +334,66 @@ Route::prefix('/supermarkets')->group(function () {
                 'delete'
             );
             Route::get('/{id}/ingredients', 'ingredients');
+        }
+    );
+});
+
+//RECOMMENDATIONS
+Route::prefix('/recommendations')->group(function () {
+    Route::controller(RecommendationController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '',
+                'create'
+            );
+            Route::patch(
+                '/{id}',
+                'modify'
+            );
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+
+        }
+    );
+});
+
+//SugerenceRecipes
+Route::prefix('/sugerenceRecipes')->group(function () {
+    Route::controller(SugerenceRecipeController::class)->group(
+        function () {
+            Route::get(
+                '',
+                'getAll',
+            );
+            Route::get(
+                '/{id}',
+                'getById'
+            );
+            Route::post(
+                '/search',
+                'search'
+            );
+            // ->where('name','[a-zA-Z]+' );
+            Route::post(
+                '',
+                'create'
+            );
+
+            Route::delete(
+                '/{id}',
+                'delete'
+            );
+            Route::get('/{id}/user', 'users');
         }
     );
 });

@@ -22,9 +22,11 @@ class ingredientsSeeder extends Seeder
             'photo' => "https://dam.cocinafacil.com.mx/wp-content/uploads/2018/07/beneficios-del-atun-1.jpg",
             'price' => 2.5,
             'price_k' => 3.5,
+
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -35,6 +37,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
 
@@ -47,6 +50,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -57,6 +61,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -67,6 +72,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -77,6 +83,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -87,6 +94,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -97,6 +105,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -107,6 +116,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -117,6 +127,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -127,6 +138,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -137,6 +149,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -147,6 +160,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -157,6 +171,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -167,6 +182,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -177,6 +193,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -187,6 +204,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -197,6 +215,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -207,6 +226,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -218,6 +238,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -228,6 +249,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -239,6 +261,7 @@ class ingredientsSeeder extends Seeder
 
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -249,6 +272,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -259,6 +283,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
 
         Ingredient::create([
@@ -269,6 +294,7 @@ class ingredientsSeeder extends Seeder
             'user_id' => null,
             'isBought' => false,
             'userLike' => null
+
         ]);
         Ingredient::create([
             'name' => 'user1',
@@ -308,7 +334,9 @@ class ingredientsSeeder extends Seeder
         ]);
         Ingredient::create([
             'name' => 'user5',
-            'photo' => "ruta12",
+
+            'photo' => "ruta5",
+
             'price' => 2.5,
             'price_k' => 4.5,
             'user_id' => 1,
