@@ -21,8 +21,9 @@ export class MatchRecetasComponent {
   // public recipesFound$: Observable<Recipes[]> = of([]);
   public recipesFound$: Recipes[] = [];
 
+/*  private rolIdUser: number;*/
 
-  private id: number;
+
 
   constructor(
     private RecipesService: RecipesService,
@@ -32,17 +33,7 @@ export class MatchRecetasComponent {
 
   ) { }
   ngOnInit(): void {
-    this.loginService.getTokenUserLoged().subscribe((response) => {
-      if (response.success) {
-        const user = response.data;
-        localStorage.setItem('user', JSON.stringify(user));
-        console.log(user);
-      } else {
-        console.error('Error fetching user data:');
-      }
-    }, (error) => {
-      console.error('Error fetching user data:');
-    });
+    this.loginService.getIdRoleUserLoged().subscribe();
   }
 
   public getShowFinder(): void {

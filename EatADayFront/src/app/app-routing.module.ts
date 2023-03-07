@@ -17,25 +17,19 @@ import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
 
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
-  { path: 'matchAlimentos', component: MatchRecetasComponent, canActivate:[LoginGGuard]},
-  { path: 'RecipeDetail/:id', component: RecipeDetailComponent, canActivate:[LoginGGuard] },{ path: 'Questions', component: QuestionsComponent },
-  { path: 'QuestionDetail/:id', component: QuestionDetailComponent },
-  { path: 'shoppingDiary', component: ShoppingDiaryComponent },
-
-  { path: 'send-recipe', component: SendRecipeComponent },
-
+  { path: 'matchAlimentos', component: MatchRecetasComponent },
+  { path: 'RecipeDetail/:id', component: RecipeDetailComponent },
+  { path: 'QuestionDetail/:id', component: QuestionDetailComponent, canActivate:[LoginGGuard] },
+  { path: 'shoppingDiary', component: ShoppingDiaryComponent, canActivate:[LoginGGuard] },
+  { path: 'send-recipe', component: SendRecipeComponent, canActivate:[LoginGGuard] },
   { path: 'supermarketDetail/:id', component: SupermarketDetailComponent, canActivate:[LoginGGuard] },
   { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent, canActivate:[LoginGGuard] },
   { path: 'vidasana', component: VidasanaComponent },
-  { path: 'vidasanaDetail/:id', component: VidasanaDetailComponent },
-
+  { path: 'vidasanaDetail/:id', component: VidasanaDetailComponent, canActivate:[LoginGGuard] },
   { path: 'questions', component: QuestionsComponent },
-
-
-
   { path: '**', component: LoginComponent },
-
 
 ];
 
@@ -43,5 +37,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
 

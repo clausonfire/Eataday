@@ -11,10 +11,10 @@ export class LoginGGuard implements CanActivate {
 
   private token: string = localStorage.getItem('token');
   private headers: HttpHeaders;
-  constructor(
-    private router: Router,
-    private loginService: LoginService,
 
+
+  constructor(
+    private router: Router
   ) {
     this.headers = new HttpHeaders({"Accept": "application/json", "Authorization": `Bearer ${this.token}`});
   }
@@ -25,18 +25,6 @@ export class LoginGGuard implements CanActivate {
     }
   }
 
-  /*canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.loginService.getTokenUserLoged().pipe(tap(data => {
-      if(!data) {
-        console.log("no estas logeado");
-      }else{
-        console.log(data);
-        console.log("si estas logeado");
-      }
-      return true
-    }))*/
 
 
   canActivate(
@@ -44,14 +32,23 @@ export class LoginGGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this.token) {
       this.router.navigate(['/login']);
+      alert("You dont have permissions");
+      return false;
+    }
+
+    let id = localStorage.getItem('roleUserId');
+    let userRole: number = JSON.parse(id);
+    if(!(userRole === 1 || userRole === 2)){
+      console.log("U arent log");
+      this.router.navigate(['/', 'login']);
+      alert("You dont have permissions");
       return false;
     }
     return true;
     }
 
 
-    /* COGER EL TOKEN DE LOCAL STORAGE. */
-    /* LUEGO, VER QUE EXISTE */
+
 
 
 

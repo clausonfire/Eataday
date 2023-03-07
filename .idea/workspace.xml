@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="afb39549-5b3d-433b-834e-ed472dd216ce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EatADayBD/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayBD/app/Http/Controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EatADayBD/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayBD/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EatADayBD/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayBD/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/header/header.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/loggin-form/loggin-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/loggin-form/loggin-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/login-g.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/login-g.guard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/login.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/match-recetas/match-recetas.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/match-recetas/match-recetas.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/match-recetas/match-recetas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/match-recetas/match-recetas.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EatADayFront/src/app/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/EatADayFront/src/app/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,6 +201,8 @@
       <workItem from="1677607335326" duration="9316000" />
       <workItem from="1677683270762" duration="17888000" />
       <workItem from="1677846188588" duration="308000" />
+      <workItem from="1678145860281" duration="3000" />
+      <workItem from="1678201318817" duration="17587000" />
     </task>
     <servers />
   </component>
