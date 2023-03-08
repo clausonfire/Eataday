@@ -1,12 +1,12 @@
 <div class="h-full w-full">
-  <div class="flex justify-center items-center flex-col gap-4 py-5">
-    <div class="flex justify-center items-center">
-      <h2 class="text-2xl">Añade tus ingredientes y crea tu receta</h2>
+  <div class="flex justify-center items-center flex-col gap-9 py-7 pb-8 ">
+    <div class="flex justify-center items-center ">
+      <h2 class="text-xl">Añade tus ingredientes y crea tu receta</h2>
     </div>
 
     <div class="flex justify-center items-center">
       <button (click)="getShowFinder()"
-        class="bg-green-400 active:bg-green-600 rounded-full p-3 flex items-center justify-center">
+        class="bg-green-400 active:bg-green-600 rounded-full p-3 flex items-center justify-center shadow-md shadow-slate-600 focus:shadow-none ">
         <img src="../assets/addIcon.png" class="invert h-5 active:invert-0" alt="">
       </button>
     </div>
@@ -34,8 +34,8 @@
   <ng-template #resultRecetas>
     <div class="bg-gray-400 flex flex-col gap-2 justify-center items-center">
 
-      <div class=" flex flex-col w-fit p-3" >
-        <h1 class="pt-3 text-2xl">Aquí tienes algunas recetas para ti</h1>
+      <div class=" flex flex-col  p-3">
+        <h1 class="pt-3 text-lg">Recetas con tus ingredientes</h1>
         <ul class="flex flex-col gap-1">
           <li *ngFor="let recipe of recipesFound$" class="bg-gray-100 p-1">
 
@@ -52,6 +52,6 @@
       </div>
     </div>
   </ng-template>
-  
+
 
 </div>
