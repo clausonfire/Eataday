@@ -37,6 +37,7 @@ import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserQuestionsComponent } from './user-questions/user-questions.component';
 
 
 
@@ -75,7 +76,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecommendationDetailComponent,
     VidasanaComponent,
     VidasanaDetailComponent,
-
+    UserQuestionsComponent
 
   ],
   imports: [
