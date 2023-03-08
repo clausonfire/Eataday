@@ -10,6 +10,7 @@ import { Recipes } from '../recipes';
 })
 export class RecipeDetailComponent implements OnInit {
   public recipe?: Recipes;
+  location: any;
   constructor(private route: ActivatedRoute, private recipeService: RecipesService
   ) {
 
@@ -33,5 +34,8 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   goPrint(): void {
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
