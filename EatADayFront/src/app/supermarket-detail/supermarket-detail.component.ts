@@ -6,6 +6,7 @@ import { Supermarket } from '../supermarket';
 import { SupermarketService } from '../supermarket.service';
 import { ApiResponse } from '../apiResponse';
 import { map, switchMap } from 'rxjs';
+import { Location } from '@angular/common';
 import { shopListResponse, UserShopListResponse } from '../shopListResponse';
 import { Ingredients } from '../ingredients';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -19,14 +20,14 @@ export class SupermarketDetailComponent {
   public supermarket?: Supermarket;
   public userShoppingList?: Ingredients[];
   public userBoughtShoppingList?: Ingredients[];
-  public id: number = 2;
+  public id = JSON.parse(localStorage.getItem('user')).id;
   public response: ApiResponse;
   public editModal: boolean = false;
   public deleteModal: boolean = false;
   public deleteOption: boolean = null;
   public ingredientToEdit: Ingredients;
   public ingredientToDelete: Ingredients;
-  constructor(private route: ActivatedRoute, private router: Router, private supermarketService: SupermarketService, private shoppingListService: ShoppingListService
+  constructor(private route: ActivatedRoute, private location: Location, private router: Router, private supermarketService: SupermarketService, private shoppingListService: ShoppingListService
   ) {
 
   }
@@ -58,7 +59,7 @@ export class SupermarketDetailComponent {
         this.userShoppingList = shopList.data[0].ingredients.filter((ingredient) => !ingredient.isBought);
         this.userBoughtShoppingList = shopList.data[0].ingredients.filter((ingredient) => ingredient.isBought);
         console.log(shopList.data[0]);
-
+        this.deleteModal = false;
       });
 
 
@@ -92,7 +93,9 @@ export class SupermarketDetailComponent {
     });
     this.editModal = false;
   }
-
+  public goBack(): void {
+    this.location.back();
+  }
   public openEditModal(ingredient: Ingredients) {
     // this.settingsModal = true;
     this.editModal = true;
