@@ -29,7 +29,8 @@ class RecipesSeeder extends Seeder
             - Cuando el tomate esté casi listo corregimos primero el punto de sal del sofrito con sal y pimienta, para después corregir el punto de acidez del tomate con una cucharadita de azúcar blanco o moreno.
             - Emplatamos colocando primero los macarrones y encima la salsa de tomate casera al gusto.',
             'description' => 'Una forma estupenda de conseguir que los niños coman verdura es mezclarla entre sus comidas favoritas.
-            Si preparáis una buena salsa de tomate casera junto a la pasta estarán tomando un saludable plato que les llenará de energía.'
+            Si preparáis una buena salsa de tomate casera junto a la pasta estarán tomando un saludable plato que les llenará de energía.',
+            'isChecked' => true,
 
 
         ]);
@@ -155,18 +156,19 @@ class RecipesSeeder extends Seeder
             'ingredients' => '["pollo", "patata", "cebolla", "ajo", "pimienta negra", "prejil", "sal", "limon", "vino blanco", "aceite de oliva"]',
             'displayIngredients' => '["1 pollo entero", "2 patatas", "2 cebolletas", "1 limon", "8 dientes de ajo", "5 granos de pimienta negra", "Unas ramas de tomillo o perejil", "Sal", "3 ramas romero", "Aceite de oliva virgen"]',
             'preparation' => '
-            - Precalienta el horno a 180º con calor arriba y abajo. Mientras, limpia el pollo retirando los restos de plumas y excesos de grasa. 
-            - Mezcla en un bol la pimienta negra y la sal con 2 cucharadas de aceite y el zumo del limón. 
+            - Precalienta el horno a 180º con calor arriba y abajo. Mientras, limpia el pollo retirando los restos de plumas y excesos de grasa.
+            - Mezcla en un bol la pimienta negra y la sal con 2 cucharadas de aceite y el zumo del limón.
             - Remueve bien y una vez esté todo bien integrado, úntalo bien por todo el pollo hasta que quede bien embadurnado. Reserva el resto de mezcla para preparar su cama.
             - Corta las cebolletas en juliana y las patatas en rodajas de un centímetro. Sazona y salpimenta todo en conjunto con la mezcla que te ha sobrado.
             - Unta aceite en una bandeja de horno y coloca los trozos de cebolleta y patata por encima.
-            - Remueve bien todo para que quede bien sazonado y hazle un hueco en el centro. Coloca el pollo encima e introdúcele 2 ramitas de romero, un poco de tomillo y los ajos aplastados. 
+            - Remueve bien todo para que quede bien sazonado y hazle un hueco en el centro. Coloca el pollo encima e introdúcele 2 ramitas de romero, un poco de tomillo y los ajos aplastados.
             - Riega todo con un poco de agua (o si lo prefieres caldo, vino blanco o cerveza). Introdúcelo en el horno y ásalo unos 45-55 minutos aproximadamente.
-            - Es importante que a mitad de cocción, remuevas la guarnición para que no se quede quede pegada o se queme. 
+            - Es importante que a mitad de cocción, remuevas la guarnición para que no se quede quede pegada o se queme.
             - Sirve el pollo asado en un plato con su guarnición. Mezcla el jugo de la bandeja de horno con perejil picado y viértelo por encima. Adorna con otra ramita de romero.
             ',
             'description' => 'Hoy toca pollo al horno para comer, una de esas comidas que gusta a toda la familia. ¿Quién no recuerda siendo pequeño esos pollos asados que preparaba tu madre o abuela y que llenaban la casa de olores increíbles…?'
-
+            ,
+            'isChecked' => true,
 
         ]);
     }
