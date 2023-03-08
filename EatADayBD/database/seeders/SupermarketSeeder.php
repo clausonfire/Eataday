@@ -18,7 +18,7 @@ class SupermarketSeeder extends Seeder
         DB::table('supermarkets')->insert([
             'name' => 'Mercadona',
             'description' => 'Mercadona es una compañía española de distribución con sede en el municipio de Tabernes Blanques y origen en el cercano de Puebla de Farnals, ambos pertenecientes a la provincia de Valencia.',
-            'photo' => 'assets/img/mercadona.png'
+            'photo' => 'assets/img/mercadona.jpg'
         ]);
 
         DB::table('supermarkets')->insert([
@@ -30,7 +30,7 @@ class SupermarketSeeder extends Seeder
         DB::table('supermarkets')->insert([
             'name' => 'Consum',
             'description' => 'Supermercado próximo con muy buenos frescos (frutas y verduras, charcutería, carnicería y pescadería) y gran variedad de marcas. Conoce toda nuestra oferta .',
-            'photo' => 'assets/img/consum.png'
+            'photo' => 'assets/img/consum.jpg'
         ]);
     }
 }

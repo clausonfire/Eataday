@@ -22,8 +22,8 @@ export class BuscadorMixtoComponent {
 
     this.ingredientsFound$ = this.searchTerm.pipe(
 
-      debounceTime(150),
-      distinctUntilChanged(),
+      // debounceTime(150),
+      // distinctUntilChanged(),
       switchMap(text => {
         return this.IngredientsService.searchMixIngredients(text);
       })

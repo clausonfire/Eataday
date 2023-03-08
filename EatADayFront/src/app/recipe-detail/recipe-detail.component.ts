@@ -15,6 +15,7 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private recipeService: RecipesService,    private location: Location,
 
 
+
   ) {
 
   }
@@ -36,8 +37,17 @@ export class RecipeDetailComponent implements OnInit {
 
   }
 
-  goPrint(): void {
+  goPrint() {
+    /*const jsPDF = require('jspdf');
+    const divToPrint = document.getElementById('padre');  // <---------------------
+    html2canvas(divToPrint).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape', 'mm', 'a4');
+      pdf.addImage(imgData, 'PNG', 0, 0, 297, 210);
+      pdf.save('receta.pdf');
+    });*/
   }
+
   goBack(): void {
     this.location.back();
   }
