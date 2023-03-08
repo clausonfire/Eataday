@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipesService } from '../recipes.service';
 import { Recipes } from '../recipes';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,6 +14,7 @@ export class RecipeDetailComponent implements OnInit {
   public recipe?: Recipes;
   location: any;
   constructor(private route: ActivatedRoute, private recipeService: RecipesService
+
   ) {
 
   }
