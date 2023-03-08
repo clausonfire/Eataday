@@ -87,6 +87,22 @@ class CommentSeeder extends Seeder
             'user_id'=>1,
             'isChecked' => true,
         ]);
+        Comment::create([
+            'title' => '¿Es malo desayunar siempre lo mismo?',
+            'text' => 'Está demostrado que se toman mejores decisiones cuando no se está cansado. Así que optar siempre por el mismo desayuno nos permite “ahorrar” la energía que necesitaremos para otras cosas.
+            Especialmente en un momento del día en que nos acabamos de levantar y no tenemos la cabeza demasiado en forma.',
+
+            'user_id'=>1,
+            'isChecked' => true,
+        ]);
+        Comment::create([
+            'title' => '¿Es malo comer patatas con brotes?',
+            'text' => 'Nunca coma papas (patatas) que estén dañadas o verdes bajo la cáscara. Siempre elimine los brotes o retoños. Las papas (patatas) que no estén verdes y a las que se les hayan quitado brotes o
+            retoños se pueden comer sin problema.',
+
+            'user_id'=>1,
+            'isChecked' => true,
+        ]);
         // Comment::create([
         //     'title' => 'No va una mierda1',
         //     'text' => 'Este es el relleno del mensaje 1',

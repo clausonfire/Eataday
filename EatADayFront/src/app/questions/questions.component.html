@@ -1,10 +1,12 @@
-<h1 class="text-center mb-[7%] mt-[7%]  font-bold  italic text-gray-800 text-[15px]  md:text-2xl xl:text-3xl" >PREGUNTAS FRECUENTES</h1>
 
-<div class="mb-[10%]">
-  <ul class="list-reset flex flex-col items-center " *ngFor="let question of allQuestions">
-    <li class="bg-gray-400 border-t-4 w-[40%]"></li>
-    <li class="relative -mb-px block  mt-[1%] mb-[1%] w-[40%] ml-[4%] text-[8px] sm:text-[10px] md:text-[15px] xl:text-[20px] uppercase"  routerLink="/QuestionDetail/{{question.id}} "><a class="text-gray-600 italic">{{question.title}}</a></li>
-
+<h1 class="mt-10 text-center mb-[3%] mt-[3%] font-bold italic text-gray-800 text-[20px] md:text-2xl xl:text-3xl" >PREGUNTAS FRECUENTES</h1>
+<div class="mt-5 mb-[10%]">
+  <ul class="list-reset flex flex-col text-center items-center" *ngFor="let recommendations of allQuestions">
+    <li class="bg-gray-400 border-t-4 w-8/12 md:w-6/12 lg:w-4/12"></li>
+    <li class="relative block w-8/12 md:w-6/12 lg:w-4/12 mt-2 mb-2 ml-4 text-xs sm:text-sm md:text-base">
+      <a class="text-gray-600 italic" routerLink="/vidasanaDetail/{{recommendations.id}}">
+        {{recommendations.title}}
+      </a>
+    </li>
   </ul>
 </div>
-
