@@ -12,8 +12,9 @@ import { Location } from '@angular/common';
 })
 export class RecipeDetailComponent implements OnInit {
   public recipe?: Recipes;
-  location: any;
-  constructor(private route: ActivatedRoute, private recipeService: RecipesService,
+  constructor(private route: ActivatedRoute, private recipeService: RecipesService,    private location: Location,
+
+
 
   ) {
 
