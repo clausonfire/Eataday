@@ -21,8 +21,9 @@ export class ShoppingDiaryComponent implements OnInit {
   public userShoppingList?: Ingredients[];
   public selectedSupermarket: Supermarket;
   // @Input() modalSupermarket: Supermarket[];
+  public  id = JSON.parse(localStorage.getItem('user')).id;
 
-  public id: number = 2;
+  // public id: number = 2;
   public ingredientToUserList: Ingredients;
   public supermarketModal: boolean = false;
   public insertResponse: ApiResponse;
@@ -48,7 +49,6 @@ export class ShoppingDiaryComponent implements OnInit {
       this.supermarkets = supermarkets;
 
     });
-
 
   }
   public Show() {
@@ -92,11 +92,11 @@ export class ShoppingDiaryComponent implements OnInit {
 
   }
   public toSupermarketList(ingredient: Ingredients): void {
-      this.openModal(ingredient);
+    this.openModal(ingredient);
 
   }
   public goToSupermarketDetail(id: number): void {
-      this.router.navigate(['supermarketDetail/'])
+    this.router.navigate(['supermarketDetail/'])
   }
 
 }
