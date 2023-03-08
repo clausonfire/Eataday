@@ -9,52 +9,9 @@ import { SugerenceRecipes } from './sugerencerecipe';
 })
 export class SugerenceRecipeService {
   private urlBase: string = 'http://localhost:8000/api/sugerenceRecipes';
-  private headers = new HttpHeaders()
-    .set('content-type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', 'GET,PUT,POST,OPTIONS')
-    .set('Accept', 'application/json')
-    .set('X-Requested-With', 'XMLHttpRequest');
+
 
   constructor(private http: HttpClient) { }
-
-
-
-  public getRecipes(): Observable<SugerenceRecipes[]> {
-    return this.http.get<SugerenceRecipes[]>(this.urlBase).pipe(catchError(e => { console.error(e); return []; }),
-      map(result => result['data']))
-
-  }
-  public getRecipesByID(id: number): Observable<SugerenceRecipes> {
-    const url = this.urlBase + "/" + id;
-
-    return this.http.get<SugerenceRecipes>(url).pipe(catchError(e => {
-      console.error(e);
-      return [];
-    }), map(result => result['data']));
-  }
-  public searchRecipes(ingredients: string[]): Observable<SugerenceRecipes[]> {
-
-    let url = this.urlBase + "/search";
-    console.log(ingredients);
-    console.log('hola');
-
-    if (ingredients.length === 0) {
-      return of([]);
-    }
-
-    console.log(ingredients);
-    return this.http.post<SugerenceRecipes[]>(url, ingredients, { "headers": this.headers }).pipe(catchError(e => {
-      console.error(e);
-      return [];
-    }), map(result => result['data']))
-
-  }
-
-
-
-
-
 
 
   public checkRecipes(log: SugerenceRecipes): Observable<ApiResponse> {

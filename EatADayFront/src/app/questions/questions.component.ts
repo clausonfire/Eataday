@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { questionService } from '../questions.service';
 import { Questions } from '../questions';
+import { QuestionsArray } from '../question-array';
 
 @Component({
   selector: 'app-questions',
@@ -12,12 +13,12 @@ export class QuestionsComponent implements OnInit {
   constructor(private questionService: questionService){
 
   }
-  allQuestions: Questions[];
+  allQuestions: QuestionsArray;
 
   ngOnInit(): void {
     this.questionService
       .getComents()
-      .subscribe((questions: Questions[]) => (this.allQuestions = questions));
+      .subscribe((questions: QuestionsArray) => (this.allQuestions = questions));
     console.log(this.allQuestions);
     // this.getQuestions();
     }
@@ -25,7 +26,7 @@ export class QuestionsComponent implements OnInit {
   getQuestions():void{
     this.questionService
       .getComents()
-      .subscribe((questions: Questions[]) => (this.allQuestions = questions));
+      .subscribe((questions: QuestionsArray) => (this.allQuestions = questions));
     console.log(this.allQuestions);
   }
 }

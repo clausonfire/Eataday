@@ -5,6 +5,7 @@ import {Login} from "./login";
 import { ApiResponse } from './apiResponse';
 import {data} from "autoprefixer";
 import { Questions } from './questions';
+import { QuestionsArray } from './question-array';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,13 @@ export class questionService {
 
   constructor(private http: HttpClient) { }
 
-  public getComents(): Observable<Questions[]> {
-    return this.http.get<Questions[]>(this.urlGetQuestions).pipe(
+  public getComents(): Observable<QuestionsArray> {
+    return this.http.get<QuestionsArray>(this.urlGetQuestions).pipe(
       catchError(e => {
         console.error(e);
         return [];
       })
-    ).pipe(map(result=>result['data']))
+    )
 
   }
 
@@ -44,4 +45,19 @@ export class questionService {
       return [];
     }), map(result => result['data']));
   }
+
+
+
+
+  public checkcoments(log: Questions): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(this.urlGetQuestions, log).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        const errorMessage = error.error.message || 'Unknown error';
+        return of({ success: false, message: errorMessage, data: null });
+      })
+    ).pipe(map((result: ApiResponse)=>result))
+
+  }
+
 }
