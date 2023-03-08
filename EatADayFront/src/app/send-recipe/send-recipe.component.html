@@ -1,40 +1,38 @@
-<div class="rounded-full">
-  <form [formGroup]="recipesForm" (ngSubmit)="recipeCheck()" class="pt-10">
-
-
+<div class=" flex justify-center text-orange-400 font-bold italic">
+  <p class="w-[50%] text-center  mt-3 rounded-tr-lg">SUGIERE TU RECETA</p>
+  <button class="bg-[#D5D5D5] w-[50%] h-[50px] shadow-inner shadow-gray-600 italic" routerLink="/user-questions">HAZNOS TU PREGUNTA</button>
+</div>
+<!-- <div class="flex justify-end"></div> -->
+<div class="rounded-full flex justify-center italic mt-[10%] mb-[25%]">
+  <form [formGroup]="recipesForm" (ngSubmit)="recipeCheck()" class="pt-10 w-[50%]">
     <label for="title" class="block" id="title">
-      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Titulo:
+      <span class=" after:text-red-500 block text-sm font-medium text-slate-700 w-[50]">
+        Titulo de la receta:
       </span>
     </label>
     <input formControlName="title" type="text" id="title"
-      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-      placeholder="Macarrones con tomate"><br>
+      class="w-[100%] mt-1 px-3 py-2 bg-[#D5D5D5] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block  rounded-md sm:text-sm focus:ring-1"
+      placeholder="Ej: Macarrones con tomate"><br>
     <div>
       <small *ngIf="recipesForm.get('title').invalid && recipesForm.get('title').touched">
         Éste campo es obligatorio
       </small>
     </div>
 
-   
-
-
-
 
     <label for="photo" class="block" id="photo">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        foto:
+        Foto de la receta:
       </span>
     </label>
     <input formControlName="photo" type="text" id="photo"
-      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-      placeholder="you@example.com"><br>
+      class="mt-1 px-3 py-2 bg-[#D5D5D5] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="Ej: https://www.Ruta-De-la-Foto.com"><br>
     <div>
       <small *ngIf="recipesForm.get('photo').invalid && recipesForm.get('photo').touched">
         Éste campo es obligatorio
       </small>
     </div>
-
 
     <label for="ingredients" class="block" id="ingredients">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
@@ -42,25 +40,22 @@
       </span>
     </label>
     <input formControlName="ingredients" type="text" id="ingredients"
-      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-      placeholder="you@example.com"><br>
+      class="mt-1 px-3 py-2 bg-[#D5D5D5] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="Ej: 1 Tomate, 500g de macarrones, 100g de carne picada etc"><br>
     <div>
       <small *ngIf="recipesForm.get('ingredients').invalid && recipesForm.get('ingredients').touched">
         Éste campo es obligatorio
       </small>
     </div>
 
-
-
-
     <label for="description" class="block" id="description">
       <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
-        Descripcion:
+        Preparacion:
       </span>
     </label>
-    <input formControlName="description" type="text" id="description"
-      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
-      placeholder=""><br>
+    <textarea formControlName="description" type="tex" id="description"
+      class="mt-1 px-3 py-2 bg-[#D5D5D5] border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="Pasos para realizar la preparacion de la receta"></textarea><br>
     <div>
       <small *ngIf="recipesForm.get('description').invalid && recipesForm.get('description').touched">
         Éste campo es obligatorio
