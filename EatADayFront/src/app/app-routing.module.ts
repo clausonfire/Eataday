@@ -12,9 +12,12 @@ import { QuestionsComponent } from './questions/questions.component';
 import { SendRecipeComponent } from './send-recipe/send-recipe.component';
 
 
+
 import {LoginGGuard} from "./login-g.guard";
 import { VidasanaComponent } from './vidasana/vidasana.component';
 import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
+import { SugerenceRecipeService } from './sugerence-recipe.service';
+import { UserQuestionsComponent } from './user-questions/user-questions.component';
 
 const routes: Routes = [
 
@@ -29,6 +32,9 @@ const routes: Routes = [
   { path: 'vidasana', component: VidasanaComponent },
   { path: 'vidasanaDetail/:id', component: VidasanaDetailComponent, canActivate:[LoginGGuard] },
   { path: 'questions', component: QuestionsComponent },
+  { path: 'questions', component: QuestionsComponent },
+  { path: 'user-questions', component: UserQuestionsComponent },
+
   { path: '**', component: LoginComponent },
 
 ];
