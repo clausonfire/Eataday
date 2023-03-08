@@ -31,11 +31,13 @@ class RecipesSeeder extends Seeder
             'description' => 'Una forma estupenda de conseguir que los niños coman verdura es mezclarla entre sus comidas favoritas.
             Si preparáis una buena salsa de tomate casera junto a la pasta estarán tomando un saludable plato que les llenará de energía.'
 
+
         ]);
 
         Recipe::create([
             'title' => 'Arroz y conejo',
             'photo' => 'https://static-sevilla.abc.es/media/gurmesevilla/2013/04/arroz-picante-conejo.jpg',
+
             'ingredients' => '["arroz", "conejo", "sal", "agua", "aceite", "sal"]',
             'displayIngredients' => '["Pimiento rojo", "1 tomate maduro", "2 pellizcos de sal", "Una cabeza de ajo", "Medio conejo", "180g arroz", "600ml caldo carne", "1 cebolleta"]',
             'preparation' => '
@@ -46,8 +48,8 @@ class RecipesSeeder extends Seeder
             - Volvemos a incorporar el conejo y dejamos cocinar unos 20 minutos. Los primero minutos lo pondremos a fuego fuerte y luego bajaremos el fuego para que se termine de hacer el arroz.
             ',
             'description' => 'El arroz con conejo es un plato sabroso, nutritivo y lleno de sabor. A los niños les va a encantar
-             porque su sabor es también muy suave'
-
+            porque su sabor es también muy suave',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -61,7 +63,8 @@ class RecipesSeeder extends Seeder
             - Finalmente echamos un chorrito de aceite y un poco de sal por encima de la miga untada con tomate.
             ',
             'description' => 'plato tradicional catalán habrás disfrutado del sabor que aporta el tomate frotado sobre un buen pan
-            de payés, que luego se riega con aceite de oliva virgen extra y sal'
+            de payés, que luego se riega con aceite de oliva virgen extra y sal',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -75,7 +78,8 @@ class RecipesSeeder extends Seeder
             - ahora vertemos la salsa de tomate a la sartén.
             - Finalmente hacemos pelotitas con la carne y la echamos en la saten con el tomate esperamos a que se cueza y listo',
             'description' => 'Las albóndigas se pueden preparar de muchas maneras, ya que podemos cocinarlas con diferentes salsas. Éstas que os proponemos hoy, son las clásicas albóndigas con tomate, aunque la salsa lleva
-             también almendras, lo que las hace muy especiales, y seguro que os vais a chupar los dedos toda la familia.'
+            también almendras, lo que las hace muy especiales, y seguro que os vais a chupar los dedos toda la familia.',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -90,7 +94,8 @@ class RecipesSeeder extends Seeder
             - Sacamos las patatas y dejamos sobre papel de cocina paa que escurran bien el aceite.
             - Sobre las patatas poner el jamón, con el calor de las patatas el jamón quedará perfecto..
             - freímos los huevos al gusto, Los ponemos sobre el jamón, encima un poco de sal',
-            'description' => 'Los huevos rotos con jamón es una receta fácil de hacer con un resultado espectacular y que gusta a todos, en mi casa si fuera por ellos,  los comerían todos los días.'
+            'description' => 'Los huevos rotos con jamón es una receta fácil de hacer con un resultado espectacular y que gusta a todos, en mi casa si fuera por ellos,  los comerían todos los días.',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -107,7 +112,8 @@ class RecipesSeeder extends Seeder
             - Pasamos el pollo a la otra sartén en la que tenemos la cebolla pochada.
             - Para finalizar ponemos al fuego una sartén pequeña con unas gotas de aceite de oliva virgen extra y calentamos las tortillas de trigo.',
             'description' => 'Las fajitas de pollo son un plato típico de la comida mexicana o, para ser más exactos, de la cocina Tex-Mex fruto de la mezcla de la gastronomía típica mexicana
-            con la estadounidense del estado de Texas. '
+            con la estadounidense del estado de Texas. ',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -121,9 +127,9 @@ class RecipesSeeder extends Seeder
             - añadimos las patatas y dejamos que se vayan friendo.
             - Sacamos las patatas y las escurrimos bien del aceite y las ponemos en un bol grande.
             - Batimos los huevos y los añadimos al bol, removiendo con un tenedor para que se mezclen bien los tres ingredientes.
-            - Cuajamos la tortilla en una sartén con una cucharada de aceite durante unos tres o cuatro minutos y le damos la vuelta.
-            ',
-            'description' => 'La tortilla de patatas o tortilla española es uno de los platos por excelencia de la gastronomía española. Para hacerla sólo necesitamos tres ingredientes: huevos, patatas y un buen aceite.'
+            - Cuajamos la tortilla en una sartén con una cucharada de aceite durante unos tres o cuatro minutos y le damos la vuelta.',
+            'description' => 'La tortilla de patatas o tortilla española es uno de los platos por excelencia de la gastronomía española. Para hacerla sólo necesitamos tres ingredientes: huevos, patatas y un buen aceite.',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -139,7 +145,8 @@ class RecipesSeeder extends Seeder
             - Dejar reposar y enfriar. Rellenar y montar las empanadas y pintar con el huevo batido.
             - Cocinar en el horno a 200º hasta que se queden doradas.',
             'description' => 'Las empanadas criollas son uno de los platos más tradicionales de ese país.La masa de las empanadas argentinas es muy similar a nuestra receta de empanadillas, y lo que varía es el relleno, que se prepara con carne picada y diferentes especias. Estas empanadas criollas de carne picada las
-            puedes preparar fritas o al horno, y en cualquiera de los dos casos están deliciosas.'
+            puedes preparar fritas o al horno, y en cualquiera de los dos casos están deliciosas.',
+            'isChecked' => true,
         ]);
 
         Recipe::create([
@@ -159,6 +166,7 @@ class RecipesSeeder extends Seeder
             - Sirve el pollo asado en un plato con su guarnición. Mezcla el jugo de la bandeja de horno con perejil picado y viértelo por encima. Adorna con otra ramita de romero.
             ',
             'description' => 'Hoy toca pollo al horno para comer, una de esas comidas que gusta a toda la familia. ¿Quién no recuerda siendo pequeño esos pollos asados que preparaba tu madre o abuela y que llenaban la casa de olores increíbles…?'
+
 
         ]);
     }

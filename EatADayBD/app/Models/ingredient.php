@@ -14,7 +14,10 @@ class Ingredient extends Model
         'photo',
         'price',
         'price_k',
-        'user_id'
+        'user_id',
+        'isBought',
+        'userLike',
+        'priceUp'
     ];
 
     public function supermarket() {
@@ -25,7 +28,5 @@ class Ingredient extends Model
         return $this->belongsTo(User::class);
     }
     //relaciones muchos a muchos
-    public function recipe() {
-        return $this->belongsToMany(Recipe::class);
-    }
+
 }

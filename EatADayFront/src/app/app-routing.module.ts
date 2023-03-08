@@ -7,13 +7,28 @@ import { ShoppingDiaryComponent } from './shopping-diary/shopping-diary.componen
 import { CloseSupermarketsComponent } from './close-supermarkets/close-supermarkets.component';
 import { SupermarketDetailComponent } from './supermarket-detail/supermarket-detail.component';
 
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { SendRecipeComponent } from './send-recipe/send-recipe.component';
+
+
+import {LoginGGuard} from "./login-g.guard";
+import { VidasanaComponent } from './vidasana/vidasana.component';
+import { VidasanaDetailComponent } from './vidasana-detail/vidasana-detail.component';
+
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
   { path: 'matchAlimentos', component: MatchRecetasComponent },
   { path: 'RecipeDetail/:id', component: RecipeDetailComponent },
-  { path: 'shoppingDiary', component: ShoppingDiaryComponent },
-  { path: 'supermarketDetail/:id', component: SupermarketDetailComponent },
-  { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent },
+  { path: 'QuestionDetail/:id', component: QuestionDetailComponent, canActivate:[LoginGGuard] },
+  { path: 'shoppingDiary', component: ShoppingDiaryComponent, canActivate:[LoginGGuard] },
+  { path: 'send-recipe', component: SendRecipeComponent, canActivate:[LoginGGuard] },
+  { path: 'supermarketDetail/:id', component: SupermarketDetailComponent, canActivate:[LoginGGuard] },
+  { path: 'closeSupermarkets/:id', component: CloseSupermarketsComponent, canActivate:[LoginGGuard] },
+  { path: 'vidasana', component: VidasanaComponent },
+  { path: 'vidasanaDetail/:id', component: VidasanaDetailComponent, canActivate:[LoginGGuard] },
+  { path: 'questions', component: QuestionsComponent },
   { path: '**', component: LoginComponent },
 
 ];
@@ -22,5 +37,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
 

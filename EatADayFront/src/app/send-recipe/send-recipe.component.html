@@ -1,0 +1,82 @@
+<div class="rounded-full">
+  <form [formGroup]="recipesForm" (ngSubmit)="recipeCheck()" class="pt-10">
+
+
+    <label for="title" class="block" id="title">
+      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+        Titulo:
+      </span>
+    </label>
+    <input formControlName="title" type="text" id="title"
+      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="Macarrones con tomate"><br>
+    <div>
+      <small *ngIf="recipesForm.get('title').invalid && recipesForm.get('title').touched">
+        Éste campo es obligatorio
+      </small>
+    </div>
+
+   
+
+
+
+
+    <label for="photo" class="block" id="photo">
+      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+        foto:
+      </span>
+    </label>
+    <input formControlName="photo" type="text" id="photo"
+      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="you@example.com"><br>
+    <div>
+      <small *ngIf="recipesForm.get('photo').invalid && recipesForm.get('photo').touched">
+        Éste campo es obligatorio
+      </small>
+    </div>
+
+
+    <label for="ingredients" class="block" id="ingredients">
+      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+        Ingredientes:
+      </span>
+    </label>
+    <input formControlName="ingredients" type="text" id="ingredients"
+      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder="you@example.com"><br>
+    <div>
+      <small *ngIf="recipesForm.get('ingredients').invalid && recipesForm.get('ingredients').touched">
+        Éste campo es obligatorio
+      </small>
+    </div>
+
+
+
+
+    <label for="description" class="block" id="description">
+      <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+        Descripcion:
+      </span>
+    </label>
+    <input formControlName="description" type="text" id="description"
+      class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1"
+      placeholder=""><br>
+    <div>
+      <small *ngIf="recipesForm.get('description').invalid && recipesForm.get('description').touched">
+        Éste campo es obligatorio
+      </small>
+    </div>
+
+
+    <div class="flex flex-items justify-center">
+      <button (click)="reset()"
+        class="mt-5 border border-[#9EAFA2] bg-[#9EAFA2] text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Borrar</button>
+      <br>
+      <!-- <button (click)="getUsers()">Show Users </button> <br> -->
+      <button [disabled]="recipesForm.invalid" type="submit"
+        class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">Enviar</button>
+      <br>
+    </div>
+
+  </form>
+</div>

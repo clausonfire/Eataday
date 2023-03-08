@@ -1,11 +1,10 @@
 <div class="bg-image">
 
   <div class="container  px-6 mx-auto">
-    <section class="text-gray-800 pt-5">
+    <section class="text-gray-800 pt-2">
 
       <div class="italic text-white">
-        <h2 class="text-3xl font-bold mb-12 text-center italic ">WELCOME TO YOUR</h2>
-        <h2 class="text-3xl font-bold mb-12 text-center italic ">FOODWEB</h2>
+        <h2 class="text-3xl font-bold mb-11 text-center italic mt-10">BIENVENIDO A TU WEB DE COMIDA</h2>
       </div>
 
       <div class="grid lg:grid-cols-3 gap-6">
@@ -55,20 +54,21 @@
         </div>
       </div>
 
-      <div class="mt-20 font-bold  italic pb-12 text-white">
+      <div class="mt-10 lg:mt-[1.5rem]  font-bold  italic pb-7  text-white">
         <h2 class="">¿Aun no te has unido a nuestra</h2>
         <h2 class="">comunidad?</h2>
         <button type="button" (click)="getModals()"
-          class="mt-5 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">
+          class="mt-5 mb-3 border border-green-500 bg-green-500 text-white rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline">
           LOGIN
         </button>
       </div>
+
       <div *ngIf="this.showModals===true"
         class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <div>
-          
+
         </div>
-        
+
         <div>
           <button type="button"
             class="focus:outline-none text-white bg-gray hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-full ml-32  text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -79,7 +79,7 @@
 
         <div>
           <button
-            class="bg-gray-100 text-green-600 hover:text-gray-700 focus:outline-none focus:ring focus:bg-white z-50 rounded-full font-sans font-bold pl-32 pr-32 text-xs pt-2 pb-2"
+            class="bg-gray-100 text-green-600 hover:text-gray-700 focus:outline-none focus:ring focus:bg-white z-50 rounded-full font-sans font-bold pl-32 pr-32 text-xs pt-2 pb-2 "
             (click)="getRegisterModal()">O registrate</button>
           <div *ngIf="this.showRegister">
             <app-register #register></app-register>
@@ -88,9 +88,6 @@
 
       </div>
 
-      
 
-      <!-- <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-</a>
-<div *ngIf="this.showModals===true" class="absolute bg-white top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex rounded-2xl"> -->
-  <!-- <div class="bg-gradient-to-l from-lime-200 rounded-br-2xl"> -->
+
+

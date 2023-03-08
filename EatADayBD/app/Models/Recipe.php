@@ -17,7 +17,10 @@ class Recipe extends Model
         'photo',
         'ingredients',
         'displayIngredients',
-        'preparation'
+        'preparation',
+        'description',
+        'isChecked'
+
     ];
     protected $casts = [
         'ingredients' => 'array',
@@ -28,16 +31,17 @@ class Recipe extends Model
         'updated_at'
     ];
 
-    //relaciones muchos a muchos
-    public function ingredient()
-    {
-        return $this->belongsToMany(ingredient::class);
-    }
+
+
 
     public function user()
     {
         return $this->belongsToMany(User::class);
     }
+    public function users()
+{
+    return $this->hasMany(UserFavouriteRecipes::class);
+}
 
 
 }

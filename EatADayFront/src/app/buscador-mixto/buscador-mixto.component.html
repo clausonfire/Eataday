@@ -2,29 +2,37 @@
   <div class="w-full flex items-center justify-center py-10">
 
 
-    <input type="text" class="w-80" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
+    <input type="text" class="rounded-full pl-2 bg-gray-200 outline-none focus:outline-1 w-[80%]" placeholder="Buscar por nombre..." #inputSearch (input)="search(inputSearch.value)">
 
 
 
   </div>
-  <div *ngIf="  ingredientsFound$ | async" class="bg-gray-400 w-full flex items-center justify-center flex-col gap-3 ">
-    <div>
-      <h1>Productos</h1>
-    </div>
-    <ul class="flex flex-col gap-2 h-[10rem] w-[30rem] overflow-y-scroll ">
-      <li *ngFor="let ingredient of ingredientsFound$ | async " class="bg-gray-100 p-1">
+  <div class="relative bg-gray-400 w-full h-[10rem]">
+    <div *ngIf="  ingredientsFound$ | async"
+      class=" absolute top-0 left-0  w-full flex items-center justify-center flex-col gap-3 ">
+      <div>
+        <h1>Productos</h1>
+      </div>
+      <ul class="flex flex-col gap-2 h-[8rem]  overflow-y-scroll ">
+        <li *ngFor="let ingredient of ingredientsFound$ | async "
+          class="bg-gray-100 p-1 flex items-center justify-between">
 
-        <div class="flex">
-          <div>
-            {{ ingredient.name }}
+          <div class="flex">
+            <div>
+              {{ ingredient.name }}
+            </div>
+            <div>{{ ingredient.price_k }} €/k</div>
           </div>
-          <div>{{ ingredient.price_k }} €/k</div>
-        </div>
+          <div class=" text-sm">
+            <button class="bg-red-400" (click)="toUserList(ingredient)"><img src="assets/img/icons/diariocompra.png" class="h-6"alt=""></button>
+            <button class="bg-blue-400" (click)="choseSupermarket(ingredient)"><img src="assets/img/icons/supercorapng.png" class="h-6"alt=""></button>
+          </div>
 
 
 
-      </li>
+        </li>
 
-    </ul>
+      </ul>
+    </div>
   </div>
 </div>

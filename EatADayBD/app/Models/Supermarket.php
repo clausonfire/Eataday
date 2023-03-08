@@ -15,10 +15,14 @@ class Supermarket extends Model
         'photo'
     ];
 
-    public function ingredient() {
+    public function ingredient()
+    {
         return $this->belongsToMany(Ingredient::class);
     }
+    public function shoppingLists()
+    {
+        return $this->hasMany(ShoppingList::class);
+    }
 
-    
 
 }

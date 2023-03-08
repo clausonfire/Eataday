@@ -1,1 +1,80 @@
-<p>supermarket-detail works!</p>
+<div *ngIf="supermarket" class="flex items-center justify-center p-5">
+  <div class="flex flex-col items-center justify-center ">
+    <p>{{ supermarket.name }}</p>
+    <button (click)="closeSupermarkets()">Buscar {{ supermarket.name }}s más cercanos</button>
+  </div>
+</div>
+<div *ngIf="userShoppingList ;else sinIngredientes" class="flex flex-col items-center justify-center my-4">
+  <h1>Cosas por comprar de {{ supermarket.name }} </h1>
+  <div class="bg-yellow-300 p-4  h-[13rem] w-fit overflow-y-scroll">
+    <ul>
+      <li *ngFor="let ingredient of userShoppingList" class="flex items-center justify-between">
+        <div>{{ ingredient.name}}</div>
+        <div>
+
+          <button (click)="chose(ingredient)">X</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<ng-template #sinIngredientes class="w-full flex items-center justify-center">
+  <div class="flex items-center justify-center">
+    <p>Tu lista está vacía inserta alimentos nuevos</p>
+  </div>
+
+</ng-template>
+<div class="bg-gray-400 w-full flex items-center justify-center flex-col gap-3 ">
+  <div *ngIf="supermarket">
+    <h1>Mis Productos de {{ supermarket.name }}</h1>
+  </div>
+  <ul class="flex flex-col gap-2 h-[10rem] w-[30rem] overflow-y-scroll ">
+
+    <li *ngFor="let ingredient of userBoughtShoppingList" class="flex items-center justify-between bg-gray-100">
+      <div class="flex items-center gap-3">
+        <p>{{ ingredient.name}}</p>
+        <p>{{ ingredient.price }}€</p>
+        <p>{{ ingredient.price_k }}€/kg</p>
+        <div *ngIf="ingredient.priceUp;  else priceUpFalse">Up</div>
+        <ng-template #priceUpFalse>
+          <div *ngIf="ingredient.priceUp !=null ">Down</div>
+        </ng-template>
+        <div *ngIf="ingredient.userLike == 1; else userLikeFalse"><img src="assets/img/icons/thumbsUp.jpeg" class="h-7"alt=""></div>
+        <ng-template #userLikeFalse>
+          <div *ngIf="ingredient.userLike !== null"><img src="assets/img/icons/thumbsDown.jpeg"  class="h-7" alt=""></div>
+        </ng-template>
+      </div>
+      <div>
+        <button (click)="openEditModal(ingredient)">Edit</button>
+        <button (click)="chose(ingredient)">X</button>
+
+      </div>
+    </li>
+
+  </ul>
+</div>
+<div *ngIf="this.deleteModal===true" class="flex flex-col items-center justify-center">
+  <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
+    <div><button (click)="delete()">Borrar</button><button (click)="setBoughtTrue()">Cambiar de lista</button></div>
+  </div>
+</div>
+<div *ngIf="this.editModal===true" class="flex flex-col items-center justify-center">
+  <div class="bg-red-400  absolute top-[40%] right-[43%] p-3">
+
+
+    <div>
+      <h2>Edita el registro</h2>
+    </div>
+    <div>
+      <app-edit-modal [ingredientToEdit]="ingredientToEdit" [userId]="id" [supermarket]="supermarket"
+        (eventEdit)="recharge()"></app-edit-modal>
+    </div>
+
+
+
+
+
+
+  </div>
+
+</div>

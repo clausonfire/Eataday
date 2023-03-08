@@ -31,4 +31,7 @@ export class RecipeDetailComponent implements OnInit {
 
 
   }
+
+  goPrint(): void {
+  }
 }

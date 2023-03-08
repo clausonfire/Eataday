@@ -11,10 +11,10 @@ class Comment extends Model
     protected $fillable = [
         'title',
         'text',
-        'isFrequent'
+        'user_id',
+        'isChecked'
     ];
     protected $hidden = [
-        'isFrequent',
         'created_at',
         'updated_at'
     ];

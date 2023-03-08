@@ -35,7 +35,7 @@ php artisan migrate
 ```
 ## Deshacer una migracion
 ```
-php migration rollback
+   
 ```
 
 ## Crear seeder de Student
