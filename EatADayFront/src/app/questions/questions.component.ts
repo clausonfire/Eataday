@@ -30,3 +30,4 @@ export class QuestionsComponent implements OnInit {
     console.log(this.allQuestions);
   }
 }
+

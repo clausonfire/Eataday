@@ -24,9 +24,9 @@ export class SendRecipeComponent {
     title: new FormControl("",[ //usuario@eataday.com
       Validators.required,
     ]),
-    photo: new FormControl("", [
-      Validators.required,
-    ]),
+    // photo: new FormControl("", [
+    //   Validators.required,
+    // ]),
     ingredients: new FormControl("", [
       Validators.required,
     ]),
@@ -55,7 +55,7 @@ export class SendRecipeComponent {
   public recipeCheck() {
     let body = {
       title: this.recipesForm.value.title,
-      photo: this.recipesForm.value.photo,
+      // photo: this.recipesForm.value.photo,
       ingredients: this.recipesForm.value.ingredients,
       description: this.recipesForm.value.description,
       isChecked: this.recipesForm.value.isChecked,

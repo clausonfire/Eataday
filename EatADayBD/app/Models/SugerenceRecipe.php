@@ -13,7 +13,7 @@ class SugerenceRecipe extends Model
     protected $fillable = [
         'id',
         'title',
-        'photo',
+        // 'photo',
         'ingredients',
         'description',
         'isChecked',
