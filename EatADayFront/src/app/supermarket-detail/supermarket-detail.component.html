@@ -5,7 +5,7 @@
         <h1 class="text-lg">{{ supermarket.name }}</h1>
       </div>
       <button (click)="closeSupermarkets()"
-        class="flex items-center bg-[#61B82C] p-[0.5rem] py-[0.3rem] rounded-full [text-shadow:_0px_1px_1px_black;]  shadow-md hover:shadow-none focus:shadow-none shadow-slate-500 wgap-1 text-white"><img
+        class="flex items-center bg-[#61B82C] p-[0.5rem] py-[0.3rem] rounded-full [text-shadow:_0px_1px_1px_black;]  shadow-md hover:shadow-none focus:shadow-none shadow-slate-500  gap-1 text-white"><img
           src="assets/img/icons/lupa.png" class="h-4" alt=""> Buscar {{ supermarket.name }}s más cercanos</button>
     </div>
 
@@ -74,16 +74,16 @@
 
     </ul>
   </div>
-  <div *ngIf="this.deleteModal===true" class="flex flex-col items-center justify-center">
+  <div *ngIf="this.deleteModal===true" class="flex flex-col items-center justify-center gap-7">
     <div class="bg-gray-300 rounded-md  absolute top-[35%] right-[50%] translate-x-[50%] translate-y-[50%] p-3">
       <div><button (click)="delete()"><img src="assets/img/icons/papelera.png" alt=""></button><button (click)="setBoughtTrue()"><img src="assets/img/icons/tick.png" alt=""></button></div>
     </div>
   </div>
   <div *ngIf="this.editModal===true" class="flex flex-col items-center justify-center">
-    <div class="bg-gray-100 rounded-md absolute top-[40%] right-[43%] p-3">
+    <div class="bg-gray-200 rounded-md absolute  top-[20%]  lg:right-[42%] px-7 p-3 lg:px-9">
 
 
-      <div>
+      <div class="flex items-center justify-center text-xl mb-3">
         <h2>Edita el registro</h2>
       </div>
       <div>
