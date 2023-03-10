@@ -17,7 +17,7 @@ class SugerenceRecipeSeeder extends Seeder
     {
         SugerenceRecipe::create([
             'title' => 'Macarrones con tomate',
-            'photo' => 'null',
+            // 'photo' => 'null',
             'ingredients' => '["macarrones", "tomate", "aceite", "sal"]',
             'description' => '-Una forma estupenda de conseguir que los niños coman verdura es mezclarla entre sus comidas favoritas.
             Si preparáis una buena salsa de tomate casera junto a la pasta estarán tomando un saludable plato que les llenará de energía.',
@@ -27,7 +27,7 @@ class SugerenceRecipeSeeder extends Seeder
 
         SugerenceRecipe::create([
             'title' => 'Arroz y conejo',
-            'photo' => 'null',
+            // 'photo' => 'null',
             'ingredients' => '["arroz", "conejo", "sal", "agua", "aceite", "sal"]',
             'description' => 'El arroz con conejo es un plato sabroso, nutritivo y lleno de sabor. A los niños les va a encantar
             porque su sabor es también muy suave',

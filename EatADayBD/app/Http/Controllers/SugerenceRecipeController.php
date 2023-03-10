@@ -63,7 +63,7 @@ class SugerenceRecipeController extends Controller
         try {
             $id = SugerenceRecipe::insertGetId($request->validate([
                 'title' => 'required|string',
-                'photo' => 'nullable|string',
+                // 'photo' => 'nullable|string',
                 'ingredients' => 'required|string',
                 'description' => 'required|string',
                 'isChecked' =>'boolean',

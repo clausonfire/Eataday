@@ -2,7 +2,7 @@
   <p class="w-[50%] text-center  mt-3 rounded-tr-lg xl:text-[20px]">SUGIERE TU RECETA</p>
   <button class="bg-[#D5D5D5] w-[50%] h-[50px] shadow-inner shadow-gray-600 italic xl:text-[20px]" routerLink="/user-questions">HAZNOS TU PREGUNTA</button>
 </div>
-<!-- <div class="flex justify-end"></div> -->
+
 <div class="rounded-full flex justify-center italic mt-[10%] md:mb-[12%] mb-[25%] xl:mt-[5%] 2xl:mt-[3%] 2xl:mb-[8%]">
   <form [formGroup]="recipesForm" (ngSubmit)="recipeCheck()" class="pt-10 w-[50%]">
     <label for="title" class="block" id="title">
@@ -20,7 +20,7 @@
     </div>
 
 
-    <label for="photo" class="block" id="photo">
+    <!-- <label for="photo" class="block" id="photo">
       <span class="after:content-['*'] mt-3 after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700 text-[16px] md:text-[20px] xl:text-[25px]">
         Foto de la receta:
       </span>
@@ -32,7 +32,7 @@
       <small *ngIf="recipesForm.get('photo').invalid && recipesForm.get('photo').touched">
         Éste campo es obligatorio
       </small>
-    </div>
+    </div> -->
 
     <label for="ingredients" class="block" id="ingredients">
       <span class="after:content-['*'] mt-3 after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700 text-[16px] md:text-[20px] xl:text-[25px]">
