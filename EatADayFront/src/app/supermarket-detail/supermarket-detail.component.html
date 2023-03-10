@@ -16,10 +16,10 @@
   <div *ngIf="userShoppingList ;else sinIngredientes"
     class=" relative flex flex-col w-full items-center justify-center ">
 
-    <div class="bg-yellow-200  flex items-center justify-center h-[12rem] w-full md:w-[50%] md:my-2 overflow-y-scroll">
+    <div class="bg-yellow-200  flex items-center justify-center h-[12rem] w-full md:w-[50%] md:my-2 overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
       <div class="flex flex-col items-center justify-center w-[80%] h-full">
         <h1 class="mb-3 text-[1.02rem] mt-1">Productos por comprar de {{ supermarket.name }} </h1>
-        <ul class="w-[80%]   h-full flex flex-col gap-1 overflow-y-scroll">
+        <ul class="w-[80%]   h-full flex flex-col gap-1 overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
           <li *ngFor="let ingredient of userShoppingList" class="flex   justify-between pr-1 items-center p-1 ">
             <div>{{ ingredient.name}}</div>
             <div>
@@ -42,11 +42,11 @@
     <div *ngIf="supermarket" >
       <h1>Mis Productos de {{ supermarket.name }}</h1>
     </div>
-    <ul class="flex flex-col gap-2 h-[8rem]  w-[93%] overflow-y-scroll ">
+    <ul class="flex flex-col gap-2 h-[8rem] md:h-[9rem] lg:h-[10rem]  w-[93%] overflow-y-scroll  [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
 
       <li *ngFor="let ingredient of userBoughtShoppingList"
         class="  w-full flex items-center bg-gray-100 justify-between">
-        <div class="flex items-center gap-3  p-2">
+        <div class="flex items-center gap-3  p-2 px-4 md:px-6 md:pr-3">
           <p class="text-lg">{{ ingredient.name}}</p>
           <p>{{ ingredient.price }}€</p>
           <p>{{ ingredient.price_k }}€/kg</p>
