@@ -4,6 +4,9 @@ import { RecipesService } from '../recipes.service';
 import { Recipes } from '../recipes';
 import { Location } from '@angular/common';
 
+import html2canvas from 'html2canvas';
+
+import jsPDF from "jspdf";
 
 @Component({
   selector: 'app-recipe-detail',
@@ -36,17 +39,30 @@ export class RecipeDetailComponent implements OnInit {
 
 
   }
-
   goPrint() {
-    /*const jsPDF = require('jspdf');
+    const divToPrint = document.getElementById('search-component');  // <---------------------
+    html2canvas(divToPrint).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape', 'mm', 'a4');
+      const imgWidth = pdf.internal.pageSize.getWidth();
+      /*pdf.addImage(imgData, 'PNG', 0, 0, 0, 0);
+      pdf.save('receta.pdf');*/
+      const imgHeight = canvas.height * imgWidth / canvas.width; // calcula la altura de la imagen
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight); // agrega la imagen al PDF
+      pdf.save('receta.pdf');
+    });
+  }
+
+  /*goPrint() {
+    const jsPDF = require('jspdf');
     const divToPrint = document.getElementById('padre');  // <---------------------
     html2canvas(divToPrint).then(canvas => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('landscape', 'mm', 'a4');
       pdf.addImage(imgData, 'PNG', 0, 0, 297, 210);
       pdf.save('receta.pdf');
-    });*/
-  }
+    });
+  }*/
 
   goBack(): void {
     this.location.back();
