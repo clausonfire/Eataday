@@ -14,19 +14,23 @@ import { SugerenceRecipes } from '../sugerencerecipe';
 })
 export class SendRecipeComponent {
 
+  private user = localStorage.getItem('user');
+  private objetoId = JSON.parse(this.user);
+  private userid= this.objetoId.id;
+
 
   public recipesForm = new FormGroup({
     id: new FormControl(),
-    title: new FormControl("macarrones con tomate",[ //usuario@eataday.com
+    title: new FormControl("",[ //usuario@eataday.com
       Validators.required,
     ]),
-    photo: new FormControl("Urlfoto", [
+    // photo: new FormControl("", [
+    //   Validators.required,
+    // ]),
+    ingredients: new FormControl("", [
       Validators.required,
     ]),
-    ingredients: new FormControl("ingredientes", [
-      Validators.required,
-    ]),
-    description: new FormControl("description", [
+    description: new FormControl("", [
       Validators.required,
     ]),
     isChecked: new FormControl(false)
@@ -51,11 +55,11 @@ export class SendRecipeComponent {
   public recipeCheck() {
     let body = {
       title: this.recipesForm.value.title,
-      photo: this.recipesForm.value.photo,
+      // photo: this.recipesForm.value.photo,
       ingredients: this.recipesForm.value.ingredients,
       description: this.recipesForm.value.description,
       isChecked: this.recipesForm.value.isChecked,
-      user_id: 1
+      user_id: this.userid
     }
     this.recipeService.checkRecipes(body as SugerenceRecipes).subscribe((res) => {
       // if(res.success) {
@@ -64,7 +68,7 @@ export class SendRecipeComponent {
       // } else if( HttpErrorResponse ){
       //   alert("asassasas");
       // }
-      
+
         console.log(body);
 
     })

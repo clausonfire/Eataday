@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sugerence_recipes', function (Blueprint $table) {
             $table->id();
             $table->string('title', 32);
-            $table->string('photo', 200)->nullable();
+            // $table->string('photo', 200)->nullable();
             $table->string('ingredients');
             $table->string('description', 2000);
             $table->boolean('isChecked');

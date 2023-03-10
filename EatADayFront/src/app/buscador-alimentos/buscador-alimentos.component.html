@@ -8,7 +8,7 @@
     <input type="text" placeholder="Buscar por nombre..." #inputSearch
       class="rounded-full pl-1 bg-gray-100 outline-none focus:outline-1" (input)="search(inputSearch.value)">
 
-    <ul class="max-h-[7rem] overflow-y-auto flex flex-col   mt-2  gap-1">
+    <ul class="max-h-[7rem] overflow-y-auto flex flex-col   mt-2  gap-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
       <li *ngFor="let ingredient of ingredientsFound$ | async " class="bg-gray-400">
 
 
