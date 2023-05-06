@@ -32,9 +32,10 @@ export class LoginService {
         const errorMessage = error.error.message || 'Unknown error';
         return of({ success: false, message: errorMessage, data: null });
       })
-    ).pipe(map((token) => {
+    ).pipe(map((token: any) => {
         if(token.success) {
-          localStorage.setItem("token", token.data);
+          localStorage.setItem("token", token.data.token);
+          localStorage.setItem("user", JSON.stringify(token.data));
           if (localStorage.getItem('token')) {
             this.router.navigate(['matchAlimentos']);
           }

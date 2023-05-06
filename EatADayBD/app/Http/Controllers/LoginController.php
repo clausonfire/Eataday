@@ -75,11 +75,13 @@ class LoginController extends Controller
 
             if (Auth::attempt($data)) {
                 $token = Auth::user()->createToken("token")->accessToken;
+                $user =  Auth::user();
+                $user->token = $token;
 
                 $response = [
                     'success' => true,
                     'message' => "You've been logged in successfully",
-                    'data' => $token
+                    'data' => $user
                 ];
                 return response()->json($response, 201);
             } else {
